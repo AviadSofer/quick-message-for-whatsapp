@@ -3,8 +3,8 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle`
     * {
         direction: rtl;
-        color: ${({ theme }) => theme.colors.font};
-        font-family: ${({ theme }) => theme.fonts.first};
+        color: gray;
+        font-family: Secular One, sans-serif;
         font-size: 1.7rem;
         ::selection { /*design the selected text*/
             color: white;

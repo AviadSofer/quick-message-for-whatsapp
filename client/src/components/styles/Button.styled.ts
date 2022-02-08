@@ -14,6 +14,6 @@ export const StyledButton = styled(Button)<Props>`
   border-radius: 15px;
   background-color: ${({ bg }) => bg || 'transparent'};
   color: ${({ buttonfontcolor }) => buttonfontcolor || 'gray'};
-  font-family: ${({ theme }) => theme.fonts.first};
+  font-family: Secular One, sans-serif;
 }
 `

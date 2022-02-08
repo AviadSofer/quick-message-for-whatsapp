@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const StyledMassageView = styled.div`
+export const StyledMessageView = styled.div`
+min-height: 100vh;
+display: flex;
 flex: 1;
 background-color: ${({ theme }) => theme.colors.bg};
 `

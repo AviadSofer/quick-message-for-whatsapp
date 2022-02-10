@@ -7,7 +7,7 @@ const MessageView: React.FC = () => {
 
   return (
       <StyledMessageView>
-        <WhatsappUi size={70} phoneNumber={`${prefix}${phone}`} message={message}/>
+        <WhatsappUi size={60} phoneNumber={`${prefix}${phone}`} message={message}/>
       </StyledMessageView>
   )
 }

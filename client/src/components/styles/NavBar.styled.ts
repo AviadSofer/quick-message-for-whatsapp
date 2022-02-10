@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
+@media (max-width: 768px) {
+    margin-top: 110px;
+    order: 4;
+}
 `
 
 export const Credits = styled.p`

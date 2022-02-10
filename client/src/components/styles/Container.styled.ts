@@ -7,6 +7,7 @@ flex: 2;
 display: flex;
 justify-content: center;
 @media (max-width: 768px) {
+    min-height: ${window.innerHeight};
     text-align: center;
 }
 `
@@ -23,20 +24,22 @@ margin-bottom: 30px;
 }
 `
 
-export const Title = styled.h1`
-font-size: 1.6rem;
-color: black;
-margin: 0;
+export const Logo = styled.img`
+width: 25%;
+object-fit: cover;
+@media (max-width: 768px) {
+    align-self: center;
+    width: 20%;
+}
 `
 
 export const Explain = styled.h2`
-font-size: 1rem;
+font-size: 0.8rem;
+margin: 0;
 `
 
 export const FlexContainer = styled.div`
 display: flex;
 justify-content: space-between;
-@media (max-width: 768px) {
-    margin-bottom: 100px;
-}
+margin-bottom: 20px;
 `

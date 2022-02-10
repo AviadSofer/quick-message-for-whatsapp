@@ -15,7 +15,7 @@ const NavBar: React.FC = () => {
         <Span> | </Span>
         <Link onClick={() => changeMessage('היי, תראה איזו אפליקציה מגניבה מצאתי!')}>שיתוף עם חבר</Link>
     </Credits>
-  </Nav>
+    </Nav>
   )
 }
 

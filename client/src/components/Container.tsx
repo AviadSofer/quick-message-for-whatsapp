@@ -1,15 +1,21 @@
-import { StyledContainer, Title, Explain, FlexContainer, StyledWrap} from './styles/Container.styled';
+import { StyledContainer, Explain, FlexContainer, StyledWrap, Logo} from './styles/Container.styled';
 import NavBar from './NavBar';
+import logo from '../logo.png';
 import InputNumber from './InputNumber';
 import WriteMessage from './WriteMessage';
 import SendButton from './SendButton';
 
 const Container: React.FC = () => {
+  addEventListener("load", () => { // make the height static, useful with mobile keyboard
+    const viewport: any = document.querySelector('meta[name=viewport]');
+    viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
+  })
+
   return (
     <StyledContainer>
       <StyledWrap>
           <NavBar/>
-          <Title>שלנו. בחינם. בלי פרסומות. אף פעם.</Title>
+          <Logo src={logo}/>
           <Explain>אפליקציה בקוד פתוח לשליחת הודעה בוואטספ בלי לשמור את המספר.</Explain>
           <InputNumber/>
           <FlexContainer>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
 @media (max-width: 768px) {
-    margin-top: 110px;
+    margin-top: 8vh;
     order: 4;
 }
 `

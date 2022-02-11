@@ -16,7 +16,7 @@ const Container: React.FC = () => {
       <StyledWrap>
           <NavBar/>
           <Logo src={logo}/>
-          <Explain>אפליקציה בקוד פתוח לשליחת הודעה בוואטספ בלי לשמור את המספר.</Explain>
+          <Explain>אפליקציה לשליחת הודעה בוואטספ בלי לשמור את המספר.</Explain>
           <InputNumber/>
           <FlexContainer>
               <WriteMessage/>

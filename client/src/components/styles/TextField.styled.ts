@@ -8,11 +8,11 @@ interface Props {
 export const StyledTextField = styled(Input)<Props>`
 width: ${({ width }) => width || '20%'};
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  -webkit-appearance: none; /*disable the counter when the type is "number"*/
 }
 @media (max-width: 768px) {
-  input::-webkit-input-placeholder {
-    font-size: 0.8rem;
-}
+  input {
+    font-size: 0.9rem;
+  }
 }
 `

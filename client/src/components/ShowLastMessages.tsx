@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 
-const fetcher = (url: string) => {fetch(url).then((res) => res.json())}
+const fetcher = (url: any) => fetch(url).then(res => res.json())
 
 const ShowLastMessages: React.FC = () => {
   const { data, error } = useSWR('/api/messages', fetcher)

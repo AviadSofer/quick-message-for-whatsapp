@@ -4,6 +4,7 @@ import logo from '../logo.png';
 import InputNumber from './InputNumber';
 import WriteMessage from './WriteMessage';
 import SendButton from './SendButton';
+import ShowLastMessages from './ShowLastMessages';
 
 const Container: React.FC = () => {
   addEventListener("load", () => { // make the height static, useful with mobile keyboard
@@ -16,6 +17,7 @@ const Container: React.FC = () => {
       <StyledWrap>
           <NavBar/>
           <Logo src={logo}/>
+          <ShowLastMessages />
           <Explain>אפליקציה לשליחת הודעה בוואטספ בלי לשמור את המספר.</Explain>
           <InputNumber/>
           <FlexContainer>

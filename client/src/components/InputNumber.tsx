@@ -16,7 +16,6 @@ const InputNumber: React.FC = () => {
       placeholder='קידומת'
       type='number'
       defaultValue={prefix}
-      color='success'
       width='25%'
       />
       <StyledTextField
@@ -24,7 +23,6 @@ const InputNumber: React.FC = () => {
       placeholder='מספר טלפון'
       type='number'
       width='70%'
-      color='success'
       />
   </StyledInputNumber>
   )

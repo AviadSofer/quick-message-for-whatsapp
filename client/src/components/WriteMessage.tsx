@@ -10,7 +10,6 @@ const WriteMessage: React.FC = () => {
     onChange={(e) => changeMessage(e.target.value)} 
     placeholder='הודעה'
     width='70%'
-    color='success'
     />
   )
 }

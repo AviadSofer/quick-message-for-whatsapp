@@ -14,9 +14,9 @@ const SendButton: React.FC = () => {
   <StyledButton 
   onClick={createLink} 
   variant="contained" 
-  color="success"
-  bg='#25D366' 
-  buttonfontcolor='white'
+  bg='#7ED956'
+  hoverbg= '#73de45'
+  font='white'
   >
     שלח
   </StyledButton>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { StyledContainer, Explain, FlexContainer, StyledWrap, Logo} from './styles/Container.styled';
 import NavBar from './NavBar';
 import logo from '../logo.png';
@@ -6,9 +7,11 @@ import WriteMessage from './WriteMessage';
 import SendButton from './SendButton';
 
 const Container: React.FC = () => {
-  addEventListener("load", () => { // make the height static, useful with mobile keyboard
-    const viewport: any = document.querySelector('meta[name=viewport]');
-    viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
+  useEffect(() => {
+    addEventListener("load", () => { // make the height static, useful with mobile keyboard
+      const viewport: any = document.querySelector('meta[name=viewport]');
+      viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
+    })
   })
 
   return (

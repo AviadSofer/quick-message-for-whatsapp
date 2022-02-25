@@ -6,7 +6,6 @@ flex: 2;
 display: flex;
 justify-content: center;
 @media (max-width: 768px) {
-    min-height: ${window.innerHeight}px; /*make the height in mobile like 100vh, Although the address bar*/
     text-align: center;
 }
 `

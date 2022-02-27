@@ -7,6 +7,7 @@ display: flex;
 justify-content: center;
 @media (max-width: 768px) {
     text-align: center;
+    min-height: ${window.innerHeight}px;
 }
 `
 

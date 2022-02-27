@@ -5,5 +5,6 @@ height: 100vh;
 display: flex;
 @media (max-width: 768px) {
     flex-direction: column;
+    height: ${window.innerHeight}px;
 }
 `

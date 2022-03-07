@@ -1,7 +1,7 @@
 # send-whatsapp-massage
 A open source project that allows you to send messages to a number that is not saved in your contacts
 
-You can see the demo [here](https://send-whatsapp-massage.herokuapp.com/)
+You can see the demo [here](http://quick-message-for-whatsapp.vercel.app/)
 
 ## Available Scripts
 

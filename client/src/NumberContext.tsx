@@ -1,15 +1,17 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, {
+  createContext, useContext, useMemo, useState,
+} from 'react';
 
 type ProviderOptions = {
     prefix: string
     phone: string
     message: string
-    changePrefix: (n: string) => void
-    changePhone: (n: string) => void
-    changeMessage: (n: string) => void
+    changePrefix: (num: string) => void
+    changePhone: (num: string) => void
+    changeMessage: (msg: string) => void
 }
 
-const NumberContext = createContext<any>({});
+const NumberContext = createContext({});
 
 export const useNumberContext = () => useContext(NumberContext);
 
@@ -25,11 +27,13 @@ export const NumberProvider: React.FC = ({ children }) => {
     message,
     changePrefix: (num: string) => setPrefix(num),
     changePhone: (num: string) => setPhone(num),
-    changeMessage: (value: string) => setMessage(value),
+    changeMessage: (msg: string) => setMessage(msg),
   };
 
+  const value = useMemo(() => providerOptions, [providerOptions]);
+
   return (
-    <NumberContext.Provider value={providerOptions}>
+    <NumberContext.Provider value={value}>
       {children}
     </NumberContext.Provider>
   );

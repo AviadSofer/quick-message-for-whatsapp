@@ -30,6 +30,8 @@ export const NumberProvider: React.FC = ({ children }) => {
     changeMessage: (msg: string) => setMessage(msg),
   };
 
+  // by default React re-rendering all the content, every change
+  // with useMemo React will re-render the code inside it, only when the second argument will change
   const value = useMemo(() => providerOptions, [providerOptions]);
 
   return (

@@ -11,7 +11,9 @@ type ProviderOptions = {
     changeMessage: (msg: string) => void
 }
 
-const NumberContext = createContext({});
+type EmptyObject = Record<string, never>
+
+const NumberContext = createContext<ProviderOptions | EmptyObject>({});
 
 export const useNumberContext = () => useContext(NumberContext);
 

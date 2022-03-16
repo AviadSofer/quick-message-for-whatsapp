@@ -6,12 +6,12 @@ const WriteMessage: React.FC = () => {
 
   return (
     <StyledTextField
-    value={message}
-    onChange={(e) => changeMessage(e.target.value)} 
-    placeholder='הודעה'
-    width='70%'
+      value={message}
+      onChange={(e) => changeMessage(e.target.value)}
+      placeholder="הודעה"
+      width="70%"
     />
-  )
-}
+  );
+};
 
 export default WriteMessage;

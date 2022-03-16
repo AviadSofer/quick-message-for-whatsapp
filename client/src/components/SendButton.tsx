@@ -4,7 +4,7 @@ import { StyledButton } from './styles/Button.styled.js';
 
 const SendButton: React.FC = () => {
   const { prefix, phone, message } = useNumberContext();
-  // re-render this function just while prefix, phone or message it re-rendering
+  // re-render this function just while prefix, phone or message will re-rendering
   const createLink = useCallback(() => {
     const link = `https://wa.me/${prefix}${phone}?text=${message}`;
     window.open(link, '_blank');

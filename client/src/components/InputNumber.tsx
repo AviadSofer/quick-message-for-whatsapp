@@ -1,6 +1,6 @@
 import { useNumberContext } from '../NumberContext';
-import { StyledInputNumber } from './styles/InputNumber.styled.js';
-import { StyledTextField } from './styles/TextField.styled.js';
+import StyledInputNumber from './styles/InputNumber.styled.js';
+import StyledTextField from './styles/TextField.styled.js';
 
 const InputNumber: React.FC = () => {
   const { prefix, changePrefix, changePhone } = useNumberContext();

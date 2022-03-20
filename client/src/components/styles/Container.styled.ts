@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
 min-height: 100vh;
@@ -9,7 +9,7 @@ justify-content: center;
     text-align: center;
     min-height: ${window.innerHeight}px;
 }
-`
+`;
 
 export const StyledWrap = styled.div`
 display: flex;
@@ -21,7 +21,7 @@ margin-bottom: 30px;
 @media (max-width: 768px) {
     justify-content: space-around;
 }
-`
+`;
 
 export const Logo = styled.img`
 width: 25%;
@@ -30,15 +30,15 @@ object-fit: cover;
     align-self: center;
     width: 20%;
 }
-`
+`;
 
 export const Explain = styled.h2`
 font-size: 0.8rem;
 margin: 0;
-`
+`;
 
 export const FlexContainer = styled.div`
 display: flex;
 justify-content: space-between;
 margin-bottom: 20px;
-`
+`;

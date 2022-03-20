@@ -7,7 +7,7 @@ interface Props {
   hoverbg?: string
 }
 
-export const StyledButton = styled(Button)<Props>`
+const StyledButton = styled(Button)<Props>`
 &&  {
   display: flex;
   justify-content: center;
@@ -20,4 +20,6 @@ export const StyledButton = styled(Button)<Props>`
 &&:hover {
   background-color: ${({ hoverbg }) => hoverbg || 'transparent'};
 }
-`
+`;
+
+export default StyledButton;

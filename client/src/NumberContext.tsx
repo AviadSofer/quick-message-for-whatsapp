@@ -17,7 +17,7 @@ const NumberContext = createContext<ProviderOptions | EmptyObject>({});
 
 export const useNumberContext = () => useContext(NumberContext);
 
-// wrap the components below it, and provide them the context
+// React Component that wrap the components below it, and provide them the context
 export const NumberProvider: React.FC = ({ children }) => {
   const [prefix, setPrefix] = useState('972');
   const [phone, setPhone] = useState('');

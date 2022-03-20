@@ -1,5 +1,5 @@
 import { useNumberContext } from '../NumberContext';
-import { StyledTextField } from './styles/TextField.styled';
+import StyledTextField from './styles/TextField.styled';
 
 const WriteMessage: React.FC = () => {
   const { message, changeMessage } = useNumberContext();

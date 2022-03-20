@@ -2,7 +2,7 @@ import React, {
   createContext, useContext, useMemo, useState,
 } from 'react';
 
-type  ProviderOptions = {
+type ProviderOptions = {
     prefix: string
     phone: string
     message: string

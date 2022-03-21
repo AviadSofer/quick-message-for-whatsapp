@@ -23,7 +23,7 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm ci && cd clien && npm i
+      run: npm ci && cd client && npm i
 
     - name: Run Build
       run: npm run build --if-present

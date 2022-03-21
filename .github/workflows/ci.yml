@@ -1,3 +1,4 @@
+# run eslint before every push or pull request
 name: ci
 
 on:

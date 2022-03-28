@@ -8,8 +8,8 @@ const InputNumber: React.FC = () => {
   return (
     <StyledInputNumber>
       <StyledTextField
-        onChange={(e) => changePrefix(e.target.value)}
-        onInput={(e) => {
+        onChange={(e: { target: { value: string; }; }) => changePrefix(e.target.value)}
+        onInput={(e: { target: HTMLInputElement; }) => {
           const target = e.target as HTMLInputElement;
           target.value = target.value.slice(0, 3); // set the max length to 3
         }}
@@ -19,7 +19,7 @@ const InputNumber: React.FC = () => {
         width="25%"
       />
       <StyledTextField
-        onChange={(e) => changePhone(e.target.value)}
+        onChange={(e: { target: { value: string; }; }) => changePhone(e.target.value)}
         placeholder="מספר טלפון"
         type="number"
         width="70%"

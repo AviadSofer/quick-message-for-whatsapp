@@ -10,7 +10,7 @@ const prefix = '972';
 const phone = '541234567';
 const msg = 'Hi!';
 
-it('should open right link', () => {
+it('should open the right link', () => {
   // render the app into this test
   const { getByText, getByPlaceholderText } = render(<App />);
 

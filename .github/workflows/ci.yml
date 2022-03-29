@@ -31,3 +31,6 @@ jobs:
 
     - name: Run lint
       run: cd client && npm run lint
+
+    - name: Run tests
+      run: cd client && npm test

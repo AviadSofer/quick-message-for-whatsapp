@@ -9,7 +9,7 @@ const InputNumber: React.FC = () => {
     <StyledInputNumber>
       <StyledTextField
         onChange={(e: { target: { value: string; }; }) => changePrefix(e.target.value)}
-        onInput={(e: { target: HTMLInputElement; }) => {
+        onInput={(e) => {
           const target = e.target as HTMLInputElement;
           target.value = target.value.slice(0, 3); // set the max length to 3
         }}

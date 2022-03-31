@@ -1,9 +1,9 @@
-import express from "express";
+import express, { Application } from 'express';
 import mongoose from "mongoose";
 import path from "path";
-import Message from "./routes/messages.js";
+import Message from "./routes/messages";
 
-const app = express();
+const app: Application = express();
 
 // port
 const port = process.env.PORT || 5000;

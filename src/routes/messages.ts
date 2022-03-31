@@ -1,14 +1,14 @@
-import express from "express";
-import { Message } from "../models/message.js";
+import express, { Request, Response, Router } from 'express';
+import { Message } from "../models/message";
 
-const router = express.Router();
+const router: Router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
     const allMessages = await Message.find({});
     res.json(allMessages);
 });
 
-router.post('/', async (req, res) => {
+router.post('/', async (req: Request, res: Response) => {
     const { date, number, message } = req.body;
     Message.create({
         date,

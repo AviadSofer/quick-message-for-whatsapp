@@ -30,7 +30,7 @@ jobs:
       run: npm run build --if-present
 
     - name: Run lint
-      run: cd client && npm run lint
+      run: npm run lint && cd client && npm run lint
 
     - name: Run tests
       run: cd client && npm test

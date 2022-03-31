@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
-import Message from './routes/messages';
+import getMessages from './routes/getMessages';
 
 const app: Application = express();
 
@@ -14,7 +14,7 @@ mongoose.connection.on('connected', () => console.log('MongoDB connected'));
 
 // add middleware
 app.use(express.json());
-app.use('/api/messages', Message);
+app.use('/api/get-messages', getMessages);
 app.use(express.static(path.join(path.resolve(), 'client', 'dist')));
 
 // start express server on port 5000

@@ -1,11 +1,13 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
 const messageSchema = new Schema({
-    date: String,
-    number: String,
-    message: String
-})
+  date: String,
+  number: String,
+  message: String,
+});
 
-export const Message = mongoose.model('messages', messageSchema)
+const Message = mongoose.model('messages', messageSchema);
+
+export default Message;

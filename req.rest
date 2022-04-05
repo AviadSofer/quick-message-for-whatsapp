@@ -2,7 +2,18 @@ POST http://localhost:5000/api/signup HTTP/1.1
 content-type: application/json
 
 {
-    "mail": "aviu5432d@gmail.com",
-    "userName": "abreerc",
-    "pwd": "1234"
+    "mail": "53454ri495r1@gmail.com",
+    "userName": "dra5235ratri14",
+    "password": "41234"
+}
+
+###
+
+POST http://localhost:5000/api/get-messages HTTP/1.1
+content-type: application/json
+
+{
+    "date": "1.1.1973",
+    "number": "0556691119",
+    "message": "hi!"
 }

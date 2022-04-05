@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
+import 'dotenv/config';
 import path from 'path';
 import getMessages from './routes/api/getMessages';
 import signUp from './routes/api/signUp';
@@ -10,7 +11,7 @@ const app: Application = express();
 const port = process.env.PORT || 5000;
 
 // connect to the db
-mongoose.connect('mongodb+srv://admin:1cfC1wzKOn53ZtJc@cluster0.9wxyh.mongodb.net/quick-message-for-whatsapp?retryWrites=true&w=majority');
+mongoose.connect(`${process.env.MONGO_URL}`);
 mongoose.connection.on('connected', () => console.log('MongoDB connected'));
 
 // add middleware

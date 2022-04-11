@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import mongoose from 'mongoose';
-import User from '../../models/User';
+import { User, IUser } from '../../models/User';
 
 const router: Router = express.Router();
 
@@ -20,7 +20,7 @@ router.post('/', async (req: Request, res: Response) => {
   }
 
   // creating new user
-  const user = new User({
+  const user = new User<IUser>({
     _id: new mongoose.Types.ObjectId(),
     mail,
     userName,

@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config';
 import path from 'path';
+import logger from './logger/logger';
 import getMessages from './routes/api/getMessages';
 import signUp from './routes/api/signUp';
 
@@ -12,7 +13,7 @@ const port = process.env.PORT || 5000;
 
 // connect to the db
 mongoose.connect(`${process.env.MONGO_URL}`);
-mongoose.connection.on('connected', () => console.log('MongoDB connected'));
+mongoose.connection.on('connected', () => logger.info('MongoDB connected'));
 
 // add middleware
 app.use(express.json());
@@ -22,5 +23,5 @@ app.use(express.static(path.join(path.resolve(), 'client', 'dist')));
 
 // start express server on port 5000
 app.listen(port, () => {
-  console.log('server started on port 5000');
+  logger.info(`server started on port ${port}`);
 });

@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import mongoose from 'mongoose';
+import logger from '../../logger/logger';
 import { User, IUser } from '../../models/User';
 
 const router: Router = express.Router();
@@ -12,10 +13,12 @@ router.post('/', async (req: Request, res: Response) => {
   const findUserName = await User.find({ userName });
   if (findMail.length > 0) {
     res.status(409).json(`the email ${userName} is already exist :(`);
+    logger.error(`someone try to register, but his mail:${mail} is already used :(`);
     throw new Error(`someone try to register, but his mail:${mail} is already used :(`);
   }
   if (findUserName.length > 0) {
     res.status(409).json(`the user ${userName} is already exist :(`);
+    logger.error(`someone try to register, but his user:${userName} is already used :(`);
     throw new Error(`someone try to register, but his user:${userName} is already used :(`);
   }
 
@@ -31,10 +34,10 @@ router.post('/', async (req: Request, res: Response) => {
   try {
     await user.save();
     res.status(201).json(`success, user:${user.userName} created :)`);
-    console.log(`the user id ${user._id} created :)`);
+    logger.info(`the user id ${user._id} created :)`);
   } catch (err) {
     res.status(500).json({ err });
-    console.log(err);
+    logger.error(err);
   }
 });
 

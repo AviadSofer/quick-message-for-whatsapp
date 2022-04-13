@@ -8,14 +8,16 @@ const router: Router = express.Router();
 router.post('/', async (req: Request, res: Response) => {
   const { mail, userName, password } = req.body;
 
-  // check if the mail/userName is already exist in the DB
-  const findMail = await User.find({ mail });
-  const findUserName = await User.find({ userName });
+  // check if some of the fields === undefind
   if (!mail || !userName || !password) {
     res.status(400).json('You have to whrite user name, email and password');
     logger.error('someone try to register, but forget fill all fields :(');
     throw new Error('someone try to register, but forget fill all fields :(');
   }
+
+  // check if the mail/userName is already exist in the DB
+  const findMail = await User.find({ mail });
+  const findUserName = await User.find({ userName });
   if (findMail.length > 0) {
     res.status(409).json(`the email ${userName} is already exist :(`);
     logger.error(`someone try to register, but his mail:${mail} is already used :(`);

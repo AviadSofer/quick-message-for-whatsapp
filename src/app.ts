@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
-import mongoose from 'mongoose';
 import 'dotenv/config';
 import path from 'path';
+import { dbConnect } from './helpers/dbConnect';
 import logger from './logger/logger';
 import getMessages from './routes/api/getMessages';
 import signUp from './routes/api/signUp';
@@ -12,8 +12,7 @@ const app: Application = express();
 const port = process.env.PORT || 5000;
 
 // connect to the db
-mongoose.connect(`${process.env.MONGO_URL}`);
-mongoose.connection.on('connected', () => logger.info('MongoDB connected'));
+dbConnect().on('connected', () => logger.info('MongoDB connected'));
 
 // add middleware
 app.use(express.json());

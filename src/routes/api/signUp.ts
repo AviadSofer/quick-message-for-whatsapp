@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import mongoose from 'mongoose';
-import { isHttpReqUndefind } from '../../controllers/signUpAuthentication';
+import { isHttpReqUndefind } from '../../controllers/signUpValidation';
 import logger from '../../logger/logger';
 import { User, IUser } from '../../models/User';
 

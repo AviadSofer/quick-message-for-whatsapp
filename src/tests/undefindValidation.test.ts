@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { isHttpReqUndefind } from '../controllers/signUpAuthentication';
+import { isHttpReqUndefind } from '../controllers/signUpValidation';
 
 describe('should pass only if there no empty arguments', () => {
   const someText = 'something';

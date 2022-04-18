@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import mongoose from 'mongoose';
+import { isHttpReqUndefind } from '../../controllers/signUpAuthentication';
 import logger from '../../logger/logger';
 import { User, IUser } from '../../models/User';
 
@@ -8,11 +9,12 @@ const router: Router = express.Router();
 router.post('/', async (req: Request, res: Response) => {
   const { mail, userName, password } = req.body;
 
-  // check if some of the fields === undefind
-  if (!mail || !userName || !password) {
+  try {
+    isHttpReqUndefind(mail, userName, password);
+  } catch (error) {
     res.status(400).json('You have to whrite user name, email and password');
-    logger.error('someone try to register, but forget fill all fields :(');
-    throw new Error('someone try to register, but forget fill all fields :(');
+    logger.error(error);
+    throw error;
   }
 
   // check if the mail/userName is already exist in the DB

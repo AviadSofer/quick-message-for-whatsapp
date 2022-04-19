@@ -14,6 +14,8 @@ const isMailAlreadyExist = async (mail: string) => {
   const findMail = await User.find({ mail });
   if (findMail.length > 0) {
     throw new Error(`someone try to register, but his mail:${mail} is already used :(`);
+  } else {
+    return mail;
   }
 };
 
@@ -22,6 +24,8 @@ const isUserNameAlradyExist = async (userName: string) => {
   const findUserName = await User.find({ userName });
   if (findUserName.length > 0) {
     throw new Error(`someone try to register, but his user:${userName} is already used :(`);
+  } else {
+    return userName;
   }
 };
 

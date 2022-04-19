@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import mongoose from 'mongoose';
-import { isHttpReqUndefind } from '../../controllers/signUpValidation';
+import { isHttpReqUndefind, isMailAlreadyExist, isUserNameAlradyExist } from '../../controllers/signUpValidation';
 import logger from '../../logger/logger';
 import { User, IUser } from '../../models/User';
 
@@ -9,26 +9,27 @@ const router: Router = express.Router();
 router.post('/', async (req: Request, res: Response) => {
   const { mail, userName, password } = req.body;
 
+  // validation
   try {
     isHttpReqUndefind(mail, userName, password);
   } catch (error) {
-    res.status(400).json('You have to whrite user name, email and password');
+    res.status(400).json('You have to whrite user name, email and password :(');
     logger.error(error);
     throw error;
   }
-
-  // check if the mail/userName is already exist in the DB
-  const findMail = await User.find({ mail });
-  const findUserName = await User.find({ userName });
-  if (findMail.length > 0) {
-    res.status(409).json(`the email ${userName} is already exist :(`);
-    logger.error(`someone try to register, but his mail:${mail} is already used :(`);
-    throw new Error(`someone try to register, but his mail:${mail} is already used :(`);
+  try {
+    await isMailAlreadyExist(mail);
+  } catch (error) {
+    res.status(409).json(`the email ${mail} is already exist :(`);
+    logger.error(error);
+    throw error;
   }
-  if (findUserName.length > 0) {
+  try {
+    await isUserNameAlradyExist(userName);
+  } catch (error) {
     res.status(409).json(`the user ${userName} is already exist :(`);
-    logger.error(`someone try to register, but his user:${userName} is already used :(`);
-    throw new Error(`someone try to register, but his user:${userName} is already used :(`);
+    logger.error(error);
+    throw error;
   }
 
   // creating new user

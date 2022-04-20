@@ -1,8 +1,7 @@
 import express, { Request, Response, Router } from 'express';
-import mongoose from 'mongoose';
+import createUser from '../../controllers/createUser';
 import { isHttpReqUndefind, isMailAlreadyExist, isUserNameAlradyExist } from '../../controllers/signUpValidation';
 import logger from '../../logger/logger';
-import { User, IUser } from '../../models/User';
 
 const router: Router = express.Router();
 
@@ -12,42 +11,35 @@ router.post('/', async (req: Request, res: Response) => {
   // validation
   try {
     isHttpReqUndefind(mail, userName, password);
-  } catch (error) {
+  } catch (err) {
     res.status(400).json('You have to whrite user name, email and password :(');
-    logger.error(error);
-    throw error;
+    logger.error(err);
+    throw err;
   }
   try {
     await isMailAlreadyExist(mail);
-  } catch (error) {
+  } catch (err) {
     res.status(409).json(`the email ${mail} is already exist :(`);
-    logger.error(error);
-    throw error;
+    logger.error(err);
+    throw err;
   }
   try {
     await isUserNameAlradyExist(userName);
-  } catch (error) {
+  } catch (err) {
     res.status(409).json(`the user ${userName} is already exist :(`);
-    logger.error(error);
-    throw error;
+    logger.error(err);
+    throw err;
   }
 
-  // creating new user
-  const user = new User<IUser>({
-    _id: new mongoose.Types.ObjectId(),
-    mail,
-    userName,
-    password,
-  });
-
-  // save it to the DB
+  // create new user
   try {
-    await user.save();
-    res.status(201).json(`success, user:${user.userName} created :)`);
-    logger.info(`the user id ${user._id} created :)`);
+    const user = await createUser(mail, userName, password);
+    res.status(201).json(`success, user:${user} created :)`);
+    logger.info(`success, user:${user} created :)`);
   } catch (err) {
     res.status(500).json({ err });
     logger.error(err);
+    throw err;
   }
 });
 

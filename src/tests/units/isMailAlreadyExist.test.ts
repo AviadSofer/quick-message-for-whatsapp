@@ -1,8 +1,8 @@
 import * as chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import { isMailAlreadyExist } from '../controllers/signUpValidation';
-import { dbClose, dbConnect } from './dbConnect';
-import createUser from '../controllers/createUser';
+import { isMailAlreadyExist } from '../../controllers/signUpValidation';
+import { dbClose, dbConnect } from '../dbConnect';
+import createUser from '../../controllers/createUser';
 
 chai.use(chaiAsPromised);
 const { expect } = chai;

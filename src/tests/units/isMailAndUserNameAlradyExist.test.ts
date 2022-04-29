@@ -33,6 +33,9 @@ describe('check if mail & userName already exist in the DB', () => {
     // just userName exist
     const Mail = await isMailAndUserNameAlradyExist(mail, userName1);
     expect(Mail).to.equal(mail);
+
+    // mail & userName not exist
+    expect(await isMailAndUserNameAlradyExist(mail, userName)).to.equal(mail);
   });
 
   it('should throw error, because the mail & userName exist', async () => {

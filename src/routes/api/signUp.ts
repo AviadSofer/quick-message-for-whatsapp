@@ -1,6 +1,8 @@
 import express, { Request, Response, Router } from 'express';
 import createUser from '../../controllers/createUser';
-import { isHttpReqUndefind, isMailAlreadyExist, isUserNameAlradyExist } from '../../controllers/signUpValidation';
+import {
+  isHttpReqUndefind, isMailAlreadyExist, isMailAndUserNameAlradyExist, isUserNameAlradyExist,
+} from '../../controllers/signUpValidation';
 import logger from '../../logger/logger';
 
 const router: Router = express.Router();
@@ -13,6 +15,13 @@ router.post('/', async (req: Request, res: Response) => {
     isHttpReqUndefind(mail, userName, password);
   } catch (err) {
     res.status(400).json('You have to whrite user name, email and password :(');
+    logger.error(err);
+    throw err;
+  }
+  try {
+    await isMailAndUserNameAlradyExist(mail, userName);
+  } catch (err) {
+    res.status(409).json(`the email ${mail}, and the user: ${userName} is already exist :(`);
     logger.error(err);
     throw err;
   }

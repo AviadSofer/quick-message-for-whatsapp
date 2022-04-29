@@ -13,7 +13,7 @@ const createUser = async (mail: string, userName: string, password: string) => {
   // save it to the DB
   await user.save();
 
-  return user._id;
+  return user.userName;
 };
 
 export default createUser;

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "nodemon",
-    "test": "mocha -r ts-node/register 'src/tests/**/*.ts' --timeout 5000",
+    "test": "mocha --exit -r ts-node/register 'src/tests/**/*.ts' --timeout 10000",
     "lint": "npx eslint . --ext .ts",
     "build": "tsc && cd client && npm install && npm run build"
   },

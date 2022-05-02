@@ -1,13 +1,18 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
+import logger from '../logger/logger';
 
-function dbConnect() {
-  mongoose.connect(`${process.env.MONGO_URL}`);
-  return mongoose.connection;
-}
+const dbConnect = async () => {
+  try {
+    await mongoose.connect(`${process.env.MONGO_URL}`);
+    logger.info('MongoDB connected');
+  } catch (err) {
+    logger.error('Failed to connect to MongoDB', err);
+  }
+};
 
-function dbClose() {
-  return mongoose.disconnect();
-}
+const dbClose = async () => {
+  await mongoose.connection.close();
+};
 
 export { dbConnect, dbClose };

@@ -18,7 +18,7 @@ describe('creating new user', () => {
   before(async () => dbConnect());
   after(async () => {
     await User.deleteOne(user);
-    dbClose();
+    await dbClose();
   });
 
   it('create available user', async () => {

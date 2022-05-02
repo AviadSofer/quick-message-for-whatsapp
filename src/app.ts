@@ -12,7 +12,7 @@ const app: Application = express();
 const port = process.env.PORT || 5000;
 
 // connect to the db
-dbConnect().on('connected', () => logger.info('MongoDB connected'));
+dbConnect();
 
 // add middleware
 app.use(express.json());

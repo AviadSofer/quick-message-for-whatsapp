@@ -6,12 +6,10 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "nodemon",
-    "test": "mocha --exit -r ts-node/register 'src/tests/**/*.ts' --timeout 10000",
+    "test": "mocha --exit -r ts-node/register 'src/tests/units/**/*.ts' --timeout 10000",
+    "all-tests": "mocha --exit -r ts-node/register 'src/tests/**/*.ts' --timeout 10000",
     "lint": "npx eslint . --ext .ts",
     "build": "tsc && cd client && npm install && npm run build"
-  },
-  "mocha": {
-    "timeout": "10000"
   },
   "author": "",
   "license": "ISC",

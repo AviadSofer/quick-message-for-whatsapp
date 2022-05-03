@@ -22,23 +22,18 @@ describe('creating new user', () => {
   });
 
   it('create available user', async () => {
-    try {
-      const res = await request(app).post('/api/signup').send(user);
-      expect(res.statusCode).to.equal(201);
-      expect(res.body).to.include(`success, user:${user.userName} created :)`);
-    } catch (error) {
-      if (error) throw error;
-    }
-  }).timeout(10000);
-/*
+    const res = await request(app).post('/api/signup').send(user);
+    expect(res.statusCode).to.equal(201);
+    expect(res.body).to.include(`success, user:${user.userName} created :)`);
+  });
+
   it('try to create empty user, should return 400', async () => {
     const res = await request(app).post('/api/signup').send();
     expect(res.statusCode).to.equal(400);
-  }).timeout(10000);
+  });
 
   it('try to create the same user, should return 409', async () => {
     const res = await request(app).post('/api/signup').send(user);
     expect(res.statusCode).to.equal(409);
-  }).timeout(10000);
-*/
+  });
 });

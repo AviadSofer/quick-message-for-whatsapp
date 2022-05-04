@@ -9,15 +9,19 @@ const { expect } = chai;
 logger.level = 'fatal';
 
 describe('creating new user', () => {
+  const randomString = (Math.random() + 1).toString(36).substring(7);
   const user = {
-    mail: '53454ri4956r1@gmail.com',
-    userName: 'dra52535ratri14',
+    mail: `${randomString}@gmail.com`,
+    userName: randomString,
     password: '41234',
   };
 
-  before(async () => dbConnect());
+  before(async () => {
+    await User.deleteOne({ user });
+    await dbConnect();
+  });
   after(async () => {
-    await User.deleteOne(user);
+    await User.deleteOne({ user });
     await dbClose();
   });
 

@@ -11,7 +11,7 @@ const createUser = async (mail: string, userName: string, password: string) => {
     _id: new mongoose.Types.ObjectId(),
     mail,
     userName,
-    password: hashedPassword,
+    hashedPassword,
   });
 
   // save it to the DB

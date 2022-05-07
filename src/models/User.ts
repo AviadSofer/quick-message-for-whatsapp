@@ -6,7 +6,7 @@ interface IUser {
   _id: mongoose.Types.ObjectId,
   mail: string;
   userName: string;
-  password: string;
+  hashedPassword: string;
 }
 
 const userSchema = new Schema<IUser>({
@@ -20,7 +20,7 @@ const userSchema = new Schema<IUser>({
   userName: {
     type: String, required: true, unique: true,
   },
-  password: { type: String, required: true },
+  hashedPassword: { type: String, required: true },
 });
 
 const User = mongoose.model<IUser>('users', userSchema);

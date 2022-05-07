@@ -28,7 +28,9 @@ describe('creating new user', () => {
   it('create available user', async () => {
     const res = await request(app).post('/api/signup').send(user);
     expect(res.statusCode).to.equal(201);
-    expect(res.body).to.include(`success, user:${user.userName} created :)`);
+    expect(res.body).to.include({
+      message: `success, user:${user.userName} created :)`,
+    });
   });
 
   it('try to create empty user, should return 400', async () => {

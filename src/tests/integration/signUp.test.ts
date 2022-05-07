@@ -17,11 +17,11 @@ describe('creating new user', () => {
   };
 
   before(async () => {
-    await User.deleteOne({ user });
+    await User.deleteOne({ mail: user.mail });
     await dbConnect();
   });
   after(async () => {
-    await User.deleteOne({ user });
+    await User.deleteOne({ mail: user.mail });
     await dbClose();
   });
 

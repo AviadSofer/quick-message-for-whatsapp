@@ -11,6 +11,7 @@ on:
 
 env:
   MONGO_URL: ${{ secrets.MONGO_URL }}
+  JWT_KEY: ${{ secrets.JWT_KEY }}
 
 jobs:
   ci:

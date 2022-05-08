@@ -17,8 +17,8 @@ describe('creating new user', () => {
   };
 
   before(async () => {
-    await User.deleteOne({ mail: user.mail });
     await dbConnect();
+    await User.deleteOne({ mail: user.mail });
   });
   after(async () => {
     await User.deleteOne({ mail: user.mail });

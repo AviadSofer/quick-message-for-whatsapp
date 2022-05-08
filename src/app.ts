@@ -5,6 +5,7 @@ import { dbConnect } from './helpers/dbConnect';
 import logger from './logger/logger';
 import getMessages from './routes/api/getMessages';
 import signUp from './routes/api/signUp';
+import signIn from './routes/api/signIn';
 
 const app: Application = express();
 
@@ -18,6 +19,7 @@ dbConnect();
 app.use(express.json());
 app.use('/api/get-messages', getMessages);
 app.use('/api/signup', signUp);
+app.use('/api/signin', signIn);
 app.use(express.static(path.join(path.resolve(), 'client', 'dist')));
 
 // start express server on port 5000

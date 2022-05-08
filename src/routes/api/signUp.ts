@@ -1,4 +1,6 @@
 import express, { Request, Response, Router } from 'express';
+import jwt from 'jsonwebtoken';
+import 'dotenv/config';
 import createUser from '../../controllers/createUser';
 import {
   isHttpReqUndefind, isMailAlreadyExist, isMailAndUserNameAlradyExist, isUserNameAlradyExist,
@@ -51,12 +53,17 @@ router.post('/', async (req: Request, res: Response) => {
   // create new user
   try {
     const user = await createUser(mail, userName, password);
+    const token = jwt.sign({ user }, `${process.env.JWT_KEY}`, { expiresIn: '24h' });
     res.status(201).json({
       message: `success, user:${user} created :)`,
+      token,
     });
     logger.info(`success, user:${user} created :)`);
+    logger.info(`token:${token} created :)`);
   } catch (err) {
-    res.status(500).json({ err });
+    res.status(500).json({
+      message: 'created failed',
+    });
     logger.error(err);
     throw err;
   }

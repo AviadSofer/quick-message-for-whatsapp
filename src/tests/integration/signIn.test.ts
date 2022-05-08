@@ -32,6 +32,7 @@ describe('login with user', () => {
   it('login with correct user', async () => {
     const res = await request(app).post('/api/signin').send({ userName, password });
     expect(res.statusCode).to.equal(200);
+    // should verify and not fail
     jwt.verify(res.body.token, `${process.env.JWT_KEY}`);
   });
 

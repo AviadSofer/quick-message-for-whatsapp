@@ -12,6 +12,7 @@ describe('check if userName already exist in the DB', () => {
   after(async () => dbClose());
 
   const user = {
+    fullName: 'Joan Huan',
     mail: '53454ri495r1@gmail.com',
     userName: 'dra5235ratri14',
     password: '41234',
@@ -26,7 +27,7 @@ describe('check if userName already exist in the DB', () => {
 
   it('should throw error, because the mail exist', async () => {
     // create new user
-    await createUser(user.mail, user.userName, user.password);
+    await createUser(user.fullName, user.mail, user.userName, user.password);
     // after this, check if userName already exist, expect to throw error
     await expect(isUserNameAlradyExist(user.userName)).to.be.rejectedWith(Error);
   });

@@ -11,6 +11,7 @@ logger.level = 'fatal';
 describe('creating new user', () => {
   const randomString = (Math.random() + 1).toString(36).substring(7);
   const user = {
+    fullName: 'Joan Huan',
     mail: `${randomString}@gmail.com`,
     userName: randomString,
     password: '41234',

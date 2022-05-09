@@ -9,16 +9,19 @@ const { expect } = chai;
 
 describe('validate userName/password before login', () => {
   const user = {
+    fullName: 'Joan Huan',
     mail: '53454ri495r1@gmail.com',
     userName: 'dra5235ratri14',
     password: '41234',
   };
-  const { mail, userName, password } = user;
+  const {
+    fullName, mail, userName, password,
+  } = user;
 
   before(async () => {
     await dbConnect();
     // create new user
-    await createUser(mail, userName, password);
+    await createUser(fullName, mail, userName, password);
   });
   after(async () => dbClose());
 

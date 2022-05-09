@@ -10,14 +10,16 @@ import logger from '../../logger/logger';
 const router: Router = express.Router();
 
 router.post('/', async (req: Request, res: Response) => {
-  const { mail, userName, password } = req.body;
+  const {
+    fullName, mail, userName, password,
+  } = req.body;
 
   // validation
   try {
-    isHttpReqUndefind(mail, userName, password);
+    isHttpReqUndefind(fullName, mail, userName, password);
   } catch (err) {
     res.status(400).json({
-      message: 'You have to whrite user name, email and password :(',
+      message: 'You have to whrite full name, user name, email and password :(',
     });
     logger.error(err);
     throw err;
@@ -52,13 +54,13 @@ router.post('/', async (req: Request, res: Response) => {
 
   // create new user
   try {
-    const user = await createUser(mail, userName, password);
+    const user = await createUser(fullName, mail, userName, password);
     const token = jwt.sign({ user }, `${process.env.JWT_KEY}`, { expiresIn: '24h' });
     res.status(201).json({
-      message: `success, user:${user} created :)`,
+      message: `success, user:${user.userName} created :)`,
       token,
     });
-    logger.info(`success, user:${user} created :)`);
+    logger.info(`success, user:${user.userName} created :)`);
     logger.info(`token:${token} created :)`);
   } catch (err) {
     res.status(500).json({

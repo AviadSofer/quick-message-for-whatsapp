@@ -12,6 +12,7 @@ describe('check if mail & userName already exist in the DB', () => {
   after(async () => dbClose());
 
   const user = {
+    fullName: 'Joan Huan',
     mail: '53454ri495r1@gmail.com',
     mail1: '53454ri495r2@gmail.com',
     userName: 'dra5235ratri1',
@@ -19,12 +20,12 @@ describe('check if mail & userName already exist in the DB', () => {
     password: '41234',
   };
   const {
-    mail, mail1, userName, userName1, password,
+    fullName, mail, mail1, userName, userName1, password,
   } = user;
 
   it('should pass, because just mail or just userName exist', async () => {
     // create new user
-    await createUser(mail1, userName1, password);
+    await createUser(fullName, mail1, userName1, password);
 
     // just mail exist
     const Mail1 = await isMailAndUserNameAlradyExist(mail1, userName);

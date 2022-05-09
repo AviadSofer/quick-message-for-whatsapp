@@ -3,8 +3,9 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const messageSchema = new Schema({
+  userName: String,
   date: String,
-  number: String,
+  phoneNumber: String,
   message: String,
 });
 

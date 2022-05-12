@@ -3,7 +3,7 @@ import { User } from '../models/User';
 const isHttpReqUndefind = (fullName: string, mail: string, userName: string, password: string) => {
   // check if some of the fields === undefind
   if (!fullName || !mail || !userName || !password) {
-    throw new Error('someone try to register, but forget fill all fields :(');
+    throw new Error('You have to whrite full name, user name, email and password :(');
   } else {
     return mail;
   }

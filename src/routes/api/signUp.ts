@@ -19,7 +19,7 @@ router.post('/', async (req: Request, res: Response) => {
     isHttpReqUndefind(fullName, mail, userName, password);
   } catch (err) {
     res.status(400).json({
-      message: 'You have to whrite full name, user name, email and password :(',
+      message: `${err}`,
     });
     logger.error(err);
     throw err;
@@ -28,7 +28,7 @@ router.post('/', async (req: Request, res: Response) => {
     await isMailAndUserNameAlradyExist(mail, userName);
   } catch (err) {
     res.status(409).json({
-      message: `the email ${mail}, and the user: ${userName} is already exist :(`,
+      message: `${err}`,
     });
     logger.error(err);
     throw err;
@@ -37,7 +37,7 @@ router.post('/', async (req: Request, res: Response) => {
     await isMailAlreadyExist(mail);
   } catch (err) {
     res.status(409).json({
-      message: `the email ${mail} is already exist :(`,
+      message: `${err}`,
     });
     logger.error(err);
     throw err;
@@ -46,7 +46,7 @@ router.post('/', async (req: Request, res: Response) => {
     await isUserNameAlradyExist(userName);
   } catch (err) {
     res.status(409).json({
-      message: `the user ${userName} is already exist :(`,
+      message: `${err}`,
     });
     logger.error(err);
     throw err;

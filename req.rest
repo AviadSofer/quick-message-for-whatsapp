@@ -25,7 +25,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6I
 content-type: application/json
 
 {
-    "phoneNumber": "0556691119",
+    "phoneNumber": "0541234567",
     "textMessage": "Hi!"
 }
 ###

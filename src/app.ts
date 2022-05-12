@@ -16,11 +16,11 @@ const port = process.env.PORT || 5000;
 // connect to the db
 dbConnect();
 
-// add middleware
+// add middlewares and routs
 app.use(express.json());
-app.use('/api/get-messages', auth, getMessages);
 app.use('/api/signup', signUp);
 app.use('/api/signin', signIn);
+app.use('/api/get-messages', auth, getMessages);
 app.use(express.static(path.join(path.resolve(), 'client', 'dist')));
 
 // start express server on port 5000

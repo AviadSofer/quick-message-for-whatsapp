@@ -8,7 +8,7 @@ const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
   const token = `${authorization}`.split(' ')[1];
   try {
     const decoded = jwt.verify(token, `${process.env.JWT_KEY}`);
-    req.body.user = decoded;
+    req.body.decoded = decoded;
     logger.info('token verified successfully');
   } catch (err) {
     logger.error(err);

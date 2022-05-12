@@ -10,7 +10,7 @@ const checkUser = async (userName: string, password: string) => {
   const match = await bcrypt.compare(password, user[0].hashedPassword);
   if (!match) throw new Error('auth failed');
 
-  return user;
+  return user[0];
 };
 
 export default checkUser;

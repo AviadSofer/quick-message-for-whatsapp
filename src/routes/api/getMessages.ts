@@ -6,8 +6,17 @@ import { Message, IMessage } from '../../models/Message';
 const router: Router = express.Router();
 
 router.get('/', async (req: Request, res: Response) => {
-  const allMessages = await Message.find({});
-  res.json(allMessages);
+  try {
+    const { userName } = req.body.decoded.user;
+    const allMessages = await Message.find({ userName });
+    res.json(allMessages);
+  } catch (err) {
+    res.status(500).json({
+      message: 'something wrong :(',
+    });
+    logger.error(err);
+    throw err;
+  }
 });
 
 router.post('/', async (req: Request, res: Response) => {

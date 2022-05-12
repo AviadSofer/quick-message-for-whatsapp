@@ -1,0 +1,31 @@
+POST http://localhost:5000/api/signup HTTP/1.1
+content-type: application/json
+
+{
+    "fullName": "Joan Huan",
+    "mail": "53454ri495r1@gmail.com",
+    "userName": "dra5235ratri14",
+    "password": "41234"
+}
+
+###
+
+POST http://localhost:5000/api/signin HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "dra5235ratri14",
+    "password": "41234"
+}
+
+###
+
+POST http://localhost:5000/api/get-messages HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJfaWQiOiI2Mjc4MWZhYjZlMDQ3NmM0ZDkwN2JkZjEiLCJtYWlsIjoiNTM0NTRyaTQ5NXIxQGdtYWlsLmNvbSIsInVzZXJOYW1lIjoiZHJhNTIzNXJhdHJpMTQiLCJoYXNoZWRQYXNzd29yZCI6IiQyYiQxMCR4eUV0a3I2RUZ4aWFpNTZ4VGZaaHZPcWxpeHFlZ1dxM3dHYkxJQ0F2V2Y3MHZsYXZlejR1bSIsIl9fdiI6MH1dLCJpYXQiOjE2NTIwNDQ1ODAsImV4cCI6MTY1MjEzMDk4MH0.c1ISKm2zKu2ORuWWhey8q1S38xrt4QXmOCgXLlDFKzc
+content-type: application/json
+
+{
+    "date": "1.1.1973",
+    "number": "0556691119",
+    "message": "hi!"
+}

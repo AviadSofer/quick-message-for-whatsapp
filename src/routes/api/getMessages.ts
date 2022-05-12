@@ -30,7 +30,10 @@ router.post('/', async (req: Request, res: Response) => {
     });
     logger.info(`message from user:${decoded.user.userName} saved`);
   } catch (err) {
-    res.send(err);
+    res.status(401).json({
+      message: 'saved failed',
+      error: `${err}`,
+    });
     logger.error(err);
   }
 });

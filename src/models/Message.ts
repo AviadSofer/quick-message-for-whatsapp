@@ -4,20 +4,20 @@ const { Schema } = mongoose;
 
 interface IMessage {
   _id: mongoose.Types.ObjectId;
+  date: Date;
   userName: string;
-  date: string;
   phoneNumber: string;
-  message: string;
+  textMessage: string;
 }
 
 const messageSchema = new Schema<IMessage>({
   _id: { type: mongoose.Schema.Types.ObjectId, required: true },
+  date: { type: Date, required: true },
   userName: { type: String, required: true },
-  date: { type: String, required: true },
   phoneNumber: { type: String, required: true },
-  message: { type: String, required: true },
+  textMessage: { type: String, required: true },
 });
 
 const Message = mongoose.model('messages', messageSchema);
 
-export default Message;
+export { Message, IMessage };

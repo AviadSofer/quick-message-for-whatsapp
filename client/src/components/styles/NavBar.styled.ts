@@ -10,11 +10,9 @@ justify-content: space-between;
 `;
 
 export const Logo = styled.img`
-align-self: center;
 width: 12%;
 object-fit: contain;
 @media (max-width: 768px) {
-    align-self: center;
     width: 20%;
 }
 `;

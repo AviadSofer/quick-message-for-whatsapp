@@ -27,7 +27,7 @@ const NavButton = styled(StyledButton)`
   font-size: 0.75rem;
   display: flex;
   justify-content: center;
-  flex-basis: 40%;
+  flex-basis: 50%;
   margin: 0px 8px 0px 8px;
 }
 `;

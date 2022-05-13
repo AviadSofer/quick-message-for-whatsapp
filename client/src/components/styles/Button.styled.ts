@@ -22,4 +22,14 @@ const StyledButton = styled(Button)<Props>`
 }
 `;
 
-export default StyledButton;
+const NavButton = styled(StyledButton)`
+&& {
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  flex-basis: 40%;
+  margin: 0px 8px 0px 8px;
+}
+`;
+
+export { StyledButton, NavButton };

@@ -19,16 +19,6 @@ justify-content: space-between;
 margin-top: 20px;
 margin-bottom: 30px;
 @media (max-width: 768px) {
-    justify-content: space-around;
-}
-`;
-
-export const Logo = styled.img`
-width: 25%;
-object-fit: cover;
-@media (max-width: 768px) {
-    align-self: center;
-    width: 20%;
 }
 `;
 
@@ -41,4 +31,7 @@ export const FlexContainer = styled.div`
 display: flex;
 justify-content: space-between;
 margin-bottom: 20px;
+@media (max-width: 768px) {
+    margin-bottom:32vh;
+}
 `;

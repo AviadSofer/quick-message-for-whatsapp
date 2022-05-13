@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import {
-  StyledContainer, Explain, FlexContainer, StyledWrap, Logo,
+  StyledContainer, Explain, FlexContainer, StyledWrap,
 } from './styles/Container.styled';
 import NavBar from './NavBar';
-import logo from '../logo.png';
 import InputNumber from './InputNumber';
 import WriteMessage from './WriteMessage';
 import SendButton from './SendButton';
@@ -20,7 +19,6 @@ const Container: React.FC = () => {
     <StyledContainer>
       <StyledWrap>
         <NavBar />
-        <Logo src={logo} />
         <Explain>שליחת הודעה בוואטספ בלי לשמור את המספר</Explain>
         <InputNumber />
         <FlexContainer>

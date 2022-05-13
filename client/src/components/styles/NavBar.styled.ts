@@ -1,21 +1,24 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
+display: flex;
+align-items: center;
+justify-content: space-between;
 @media (max-width: 768px) {
-    margin-top: 12vh;
-    order: 4;
+    margin-bottom: 12vh;
 }
 `;
 
-export const Credits = styled.p`
-font-size: 0.8rem;
+export const Logo = styled.img`
+align-self: center;
+width: 12%;
+object-fit: contain;
+@media (max-width: 768px) {
+    align-self: center;
+    width: 20%;
+}
 `;
 
-export const Link = styled.a`
-font-size: 0.8rem;
-text-decoration: underline; /*mark the under line*/
-`;
-
-export const Span = styled.span`
-font-size: 0.8rem;
+export const AuthButtons = styled.div`
+display: flex;
 `;

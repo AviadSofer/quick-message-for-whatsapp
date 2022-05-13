@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useNumberContext } from '../NumberContext';
-import StyledButton from './styles/Button.styled.js';
+import { StyledButton } from './styles/Button.styled.js';
 
 const SendButton: React.FC = () => {
   const { prefix, phone, message } = useNumberContext();

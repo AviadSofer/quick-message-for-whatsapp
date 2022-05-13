@@ -1,25 +1,22 @@
-import { useNumberContext } from '../NumberContext';
-import {
-  Credits, Link, Nav, Span,
-} from './styles/NavBar.styled';
+import { AuthButtons, Logo, Nav } from './styles/NavBar.styled';
+import logo from '../logo.png';
+import { NavButton } from './styles/Button.styled';
 
-const NavBar: React.FC = () => {
-  const { changeMessage } = useNumberContext();
-  return (
-    <Nav>
-      <Credits>
-        נוצר על ידי
-        {' '}
-        <Link href="https://github.com/AviadSofer" target="_blank">אביעד סופר</Link>
-        {' '}
-        בכמה רגעים של שעמום
-        <Span> | </Span>
-        <Link href="https://github.com/AviadSofer/send-whatsapp-massage" target="_blank">בקוד פתוח</Link>
-        <Span> | </Span>
-        <Link onClick={() => changeMessage('היי, תראה איזו אפליקציה מגניבה מצאתי!')}>שיתוף עם חבר</Link>
-      </Credits>
-    </Nav>
-  );
-};
+const NavBar: React.FC = () => (
+  <Nav>
+    <Logo src={logo} />
+    <AuthButtons>
+      <NavButton>כניסה</NavButton>
+      <NavButton
+        variant="contained"
+        bg="#7ED956"
+        hoverbg="#73de45"
+        font="white"
+      >
+        הרשמה
+      </NavButton>
+    </AuthButtons>
+  </Nav>
+);
 
 export default NavBar;

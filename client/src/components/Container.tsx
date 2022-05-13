@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import {
-  StyledContainer, Explain, FlexContainer, StyledWrap,
+  StyledContainer, Explain, FlexContainer, StyledWrap, SendMessageContainer,
 } from './styles/Container.styled';
 import NavBar from './NavBar';
 import InputNumber from './InputNumber';
@@ -20,11 +20,13 @@ const Container: React.FC = () => {
       <StyledWrap>
         <NavBar />
         <Explain>שליחת הודעה בוואטספ בלי לשמור את המספר</Explain>
-        <InputNumber />
-        <FlexContainer>
-          <WriteMessage />
-          <SendButton />
-        </FlexContainer>
+        <SendMessageContainer>
+          <InputNumber />
+          <FlexContainer>
+            <WriteMessage />
+            <SendButton />
+          </FlexContainer>
+        </SendMessageContainer>
       </StyledWrap>
     </StyledContainer>
   );

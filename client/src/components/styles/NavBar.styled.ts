@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
@@ -16,4 +17,8 @@ object-fit: contain;
 
 export const AuthButtons = styled.div`
 display: flex;
+`;
+
+export const StyledLink = styled(Link)`
+text-decoration: none;
 `;

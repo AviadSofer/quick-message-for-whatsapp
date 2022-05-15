@@ -1,13 +1,13 @@
 import { useNumberContext } from '../NumberContext';
 import StyledInputNumber from './styles/InputNumber.styled.js';
-import StyledTextField from './styles/TextField.styled.js';
+import StyledInput from './styles/TextField.styled.js';
 
 const InputNumber: React.FC = () => {
   const { prefix, changePrefix, changePhone } = useNumberContext();
 
   return (
     <StyledInputNumber>
-      <StyledTextField
+      <StyledInput
         onChange={(e: { target: { value: string; }; }) => changePrefix(e.target.value)}
         onInput={(e) => {
           const target = e.target as HTMLInputElement;
@@ -18,7 +18,7 @@ const InputNumber: React.FC = () => {
         defaultValue={prefix}
         width="25%"
       />
-      <StyledTextField
+      <StyledInput
         onChange={(e: { target: { value: string; }; }) => changePhone(e.target.value)}
         placeholder="מספר טלפון"
         type="number"

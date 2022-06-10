@@ -3,10 +3,14 @@ import styled from 'styled-components';
 
 interface Props {
   width?: string
+  fontSize?: string
 }
 
-const StyledTextField = styled(Input)<Props>`
+const StyledInput = styled(Input)<Props>`
 width: ${({ width }) => width || '20%'};
+input {
+    font-size: ${({ fontSize }) => fontSize || '1.1rem'};
+  }
 input::-webkit-inner-spin-button {
   -webkit-appearance: none; /*disable the counter when the type is "number"*/
 }
@@ -20,4 +24,4 @@ input::-webkit-inner-spin-button {
 }
 `;
 
-export default StyledTextField;
+export default StyledInput;

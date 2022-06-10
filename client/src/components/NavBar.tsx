@@ -2,24 +2,31 @@ import {
   AuthButtons, Logo, Nav, StyledLink,
 } from './styles/NavBar.styled';
 import logo from '../logo.png';
-import { NavButton } from './styles/Button.styled';
+import StyledButton from './styles/Button.styled';
 
 const NavBar: React.FC = () => (
   <Nav>
     <Logo src={logo} />
     <AuthButtons>
       <StyledLink to="/login">
-        <NavButton>כניסה</NavButton>
+        <StyledButton
+          width="7vw"
+          fontSize="0.75rem"
+          margin="0px 6px 0px 6px"
+        >
+          כניסה
+        </StyledButton>
       </StyledLink>
       <StyledLink to="/signup">
-        <NavButton
+        <StyledButton
+          green
           variant="contained"
-          bg="#7ED956"
-          hoverbg="#73de45"
-          font="white"
+          width="7vw"
+          fontSize="0.75rem"
+          margin="0px 6px 0px 6px"
         >
           הרשמה
-        </NavButton>
+        </StyledButton>
       </StyledLink>
     </AuthButtons>
   </Nav>

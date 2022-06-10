@@ -2,34 +2,27 @@ import styled from 'styled-components';
 import Button from '@mui/material/Button';
 
 interface Props {
-  bg?: string,
-  font?: string
-  hoverbg?: string
+  green?: boolean
+  width?: string
+  fontSize?: string
+  margin?: string
 }
 
 const StyledButton = styled(Button)<Props>`
-&&  {
+&& {
+  width: ${({ width }) => width || '20%'};
   display: flex;
   justify-content: center;
-  flex-basis: 20%;
+  background-color: ${({ green }) => (green ? '#7ED956' : 'transparent')};
   border-radius: 10px;
-  background-color: ${({ bg }) => bg || 'transparent'};
-  color: ${({ font }) => font || 'gray'};
+  margin: ${({ margin }) => margin || '0'};
+  color: ${({ green }) => (green ? 'white' : 'gray')};
+  font-size: ${({ fontSize }) => fontSize || '0.9rem'};
   font-family: Secular One, sans-serif;
 }
 &&:hover {
-  background-color: ${({ hoverbg }) => hoverbg || 'transparent'};
+  background-color: ${({ green }) => (green ? '#73de45' : 'transparent')};;
 }
 `;
 
-const NavButton = styled(StyledButton)`
-&& {
-  width: 7vw;
-  font-size: 0.75rem;
-  display: flex;
-  justify-content: center;
-  margin: 0px 6px 0px 6px;
-}
-`;
-
-export { StyledButton, NavButton };
+export default StyledButton;

@@ -8,17 +8,10 @@ const NavBar: React.FC = () => (
     <Logo src={logo} />
     <AuthButtons>
       <StyledLink to="/login">
-        <NavButton>
-          כניסה
-        </NavButton>
+        <NavButton>כניסה</NavButton>
       </StyledLink>
       <StyledLink to="/signup">
-        <NavButton
-          green
-          variant="contained"
-        >
-          הרשמה
-        </NavButton>
+        <NavButton green>הרשמה</NavButton>
       </StyledLink>
     </AuthButtons>
   </Nav>

@@ -22,7 +22,6 @@ const SendButton: React.FC = () => {
     <StyledSendButton
       green
       onClick={createLink}
-      variant="contained"
     >
       שלח
     </StyledSendButton>

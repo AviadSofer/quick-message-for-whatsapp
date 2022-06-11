@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import StyledButton from './Button.styled';
 
 export const Nav = styled.nav`
 display: flex;
@@ -21,4 +22,12 @@ display: flex;
 
 export const StyledLink = styled(Link)`
 text-decoration: none;
+`;
+
+export const NavButton = styled(StyledButton)`
+&& {
+  width: 7vw;
+  margin: 0px 6px 0px 6px;
+  font-size: 0.75rem;
+}
 `;

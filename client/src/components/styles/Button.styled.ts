@@ -10,15 +10,12 @@ interface Props {
 
 const StyledButton = styled(Button)<Props>`
 && {
-  width: ${({ width }) => width || '20%'};
   display: flex;
   justify-content: center;
-  background-color: ${({ green }) => (green ? '#7ED956' : 'transparent')};
   border-radius: 10px;
-  margin: ${({ margin }) => margin || '0'};
-  color: ${({ green }) => (green ? 'white' : 'gray')};
-  font-size: ${({ fontSize }) => fontSize || '0.9rem'};
   font-family: Secular One, sans-serif;
+  background-color: ${({ green }) => (green ? '#7ED956' : 'transparent')};
+  color: ${({ green }) => (green ? 'white' : 'gray')};
 }
 &&:hover {
   background-color: ${({ green }) => (green ? '#73de45' : 'transparent')};;

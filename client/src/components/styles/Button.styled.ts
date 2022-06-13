@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Button from '@mui/material/Button';
 
 interface Props {
-  green?: boolean
+  green?: number
 }
 
 const StyledButton = styled(Button)<Props>`

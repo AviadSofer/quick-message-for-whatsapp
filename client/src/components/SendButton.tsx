@@ -20,7 +20,7 @@ const SendButton: React.FC = () => {
 
   return (
     <StyledSendButton
-      green
+      green={+true}
       onClick={createLink}
     >
       שלח

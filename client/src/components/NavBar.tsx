@@ -11,7 +11,7 @@ const NavBar: React.FC = () => (
         <NavButton>כניסה</NavButton>
       </StyledLink>
       <StyledLink to="/signup">
-        <NavButton green>הרשמה</NavButton>
+        <NavButton green={+true}>הרשמה</NavButton>
       </StyledLink>
     </AuthButtons>
   </Nav>

@@ -14,6 +14,9 @@ const GlobalStyles = createGlobalStyle`
             font-size: 1.3rem;
         }
     }
+    body {
+        margin: 0;
+    } 
 `;
 
 export default GlobalStyles;

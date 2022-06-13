@@ -1,7 +1,11 @@
 import styled from 'styled-components';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import KeyIcon from '@mui/icons-material/Key';
 import StyledButton from './Button.styled';
+import StyledInput from './TextField.styled';
 
 export const StyledLogin = styled.div`
+height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -10,8 +14,8 @@ flex: 2;
 `;
 
 export const LoginContainer = styled.div`
-width: 30vw;
-height: 70vh;
+width: 50%;
+height: 70%;
 padding: 30px;
 display: flex;
 flex-direction: column;
@@ -38,6 +42,28 @@ font-family: Arial, Helvetica, sans-serif;
 export const ToSignUp = styled.span`
 font-size: 0.6rem;
 font-family: Arial, Helvetica, sans-serif;
+`;
+
+export const InputAndIcon = styled.div`
+width: 70%;
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+`;
+
+export const LoginInput = styled(StyledInput)`
+width: 86%;
+input {
+  font-size: 0.7rem;
+}
+`;
+
+export const AccountLogo = styled(AccountCircleIcon)`
+font-size: 1.1rem !important;
+`;
+
+export const KeyLogo = styled(KeyIcon)`
+font-size: 1.1rem !important;
 `;
 
 export const LoginButton = styled(StyledButton)`

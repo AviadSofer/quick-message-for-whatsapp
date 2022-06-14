@@ -18,8 +18,6 @@ flex-basis: 80%;
 justify-content: space-between;
 margin-top: 20px;
 margin-bottom: 30px;
-@media (max-width: 768px) {
-}
 `;
 
 export const Explain = styled.h2`

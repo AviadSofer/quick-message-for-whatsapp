@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import {
   StyledHome, Explain, FlexContainer, StyledWrap, SendMessageContainer,
 } from './styles/Home.styled';
-import NavBar from './NavBar';
+import NavBar from './HomeNavBar';
 import InputNumber from './InputNumber';
 import WriteMessage from './WriteMessage';
 import SendButton from './SendButton';

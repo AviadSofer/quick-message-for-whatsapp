@@ -1,25 +1,53 @@
+/* eslint-disable max-len */
+import { useState } from 'react';
 import {
-  StyledLogin, LoginContainer, LoginLogo, LoginTitle, ToSignUp, LoginButton, LoginInput, InputAndIcon, AccountLogo, KeyLogo,
+  StyledLogin, LoginContainer, LoginLogo, LoginTitle, ToSignUp, LoginInput, InputAndIcon, AccountLogo, KeyLogo, LoginButton, ErrorMessage,
 } from './styles/Login.styled';
 import logo from '../logo.png';
 
-const Login: React.FC = () => (
-  <StyledLogin>
-    <LoginContainer>
-      <LoginLogo src={logo} />
-      <LoginTitle>כניסה</LoginTitle>
-      <ToSignUp>אין לכם חשבון? הרשמה</ToSignUp>
-      <InputAndIcon>
-        <AccountLogo />
-        <LoginInput placeholder="שם משתמש" />
-      </InputAndIcon>
-      <InputAndIcon>
-        <KeyLogo />
-        <LoginInput type="password" placeholder="סיסמה" />
-      </InputAndIcon>
-      <LoginButton green>כניסה</LoginButton>
-    </LoginContainer>
-  </StyledLogin>
-);
+const Login: React.FC = () => {
+  const [userName, setUserName] = useState('');
+  const [password, setPasswoed] = useState('');
+  const [showErr, setShowErr] = useState(0);
+  async function loginUser(credentials: {userName: string, password: string}) {
+    return fetch('/api/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(credentials),
+    })
+      .then((data) => data.json())
+      .then((data) => data.token);
+  }
+  async function handleSubmit() {
+    const token = await loginUser({ userName, password });
+    if (token) {
+      localStorage.setItem('token', token);
+      window.location.href = '/';
+    } else {
+      setShowErr(+true);
+    }
+  }
+  return (
+    <StyledLogin>
+      <LoginContainer>
+        <LoginLogo src={logo} />
+        <LoginTitle>כניסה</LoginTitle>
+        <ToSignUp>אין לכם חשבון? הרשמה</ToSignUp>
+        <InputAndIcon>
+          <AccountLogo />
+          <LoginInput placeholder="שם משתמש" onChange={(e) => setUserName(e.target.value)} />
+        </InputAndIcon>
+        <InputAndIcon>
+          <KeyLogo />
+          <LoginInput type="password" placeholder="סיסמה" onChange={(e) => setPasswoed(e.target.value)} />
+        </InputAndIcon>
+        <ErrorMessage showErr={showErr}>שם משתמש או סיסמה שגויים ):</ErrorMessage>
+        <LoginButton green={+true} onClick={() => handleSubmit()}>כניסה</LoginButton>
+      </LoginContainer>
+    </StyledLogin>
+  );
+};
 
 export default Login;

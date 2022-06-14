@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import {
-  StyledContainer, Explain, FlexContainer, StyledWrap, SendMessageContainer,
-} from './styles/Container.styled';
+  StyledHome, Explain, FlexContainer, StyledWrap, SendMessageContainer,
+} from './styles/Home.styled';
 import NavBar from './NavBar';
 import InputNumber from './InputNumber';
 import WriteMessage from './WriteMessage';
 import SendButton from './SendButton';
+import LastMessages from './LastMessages';
 
-const Container: React.FC = () => {
+const Home: React.FC = () => {
   useEffect(() => {
     window.addEventListener('load', () => { // make the height static, useful with mobile keyboard
       const viewport = (document.querySelector('meta[name=viewport]') as HTMLMetaElement);
@@ -16,10 +17,11 @@ const Container: React.FC = () => {
   });
 
   return (
-    <StyledContainer>
+    <StyledHome>
       <StyledWrap>
         <NavBar />
         <Explain>שליחת הודעה בוואטספ בלי לשמור את המספר</Explain>
+        <LastMessages />
         <SendMessageContainer>
           <InputNumber />
           <FlexContainer>
@@ -28,8 +30,8 @@ const Container: React.FC = () => {
           </FlexContainer>
         </SendMessageContainer>
       </StyledWrap>
-    </StyledContainer>
+    </StyledHome>
   );
 };
 
-export default Container;
+export default Home;

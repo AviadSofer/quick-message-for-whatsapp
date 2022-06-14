@@ -6,7 +6,6 @@ import NavBar from './HomeNavBar';
 import InputNumber from './InputNumber';
 import WriteMessage from './WriteMessage';
 import SendButton from './SendButton';
-import LastMessages from './LastMessages';
 
 const Home: React.FC = () => {
   useEffect(() => {
@@ -21,7 +20,6 @@ const Home: React.FC = () => {
       <StyledWrap>
         <NavBar />
         <Explain>שליחת הודעה בוואטספ בלי לשמור את המספר</Explain>
-        <LastMessages />
         <SendMessageContainer>
           <InputNumber />
           <FlexContainer>

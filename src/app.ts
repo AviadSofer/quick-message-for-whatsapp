@@ -6,6 +6,7 @@ import logger from './logger/logger';
 import signUp from './routes/api/signUp';
 import signIn from './routes/api/signIn';
 import auth from './middlewares/authenticateToken';
+import getUserProfile from './routes/api/getUserProfile';
 import getMessages from './routes/api/getMessages';
 
 const app: Application = express();
@@ -20,6 +21,7 @@ dbConnect();
 app.use(express.json());
 app.use('/api/signup', signUp);
 app.use('/api/signin', signIn);
+app.use('/api/get-user-profile', auth, getUserProfile);
 app.use('/api/get-messages', auth, getMessages);
 app.use(express.static(path.join(path.resolve(), 'client', 'dist')));
 

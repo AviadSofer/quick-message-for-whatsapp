@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   StyledLogin, LoginContainer, LoginLogo, LoginTitle, ToSignUp, LoginInput, InputAndIcon, AccountLogo, KeyLogo, LoginButton, ErrorMessage,
 } from './styles/Login.styled';
@@ -9,6 +9,12 @@ const Login: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [password, setPasswoed] = useState('');
   const [showErr, setShowErr] = useState(0);
+  useEffect(() => {
+    window.addEventListener('load', () => { // make the height static, useful with mobile keyboard
+      const viewport = (document.querySelector('meta[name=viewport]') as HTMLMetaElement);
+      viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
+    });
+  });
   async function loginUser(credentials: {userName: string, password: string}) {
     return fetch('/api/signin', {
       method: 'POST',

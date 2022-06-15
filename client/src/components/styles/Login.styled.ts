@@ -11,11 +11,14 @@ justify-content: center;
 align-items: center;
 background-color: #F5F5F5;
 flex: 2;
+@media (max-width: 768px) {
+  min-height: ${window.innerHeight}px;
+}
 `;
 
 export const LoginContainer = styled.div`
-width: 50%;
 height: 70%;
+width: 50%;
 padding: 30px;
 display: flex;
 flex-direction: column;
@@ -27,11 +30,20 @@ border-width: 1px;
 border-color: #DCDCDC;
 border-radius: 5px;
 box-shadow: 0px 0px 8px 4px #E0E0E0;
+@media (max-width: 768px) {
+  min-height: ${window.innerHeight}px;
+  width: 100%;
+  padding: 0;
+  justify-content: space-around;
+}
 `;
 
 export const LoginLogo = styled.img`
 width: 7vw;
 object-fit: contain;
+@media (max-width: 768px) {
+  width: 20vw;
+}
 `;
 
 export const LoginTitle = styled.span`
@@ -83,5 +95,9 @@ export const LoginButton = styled(StyledButton)`
 && {
   width: 70%;
   font-size: 0.7rem;
+  @media (max-width: 768px) {
+    margin-bottom:40vh;
+  }
 }
+
 `;

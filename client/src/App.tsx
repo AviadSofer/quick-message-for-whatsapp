@@ -1,25 +1,35 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {
+  BrowserRouter, Route, Routes, Navigate,
+} from 'react-router-dom';
 import { NumberProvider } from './NumberContext';
 import StyledApp from './components/styles/App.styled';
 import GlobalStyles from './components/styles/Global';
-import Container from './components/Container';
+import Home from './components/Home';
 import MessageView from './components/MessageView';
 import Login from './components/Login';
+import HomeLogged from './components/HomeLogged';
 
-const App: React.FC = () => (
-  <BrowserRouter>
-    <NumberProvider>
-      <StyledApp>
-        <GlobalStyles />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Container />} />
-        </Routes>
-        <MessageView />
-      </StyledApp>
-    </NumberProvider>
-  </BrowserRouter>
-);
+const App: React.FC = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) setLoggedIn(true);
+  }, []);
+  return (
+    <BrowserRouter>
+      <NumberProvider>
+        <StyledApp>
+          <GlobalStyles />
+          <Routes>
+            <Route path="/login" element={!loggedIn ? <Login /> : <Navigate to="/" />} />
+            <Route path="/" element={!loggedIn ? <Home /> : <HomeLogged />} />
+          </Routes>
+          <MessageView />
+        </StyledApp>
+      </NumberProvider>
+    </BrowserRouter>
+  );
+};
 
 export default App;

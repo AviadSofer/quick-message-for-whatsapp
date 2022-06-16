@@ -8,7 +8,7 @@ import GlobalStyles from './components/styles/Global';
 import Home from './components/Home';
 import MessageView from './components/MessageView';
 import Login from './components/Login';
-import HomeLogged from './components/HomeLogged';
+import LoggedHome from './components/LoggedHome';
 
 const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -23,7 +23,7 @@ const App: React.FC = () => {
           <GlobalStyles />
           <Routes>
             <Route path="/login" element={!loggedIn ? <Login /> : <Navigate to="/" />} />
-            <Route path="/" element={!loggedIn ? <Home /> : <HomeLogged />} />
+            <Route path="/" element={!loggedIn ? <Home /> : <LoggedHome />} />
           </Routes>
           <MessageView />
         </StyledApp>

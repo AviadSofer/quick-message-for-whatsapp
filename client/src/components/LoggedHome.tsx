@@ -4,11 +4,11 @@ import LastMessages from './LastMessages';
 import LoggedNavBar from './LoggedNavBar';
 import SendButton from './SendButton';
 import { FlexContainer, SendMessageContainer } from './styles/Home.styled';
-import { StyledHomeLogged, StyledWrap } from './styles/HomeLogged.styled';
+import { StyledLoggedHome, StyledWrap } from './styles/LoggedHome.styled';
 import WriteMessage from './WriteMessage';
 
-const HomeLogged: React.FC = () => (
-  <StyledHomeLogged>
+const LoggedHome: React.FC = () => (
+  <StyledLoggedHome>
     <StyledWrap>
       <LoggedNavBar />
       <HelloProfile />
@@ -21,7 +21,7 @@ const HomeLogged: React.FC = () => (
         </FlexContainer>
       </SendMessageContainer>
     </StyledWrap>
-  </StyledHomeLogged>
+  </StyledLoggedHome>
 );
 
-export default HomeLogged;
+export default LoggedHome;

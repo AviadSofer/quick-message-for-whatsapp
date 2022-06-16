@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledHomeLogged = styled.div`
+export const StyledLoggedHome = styled.div`
 max-height: 100vh;
 flex: 2;
 display: flex;

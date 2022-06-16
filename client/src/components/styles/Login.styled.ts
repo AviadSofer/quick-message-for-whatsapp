@@ -49,11 +49,17 @@ object-fit: contain;
 export const LoginTitle = styled.span`
 font-size: 1.1rem;
 font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const ToSignUp = styled.span`
 font-size: 0.6rem;
 font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const InputAndIcon = styled.div`
@@ -67,6 +73,9 @@ export const LoginInput = styled(StyledInput)`
 width: 86%;
 input {
   font-size: 0.7rem;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 }
 `;
 
@@ -96,7 +105,8 @@ export const LoginButton = styled(StyledButton)`
   width: 70%;
   font-size: 0.7rem;
   @media (max-width: 768px) {
-    margin-bottom:40vh;
+    margin-bottom:41vh;
+    font-size: 0.9rem;
   }
 }
 

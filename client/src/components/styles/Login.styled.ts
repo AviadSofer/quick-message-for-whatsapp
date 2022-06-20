@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyIcon from '@mui/icons-material/Key';
+import { Link } from 'react-router-dom';
 import StyledButton from './Button.styled';
 import StyledInput from './TextField.styled';
 
@@ -55,6 +56,14 @@ font-family: Arial, Helvetica, sans-serif;
 `;
 
 export const ToSignUp = styled.span`
+font-size: 0.6rem;
+font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+`;
+
+export const SignUpLink = styled(Link)`
 font-size: 0.6rem;
 font-family: Arial, Helvetica, sans-serif;
 @media (max-width: 768px) {

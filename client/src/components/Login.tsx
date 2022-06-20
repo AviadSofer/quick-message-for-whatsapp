@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import {
-  StyledLogin, LoginContainer, LoginLogo, LoginTitle, ToSignUp, LoginInput, InputAndIcon, AccountLogo, KeyLogo, ErrorMessage, SubmitButton,
+  StyledLogin, LoginContainer, LoginLogo, LoginTitle, ToSignUp, LoginInput, InputAndIcon, AccountLogo, KeyLogo, ErrorMessage, SubmitButton, SignUpLink,
 } from './styles/Login.styled';
 import logo from '../logo.png';
 
@@ -49,7 +49,11 @@ const Login: React.FC = () => {
       <LoginContainer>
         <LoginLogo src={logo} />
         <LoginTitle>כניסה</LoginTitle>
-        <ToSignUp>אין לכם חשבון? הרשמה</ToSignUp>
+        <ToSignUp>
+          אין לך חשבון?
+          {' '}
+          <SignUpLink to="/signup">הרשמה</SignUpLink>
+        </ToSignUp>
         <InputAndIcon>
           <AccountLogo />
           <LoginInput placeholder="שם משתמש" onChange={(e) => setUserName(e.target.value)} />

@@ -114,9 +114,8 @@ export const SubmitButton = styled(StyledButton)`
   width: 70%;
   font-size: 0.7rem;
   @media (max-width: 768px) {
-    margin-bottom:41vh;
+    margin-bottom: 40vh;
     font-size: 0.9rem;
   }
 }
-
 `;

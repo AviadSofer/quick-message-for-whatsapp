@@ -100,7 +100,7 @@ font-size: 0.55rem;
 font-family: Arial, Helvetica, sans-serif;
 `;
 
-export const LoginButton = styled(StyledButton)`
+export const SubmitButton = styled(StyledButton)`
 && {
   width: 70%;
   font-size: 0.7rem;

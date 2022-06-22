@@ -1,9 +1,6 @@
-/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
-import {
-  StyledLogin, LoginContainer, LoginLogo, LoginTitle, ToSignUp, LoginInput, InputAndIcon, AccountLogo, KeyLogo, ErrorMessage, SubmitButton, SignUpLink, ShowPasswordIcon, ShowPasswordOffIcon,
-} from './styles/Login.styled';
+import * as Styled from './styles/Login.styled';
 import logo from '../logo.png';
 
 const Login: React.FC = () => {
@@ -47,41 +44,41 @@ const Login: React.FC = () => {
     }
   };
   return (
-    <StyledLogin>
-      <LoginContainer>
-        <LoginLogo src={logo} />
-        <LoginTitle>כניסה</LoginTitle>
-        <ToSignUp>
+    <Styled.StyledLogin>
+      <Styled.LoginContainer>
+        <Styled.LoginLogo src={logo} />
+        <Styled.LoginTitle>כניסה</Styled.LoginTitle>
+        <Styled.ToSignUp>
           אין לך חשבון?
           {' '}
-          <SignUpLink to="/signup">הרשמה</SignUpLink>
-        </ToSignUp>
-        <InputAndIcon>
-          <AccountLogo />
-          <LoginInput
+          <Styled.SignUpLink to="/signup">הרשמה</Styled.SignUpLink>
+        </Styled.ToSignUp>
+        <Styled.InputAndIcon>
+          <Styled.AccountLogo />
+          <Styled.LoginInput
             placeholder="שם משתמש"
             onChange={(e) => setUserName(e.target.value)}
           />
-        </InputAndIcon>
-        <ErrorMessage showErr={emptyUserNameErr}>שדה חובה</ErrorMessage>
-        <InputAndIcon>
-          <KeyLogo />
-          <LoginInput
+        </Styled.InputAndIcon>
+        <Styled.ErrorMessage showErr={emptyUserNameErr}>שדה חובה</Styled.ErrorMessage>
+        <Styled.InputAndIcon>
+          <Styled.KeyLogo />
+          <Styled.LoginInput
             type={showPassword ? 'text' : 'password'}
             placeholder="סיסמה"
             onChange={(e) => setPasswoed(e.target.value)}
             endAdornment={(
               <IconButton onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <ShowPasswordIcon /> : <ShowPasswordOffIcon />}
+                {showPassword ? <Styled.ShowPasswordIcon /> : <Styled.ShowPasswordOffIcon />}
               </IconButton>
             )}
           />
-        </InputAndIcon>
-        <ErrorMessage showErr={emptyPasswordErr}>שדה חובה</ErrorMessage>
-        <ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</ErrorMessage>
-        <SubmitButton green={+true} onClick={() => handleSubmit()}>כניסה</SubmitButton>
-      </LoginContainer>
-    </StyledLogin>
+        </Styled.InputAndIcon>
+        <Styled.ErrorMessage showErr={emptyPasswordErr}>שדה חובה</Styled.ErrorMessage>
+        <Styled.ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</Styled.ErrorMessage>
+        <Styled.SubmitButton green={+true} onClick={handleSubmit}>כניסה</Styled.SubmitButton>
+      </Styled.LoginContainer>
+    </Styled.StyledLogin>
   );
 };
 

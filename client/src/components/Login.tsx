@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
 import * as Styled from './styles/Login.styled';
 import logo from '../logo.png';
+import getToken from '../hook/getToken';
 
 const Login: React.FC = () => {
   const [userName, setUserName] = useState('');
@@ -17,15 +18,6 @@ const Login: React.FC = () => {
       viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
     });
   });
-
-  const getToken = async (credentials: {userName: string, password: string}) => fetch('/api/signin', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json())
-    .then((data) => data.token);
 
   const handleSubmit = async () => {
     setAuthErr(0);

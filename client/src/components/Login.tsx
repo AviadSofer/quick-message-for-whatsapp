@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
+import { IconButton } from '@mui/material';
 import {
-  StyledLogin, LoginContainer, LoginLogo, LoginTitle, ToSignUp, LoginInput, InputAndIcon, AccountLogo, KeyLogo, ErrorMessage, SubmitButton, SignUpLink,
+  StyledLogin, LoginContainer, LoginLogo, LoginTitle, ToSignUp, LoginInput, InputAndIcon, AccountLogo, KeyLogo, ErrorMessage, SubmitButton, SignUpLink, ShowPasswordIcon, ShowPasswordOffIcon,
 } from './styles/Login.styled';
 import logo from '../logo.png';
 
@@ -11,6 +12,7 @@ const Login: React.FC = () => {
   const [emptyUserNameErr, setEmptyUserNameErr] = useState(0);
   const [emptyPasswordErr, setEmptyPasswordErr] = useState(0);
   const [authErr, setAuthErr] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     window.addEventListener('load', () => { // make the height static, useful with mobile keyboard
@@ -56,12 +58,24 @@ const Login: React.FC = () => {
         </ToSignUp>
         <InputAndIcon>
           <AccountLogo />
-          <LoginInput placeholder="שם משתמש" onChange={(e) => setUserName(e.target.value)} />
+          <LoginInput
+            placeholder="שם משתמש"
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </InputAndIcon>
         <ErrorMessage showErr={emptyUserNameErr}>שדה חובה</ErrorMessage>
         <InputAndIcon>
           <KeyLogo />
-          <LoginInput type="password" placeholder="סיסמה" onChange={(e) => setPasswoed(e.target.value)} />
+          <LoginInput
+            type={showPassword ? 'text' : 'password'}
+            placeholder="סיסמה"
+            onChange={(e) => setPasswoed(e.target.value)}
+            endAdornment={(
+              <IconButton onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <ShowPasswordIcon /> : <ShowPasswordOffIcon />}
+              </IconButton>
+            )}
+          />
         </InputAndIcon>
         <ErrorMessage showErr={emptyPasswordErr}>שדה חובה</ErrorMessage>
         <ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</ErrorMessage>

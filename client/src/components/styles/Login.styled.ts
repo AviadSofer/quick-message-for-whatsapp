@@ -83,6 +83,9 @@ align-items: flex-end;
 export const LoginInput = styled(StyledInput)`
 width: 86%;
 input {
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 30px #FFFFFF inset;
+  }
   font-size: 0.7rem;
   @media (max-width: 768px) {
     font-size: 0.9rem;

@@ -5,7 +5,7 @@ const saveMessage = async (prefix: string, phone: string, message?: string) => f
     Authorization: `Bearer ${localStorage.getItem('token')}`,
   },
   body: JSON.stringify({
-    phoneNumber: `+${prefix} ${phone.slice(0, 2)}-${phone.slice(3, 5)}-${phone.slice(6, 9)}`,
+    phoneNumber: `+${prefix} ${phone.slice(0, 2)}-${phone.slice(2, 5)}-${phone.slice(5, 9)}`,
     textMessage: message,
   }),
 });

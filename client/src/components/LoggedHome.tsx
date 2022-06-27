@@ -1,8 +1,8 @@
 import HelloProfile from './HelloProfile';
 import InputNumber from './InputNumber';
 import LastMessages from './LastMessages';
+import LoggedSendButton from './LoggedSendButton';
 import LoggedNavBar from './LoggedNavBar';
-import SendButton from './SendButton';
 import { FlexContainer, SendMessageContainer } from './styles/Home.styled';
 import { StyledLoggedHome, StyledWrap } from './styles/LoggedHome.styled';
 import WriteMessage from './WriteMessage';
@@ -17,7 +17,7 @@ const LoggedHome: React.FC = () => (
         <InputNumber />
         <FlexContainer>
           <WriteMessage />
-          <SendButton />
+          <LoggedSendButton />
         </FlexContainer>
       </SendMessageContainer>
     </StyledWrap>

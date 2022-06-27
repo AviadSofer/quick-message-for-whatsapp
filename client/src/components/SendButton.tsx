@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
+import saveMessage from '../hook/saveMessage';
 import { useNumberContext } from '../NumberContext';
 import StyledButton from './styles/Button.styled';
 
@@ -13,9 +14,10 @@ const StyledSendButton = styled(StyledButton)`
 const SendButton: React.FC = () => {
   const { prefix, phone, message } = useNumberContext();
   // re-render this function just while prefix, phone or message will re-rendering
-  const createLink = useCallback(() => {
+  const createLink = useCallback(async () => {
     const link = `https://wa.me/${prefix}${phone}?text=${message}`;
     window.open(link, '_blank');
+    await saveMessage(prefix, phone, message);
   }, [prefix, phone, message]);
 
   return (

@@ -15,7 +15,7 @@ const messageSchema = new Schema<IMessage>({
   date: { type: Date, required: true },
   userName: { type: String, required: true },
   phoneNumber: { type: String, required: true },
-  textMessage: { type: String, required: true },
+  textMessage: { type: String },
 });
 
 const Message = mongoose.model('messages', messageSchema);

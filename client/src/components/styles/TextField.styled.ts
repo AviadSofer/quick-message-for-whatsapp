@@ -3,13 +3,18 @@ import styled from 'styled-components';
 
 interface Props {
   width?: string
+  ltr?: number
 }
 
 const StyledInput = styled(Input)<Props>`
 width: ${({ width }) => width || '20%'};
 input {
-    font-size: 1.1rem;
+  &::placeholder {
+    text-align: right;
   }
+  direction: ${({ ltr }) => (ltr ? 'ltr' : 'rtl')};
+  font-size: 1.1rem;
+}
 input::-webkit-inner-spin-button {
   -webkit-appearance: none; /*disable the counter when the type is "number"*/
 }

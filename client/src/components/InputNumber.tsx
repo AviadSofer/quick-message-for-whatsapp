@@ -17,12 +17,14 @@ const InputNumber: React.FC = () => {
         type="number"
         defaultValue={prefix}
         width="25%"
+        ltr={+true}
       />
       <StyledInput
         onChange={(e) => changePhone(e.target.value)}
         placeholder="מספר טלפון"
         type="number"
         width="70%"
+        ltr={+true}
       />
     </StyledInputNumber>
   );

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useNumberContext } from '../NumberContext';
 import StyledButton from './styles/Button.styled';
@@ -10,13 +10,21 @@ const StyledSendButton = styled(StyledButton)`
 }
 `;
 
-const SendButton: React.FC = () => {
+interface Props {
+  setShowErr: (value: number) => void;
+}
+
+const SendButton: React.FC<Props> = ({ setShowErr }) => {
   const { prefix, phone, message } = useNumberContext();
-  // re-render this function just while prefix, phone or message will re-rendering
-  const createLink = useCallback(() => {
-    const link = `https://wa.me/${prefix}${phone}?text=${message}`;
-    window.open(link, '_blank');
-  }, [prefix, phone, message]);
+  const createLink = () => {
+    setShowErr(0);
+    if (phone.length >= 9) {
+      const link = `https://wa.me/${prefix}${phone}?text=${message}`;
+      window.open(link, '_blank');
+    } else {
+      setShowErr(+true);
+    }
+  };
 
   return (
     <StyledSendButton

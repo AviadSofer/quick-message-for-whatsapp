@@ -22,7 +22,8 @@ const LoggedSendButton: React.FC<Props> = ({ setShowErr }) => {
     if (phone.length >= 9) {
       const link = `https://wa.me/${prefix}${phone}?text=${message}`;
       window.open(link, '_blank');
-      await saveMessage(prefix, phone, message);
+      const phoneWithoutZero = phone[0] === '0' ? phone.slice(1) : phone;
+      await saveMessage(prefix, phoneWithoutZero, message);
     } else {
       setShowErr(+true);
     }

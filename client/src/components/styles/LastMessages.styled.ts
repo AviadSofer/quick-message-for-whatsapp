@@ -3,15 +3,16 @@ import styled from 'styled-components';
 export const TableWrap = styled.div`
 max-height: 40vh;
 overflow: auto;
-* {
-font-size: 0.8rem;
-}
 `;
 
 export const Table = styled.table`
 width: 100%;
-.fixed {
-  table-layout: fixed;
+border-collapse: collapse;
+tr:nth-child(even) {
+  background: #f2f2f2;
+}
+@media (max-width: 768px) {
+  width: 100vw;
 }
 `;
 
@@ -21,20 +22,37 @@ top: 0;
 background-color: #7ED956;
 `;
 
+export const TH = styled.th`
+text-align: right;
+color: white;
+font-size: 0.7rem;
+font-weight: normal;
+padding: 9px 5px 9px 0;
+`;
+
 export const TableBody = styled.tbody`
 `;
 
 export const TableRow = styled.tr`
 `;
 
-export const TH = styled.th`
-text-align: right;
+export const TD = styled.td`
+vertical-align: top;
+overflow: hidden;
+padding: 8px;
+font-size: 0.6rem;
 `;
 
-export const TableData = styled.td`
+export const TableDate = styled(TD)`
+width: 20%;
 `;
 
-export const TablePhone = styled(TableData)`
+export const TablePhone = styled(TD)`
 direction: ltr;
 text-align: right;
+width: 20%;
+`;
+
+export const TableMessage = styled(TD)`
+width: 40%;
 `;

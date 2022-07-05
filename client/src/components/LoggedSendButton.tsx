@@ -19,10 +19,10 @@ const LoggedSendButton: React.FC<Props> = ({ setShowErr }) => {
   const { prefix, phone, message } = useNumberContext();
   const createLink = async () => {
     setShowErr(0);
-    if (phone.length >= 9) {
+    const phoneWithoutZero = phone[0] === '0' ? phone.slice(1) : phone;
+    if (phoneWithoutZero.length >= 9) {
       const link = `https://wa.me/${prefix}${phone}?text=${message}`;
       window.open(link, '_blank');
-      const phoneWithoutZero = phone[0] === '0' ? phone.slice(1) : phone;
       await saveMessage(prefix, phoneWithoutZero, message);
     } else {
       setShowErr(+true);

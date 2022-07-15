@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 
 export const TableWrap = styled.div`
 max-height: 40vh;
@@ -22,7 +23,9 @@ top: 0;
 background-color: #7ED956;
 `;
 
-export const TH = styled.th`
+export const ThContainer = styled.div`
+display: flex;
+align-items: center;
 text-align: right;
 color: white;
 font-size: 0.7rem;
@@ -30,10 +33,11 @@ font-weight: normal;
 padding: 9px 5px 9px 0;
 `;
 
-export const TableBody = styled.tbody`
-`;
-
-export const TableRow = styled.tr`
+export const Arrows = styled(UnfoldMoreIcon)`
+font-size: 0.7rem !important;
+* {
+  color: white;
+}
 `;
 
 export const TD = styled.td`

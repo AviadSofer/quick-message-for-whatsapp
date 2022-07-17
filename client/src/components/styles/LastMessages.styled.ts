@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
+import KeyboardIcon from '@mui/icons-material/Keyboard';
 
 export const TableWrap = styled.div`
 max-height: 40vh;
@@ -59,4 +60,15 @@ width: 20%;
 
 export const TableMessage = styled(TD)`
 width: 40%;
+`;
+
+export const TableMessageContainer = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.6rem;
+`;
+
+export const Keyboard = styled(KeyboardIcon)`
+font-size: 0.7rem !important;
 `;

@@ -4,7 +4,9 @@ import StyledInputNumber from './styles/InputNumber.styled.js';
 import StyledInput from './styles/TextField.styled.js';
 
 const InputNumber: React.FC = () => {
-  const { prefix, changePrefix, changePhone } = useNumberContext();
+  const {
+    prefix, phone, changePrefix, changePhone,
+  } = useNumberContext();
 
   return (
     <StyledInputNumber>
@@ -15,7 +17,7 @@ const InputNumber: React.FC = () => {
         }}
         placeholder="קידומת"
         type="number"
-        defaultValue={prefix}
+        value={prefix}
         width="25%"
         ltr={+true}
       />
@@ -26,6 +28,7 @@ const InputNumber: React.FC = () => {
         }}
         placeholder="מספר טלפון"
         type="number"
+        value={phone}
         width="70%"
         ltr={+true}
       />

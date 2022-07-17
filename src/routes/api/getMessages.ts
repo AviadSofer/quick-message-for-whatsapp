@@ -8,7 +8,7 @@ const router: Router = express.Router();
 router.get('/', async (req: Request, res: Response) => {
   try {
     const { userName } = req.body.decoded.user;
-    const allMessages = await Message.find({ userName });
+    const allMessages = await Message.find({ userName }).sort('-date');
     res.status(200).json(allMessages);
   } catch (err) {
     res.status(500).json({

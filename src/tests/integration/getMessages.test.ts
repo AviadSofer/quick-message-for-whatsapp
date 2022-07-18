@@ -12,7 +12,7 @@ chai.use(chaiSubset);
 const { expect } = chai;
 logger.level = 'fatal';
 
-describe('login with user', () => {
+describe('getMessages.test.ts', () => {
   const randomString = (Math.random() + 1).toString(36).substring(7);
   const user = {
     fullName: 'Joan Huan',
@@ -44,7 +44,7 @@ describe('login with user', () => {
     });
   });
 
-  it('POST TEST - post new message with token, and without phoneNumber/textMessage', async () => {
+  it('POST TEST - post new message with token (should work), and without phoneNumber (should fail)', async () => {
     const newPost = await request(app).post('/api/get-messages')
       .set({ Authorization: `Bearer ${token}` })
       .send({
@@ -52,14 +52,6 @@ describe('login with user', () => {
         textMessage: 'Hi!',
       });
     expect(newPost.statusCode).to.equal(201);
-
-    // textMessage missing
-    const resWithoutTextMessage = await request(app).post('/api/get-messages')
-      .set({ Authorization: `Bearer ${token}` })
-      .send({
-        phoneNumber: '0541234567',
-      });
-    expect(resWithoutTextMessage.statusCode).to.equal(401);
 
     // phoneNumber missing
     const resWithoutPhoneNumber = await request(app).post('/api/get-messages')

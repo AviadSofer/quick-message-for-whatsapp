@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const TableWrap = styled.div`
 max-height: 40vh;
@@ -64,9 +65,17 @@ width: 40%;
 
 export const TableMessageContainer = styled.div`
 display: flex;
-justify-content: space-between;
 align-items: center;
 font-size: 0.6rem;
+`;
+
+export const MessageText = styled.div`
+font-size: 0.6rem;
+flex: 1;
+`;
+
+export const Delete = styled(DeleteIcon)`
+font-size: 0.7rem !important;
 `;
 
 export const Keyboard = styled(KeyboardIcon)`

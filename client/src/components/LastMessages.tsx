@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
 import fetchData from '../hook/fetchData';
 import {
-  Table, TableHead, TableWrap, TablePhone, TableDate, TableMessage, ThContainer, Arrows, TableMessageContainer, Keyboard, Delete, MessageText,
+  Table, TableHead, TableWrap, TablePhone, TableDate, TableMessage, ThContainer, Arrows, TableMessageContainer, Delete, MessageText, ArrowDown,
 } from './styles/LastMessages.styled';
 import Columns from '../static/columns';
 import { useNumberContext } from '../NumberContext';
@@ -30,12 +30,7 @@ const LastMessages: React.FC = () => {
 
   const deleteMessage = async (_id: string) => {
     await deleteMessageById(_id);
-    setData([...data].filter((message: { _id: string }) => { // לולאה לסנן תוצאות, פלס ימחק את הערך
-      if (message._id === _id) {
-        return false;
-      }
-      return true;
-    }));
+    setData([...data].filter((message: { _id: string }) => message._id !== _id));
   };
 
   const sendMessage = (phoneNumber: string, textMessage: string) => {
@@ -78,7 +73,7 @@ const LastMessages: React.FC = () => {
                 <TableMessageContainer>
                   <MessageText>{textMessage || '—'}</MessageText>
                   <IconButton onClick={() => deleteMessage(_id)}><Delete /></IconButton>
-                  <IconButton onClick={() => sendMessage(phoneNumber, textMessage)}><Keyboard /></IconButton>
+                  <IconButton onClick={() => sendMessage(phoneNumber, textMessage)}><ArrowDown /></IconButton>
                 </TableMessageContainer>
               </TableMessage>
             </tr>

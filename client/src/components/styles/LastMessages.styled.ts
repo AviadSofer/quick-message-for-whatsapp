@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
-import KeyboardIcon from '@mui/icons-material/Keyboard';
+import SouthEastIcon from '@mui/icons-material/SouthEast';
+import CallReceivedIcon from '@mui/icons-material/CallReceived';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export const TableWrap = styled.div`
@@ -78,6 +79,6 @@ export const Delete = styled(DeleteIcon)`
 font-size: 0.7rem !important;
 `;
 
-export const Keyboard = styled(KeyboardIcon)`
+export const ArrowDown = styled(CallReceivedIcon)`
 font-size: 0.7rem !important;
 `;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import HelloProfile from './HelloProfile';
+import HelloUser from './HelloUser';
 import { ErrorMessage } from './styles/Login.styled';
 import InputNumber from './InputNumber';
 import MessagesTable from './MessagesTable';
@@ -22,7 +22,7 @@ const LoggedHome: React.FC = () => {
     <StyledLoggedHome>
       <StyledWrap>
         <LoggedNavBar />
-        <HelloProfile />
+        <HelloUser />
         <MessagesTable />
         <SendMessageContainer>
           <InputNumber />

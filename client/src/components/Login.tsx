@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
 import * as Styled from './styles/Login.styled';
 import logo from '../logo.png';
-import getToken from '../hook/getToken';
+import getToken from '../api/getToken';
 
 const Login: React.FC = () => {
   const [userName, setUserName] = useState('');

@@ -24,6 +24,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "no-underscore-dangle": "off",
         "linebreak-style": 0,
         "import/extensions": [
             "error",

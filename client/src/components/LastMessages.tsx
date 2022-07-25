@@ -1,14 +1,10 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
-import fetchData from '../hook/fetchData';
-import {
-  Table, TableHead, TableWrap, TablePhone, TableDate, TableMessage, ThContainer, Arrows, TableMessageContainer, Delete, MessageText, ArrowDown,
-} from './styles/LastMessages.styled';
+import fetchData from '../api/fetchData';
+import deleteMessageById from '../api/deleteMessageById';
+import * as Styled from './styles/LastMessages.styled';
 import Columns from '../static/columns';
 import { useNumberContext } from '../NumberContext';
-import deleteMessageById from '../hook/deleteMessageById';
 
 const LastMessages: React.FC = () => {
   const { changePrefix, changePhone, changeMessage } = useNumberContext();
@@ -40,47 +36,59 @@ const LastMessages: React.FC = () => {
   };
 
   return (
-    <TableWrap>
-      <Table>
-        <TableHead>
+    <Styled.TableWrap>
+      <Styled.Table>
+        <Styled.TableHead>
           <tr>
             {Columns.map(({ Header, accessor }) => (
               <th key={accessor}>
-                <ThContainer>
+                <Styled.ThContainer>
                   {Header}
                   <IconButton onClick={() => sortData(accessor)}>
-                    <Arrows />
+                    <Styled.Arrows />
                   </IconButton>
-                </ThContainer>
+                </Styled.ThContainer>
               </th>
             ))}
           </tr>
-        </TableHead>
+        </Styled.TableHead>
+
         <tbody>
           {data.map(({
             _id, date, phoneNumber, textMessage,
           }) => (
             <tr key={_id}>
-              <TableDate key="date">
+              <Styled.TD width={20}>
+                {/* Data */}
                 {`${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString('he-IL', {
                   hour12: false,
                   hour: 'numeric',
                   minute: 'numeric',
                 })}`}
-              </TableDate>
-              <TablePhone key="phoneNumber">{phoneNumber}</TablePhone>
-              <TableMessage key="textMessage">
-                <TableMessageContainer>
-                  <MessageText>{textMessage || '—'}</MessageText>
-                  <IconButton onClick={() => deleteMessage(_id)}><Delete /></IconButton>
-                  <IconButton onClick={() => sendMessage(phoneNumber, textMessage)}><ArrowDown /></IconButton>
-                </TableMessageContainer>
-              </TableMessage>
+              </Styled.TD>
+              <Styled.TD width={20}>
+                {/* Phone */}
+                <Styled.TablePhone>
+                  {phoneNumber}
+                </Styled.TablePhone>
+              </Styled.TD>
+              <Styled.TD width={40}>
+                {/* Text Message */}
+                <Styled.TableMessage>
+                  <Styled.MessageText>{textMessage || '—'}</Styled.MessageText>
+                  <IconButton onClick={() => deleteMessage(_id)}>
+                    <Styled.Delete />
+                  </IconButton>
+                  <IconButton onClick={() => sendMessage(phoneNumber, textMessage)}>
+                    <Styled.ArrowDown />
+                  </IconButton>
+                </Styled.TableMessage>
+              </Styled.TD>
             </tr>
           ))}
         </tbody>
-      </Table>
-    </TableWrap>
+      </Styled.Table>
+    </Styled.TableWrap>
   );
 };
 

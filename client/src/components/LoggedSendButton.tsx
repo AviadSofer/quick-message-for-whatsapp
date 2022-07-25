@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import saveMessage from '../hook/saveMessage';
+import saveMessage from '../api/saveMessage';
 import { useNumberContext } from '../NumberContext';
 import StyledButton from './styles/Button.styled';
 

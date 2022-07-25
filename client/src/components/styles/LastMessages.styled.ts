@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
-import SouthEastIcon from '@mui/icons-material/SouthEast';
 import CallReceivedIcon from '@mui/icons-material/CallReceived';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -43,28 +42,25 @@ font-size: 0.7rem !important;
 }
 `;
 
-export const TD = styled.td`
+interface Props {
+  width?: number
+}
+
+export const TD = styled.td<Props>`
+width: ${({ width }) => `${width}%` || '20%'};
 vertical-align: top;
 overflow: hidden;
 padding: 8px;
 font-size: 0.6rem;
 `;
 
-export const TableDate = styled(TD)`
-width: 20%;
-`;
-
-export const TablePhone = styled(TD)`
+export const TablePhone = styled.div`
 direction: ltr;
 text-align: right;
-width: 20%;
+font-size: 0.6rem;
 `;
 
-export const TableMessage = styled(TD)`
-width: 40%;
-`;
-
-export const TableMessageContainer = styled.div`
+export const TableMessage = styled.div`
 display: flex;
 align-items: center;
 font-size: 0.6rem;

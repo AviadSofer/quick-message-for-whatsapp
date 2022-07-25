@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import HelloProfile from './HelloProfile';
 import { ErrorMessage } from './styles/Login.styled';
 import InputNumber from './InputNumber';
-import LastMessages from './LastMessages';
+import MessagesTable from './MessagesTable';
 import LoggedSendButton from './LoggedSendButton';
 import LoggedNavBar from './LoggedNavBar';
 import { FlexContainer, SendMessageContainer } from './styles/Home.styled';
@@ -23,7 +23,7 @@ const LoggedHome: React.FC = () => {
       <StyledWrap>
         <LoggedNavBar />
         <HelloProfile />
-        <LastMessages />
+        <MessagesTable />
         <SendMessageContainer>
           <InputNumber />
           <ErrorMessage showErr={showErr}>

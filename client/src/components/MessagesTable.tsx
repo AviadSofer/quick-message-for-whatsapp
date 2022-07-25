@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
 import fetchData from '../api/fetchData';
 import deleteMessageById from '../api/deleteMessageById';
-import * as Styled from './styles/LastMessages.styled';
+import * as Styled from './styles/MessagesTable.styled';
 import Columns from '../static/columns';
 import { useNumberContext } from '../NumberContext';
 
-const LastMessages: React.FC = () => {
+const MessagesTable: React.FC = () => {
   const { changePrefix, changePhone, changeMessage } = useNumberContext();
   const [data, setData] = useState([]);
   const [sort, setSort] = useState(false);
@@ -92,4 +92,4 @@ const LastMessages: React.FC = () => {
   );
 };
 
-export default LastMessages;
+export default MessagesTable;

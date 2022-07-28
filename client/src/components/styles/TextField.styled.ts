@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 interface Props {
   width?: string
+  gridArea?: string
   ltr?: number
 }
 
 const StyledInput = styled(Input)<Props>`
-width: ${({ width }) => width || '20%'};
+width: ${({ width }) => width || 'auto'};
+grid-area: ${({ gridArea }) => gridArea};
 input {
   &::placeholder {
     text-align: right;

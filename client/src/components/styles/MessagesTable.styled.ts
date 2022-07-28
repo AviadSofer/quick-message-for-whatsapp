@@ -61,8 +61,9 @@ direction: ltr;
 text-align: right;
 `;
 
-export const TableMessage = styled.div`
+export const TableTextMessage = styled.div`
 display: flex;
+align-items: center;
 `;
 
 export const MessageText = styled.div`

@@ -1,20 +1,20 @@
 import useSWR from 'swr';
 import fetchData from '../api/fetchData';
-import StyledHelloUser from './styles/HelloUser.styled';
+import { MediumTitle } from './styles/Title.styled';
 
 const HelloUser: React.FC = () => {
   const { data, error } = useSWR('/api/get-user-profile', fetchData);
-  if (error) return <StyledHelloUser>שגיאה :(</StyledHelloUser>;
-  if (!data) return <StyledHelloUser>בטעינה...</StyledHelloUser>;
+  if (error) return <MediumTitle>שגיאה :(</MediumTitle>;
+  if (!data) return <MediumTitle>בטעינה...</MediumTitle>;
   const firstName = `${data.fullName}`.split(' ')[0];
   return (
-    <StyledHelloUser>
+    <MediumTitle>
       היי
       {' '}
       {firstName}
       ,
       ההודעות האחרונות ששלחת כאן
-    </StyledHelloUser>
+    </MediumTitle>
   );
 };
 

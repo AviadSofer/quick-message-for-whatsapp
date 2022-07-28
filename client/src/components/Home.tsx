@@ -4,9 +4,9 @@ import {
 } from './styles/Home.styled';
 import NavBar from './HomeNavBar';
 import InputNumber from './InputNumber';
-import { ErrorMessage } from './styles/Login.styled';
 import WriteMessage from './WriteMessage';
 import SendButton from './SendButton';
+import ErrorMessage from './styles/ErrorMessage.styled';
 
 const Home: React.FC = () => {
   const [showErr, setShowErr] = useState(0);

@@ -3,6 +3,7 @@ import { IconButton } from '@mui/material';
 import * as Styled from './styles/Login.styled';
 import logo from '../logo.png';
 import getToken from '../api/getToken';
+import ErrorMessage from './styles/ErrorMessage.styled';
 
 const Login: React.FC = () => {
   const [userName, setUserName] = useState('');
@@ -52,7 +53,7 @@ const Login: React.FC = () => {
             onChange={(e) => setUserName(e.target.value)}
           />
         </Styled.InputAndIcon>
-        <Styled.ErrorMessage showErr={emptyUserNameErr}>שדה חובה</Styled.ErrorMessage>
+        <ErrorMessage showErr={emptyUserNameErr}>שדה חובה</ErrorMessage>
         <Styled.InputAndIcon>
           <Styled.KeyLogo />
           <Styled.LoginInput
@@ -66,8 +67,8 @@ const Login: React.FC = () => {
             )}
           />
         </Styled.InputAndIcon>
-        <Styled.ErrorMessage showErr={emptyPasswordErr}>שדה חובה</Styled.ErrorMessage>
-        <Styled.ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</Styled.ErrorMessage>
+        <ErrorMessage showErr={emptyPasswordErr}>שדה חובה</ErrorMessage>
+        <ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</ErrorMessage>
         <Styled.SubmitButton green={+true} onClick={handleSubmit}>כניסה</Styled.SubmitButton>
       </Styled.LoginContainer>
     </Styled.StyledLogin>

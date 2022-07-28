@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import HelloUser from './HelloUser';
-import { ErrorMessage } from './styles/Login.styled';
 import InputNumber from './InputNumber';
 import MessagesTable from './MessagesTable';
 import LoggedSendButton from './LoggedSendButton';
@@ -9,6 +8,7 @@ import { FlexContainer } from './styles/Home.styled';
 import { StyledLoggedHome, StyledWrap, SendMessageContainer } from './styles/LoggedHome.styled';
 import WriteMessage from './WriteMessage';
 import StyledHelloUser from './styles/HelloUser.styled';
+import ErrorMessage from './styles/ErrorMessage.styled';
 
 const LoggedHome: React.FC = () => {
   const [showErr, setShowErr] = useState(0);

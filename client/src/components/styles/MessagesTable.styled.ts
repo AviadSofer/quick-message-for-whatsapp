@@ -4,7 +4,7 @@ import CallReceivedIcon from '@mui/icons-material/CallReceived';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export const TableWrap = styled.div`
-max-height: 40vh;
+max-height: 35vh;
 overflow: auto;
 `;
 
@@ -16,6 +16,9 @@ tr:nth-child(even) {
 }
 @media (max-width: 768px) {
   width: 100vw;
+}
+* {
+  font-size: 0.6rem;
 }
 `;
 
@@ -51,23 +54,18 @@ width: ${({ width }) => `${width}%` || '20%'};
 vertical-align: top;
 overflow: hidden;
 padding: 8px;
-font-size: 0.6rem;
 `;
 
 export const TablePhone = styled.div`
 direction: ltr;
 text-align: right;
-font-size: 0.6rem;
 `;
 
 export const TableMessage = styled.div`
 display: flex;
-align-items: center;
-font-size: 0.6rem;
 `;
 
 export const MessageText = styled.div`
-font-size: 0.6rem;
 flex: 1;
 `;
 

@@ -5,9 +5,10 @@ import InputNumber from './InputNumber';
 import MessagesTable from './MessagesTable';
 import LoggedSendButton from './LoggedSendButton';
 import LoggedNavBar from './LoggedNavBar';
-import { FlexContainer, SendMessageContainer } from './styles/Home.styled';
-import { StyledLoggedHome, StyledWrap } from './styles/LoggedHome.styled';
+import { FlexContainer } from './styles/Home.styled';
+import { StyledLoggedHome, StyledWrap, SendMessageContainer } from './styles/LoggedHome.styled';
 import WriteMessage from './WriteMessage';
+import StyledHelloUser from './styles/HelloUser.styled';
 
 const LoggedHome: React.FC = () => {
   const [showErr, setShowErr] = useState(0);
@@ -24,6 +25,7 @@ const LoggedHome: React.FC = () => {
         <LoggedNavBar />
         <HelloUser />
         <MessagesTable />
+        <StyledHelloUser>תרצה לשלוח הודעה חדשה?</StyledHelloUser>
         <SendMessageContainer>
           <InputNumber />
           <ErrorMessage showErr={showErr}>

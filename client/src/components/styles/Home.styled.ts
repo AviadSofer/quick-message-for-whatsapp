@@ -22,22 +22,5 @@ margin-bottom: 30px;
 
 export const Explain = styled.h2`
 font-size: 0.8rem;
-margin: 0;
-`;
-
-export const SendMessageContainer = styled.div`
-height: 30vh;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-@media (max-width: 768px) {
-    height: 20vh;
-    margin-bottom:30vh;
-}
-`;
-
-export const FlexContainer = styled.div`
-display: flex;
-justify-content: space-between;
-margin-bottom: 20px;
+margin-top: 50px;
 `;

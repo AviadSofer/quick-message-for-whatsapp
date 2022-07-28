@@ -74,7 +74,7 @@ const MessagesTable: React.FC = () => {
               </Styled.TD>
               <Styled.TD width={40}>
                 {/* Text Message */}
-                <Styled.TableMessage>
+                <Styled.TableTextMessage>
                   <Styled.MessageText>{textMessage || '—'}</Styled.MessageText>
                   <IconButton onClick={() => deleteMessage(_id)}>
                     <Styled.Delete />
@@ -82,7 +82,7 @@ const MessagesTable: React.FC = () => {
                   <IconButton onClick={() => sendMessage(phoneNumber, textMessage)}>
                     <Styled.ArrowDown />
                   </IconButton>
-                </Styled.TableMessage>
+                </Styled.TableTextMessage>
               </Styled.TD>
             </tr>
           ))}

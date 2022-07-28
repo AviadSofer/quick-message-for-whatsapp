@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import HelloUser from './HelloUser';
-import InputNumber from './InputNumber';
 import MessagesTable from './MessagesTable';
-import LoggedSendButton from './LoggedSendButton';
 import LoggedNavBar from './LoggedNavBar';
-import { FlexContainer } from './styles/Home.styled';
-import { StyledLoggedHome, StyledWrap, SendMessageContainer } from './styles/LoggedHome.styled';
-import WriteMessage from './WriteMessage';
-import StyledHelloUser from './styles/HelloUser.styled';
-import ErrorMessage from './styles/ErrorMessage.styled';
+import { StyledLoggedHome, StyledWrap } from './styles/LoggedHome.styled';
+import SendMessage from './SendMessage';
+import { MediumTitle } from './styles/Title.styled';
 
 const LoggedHome: React.FC = () => {
-  const [showErr, setShowErr] = useState(0);
   useEffect(() => {
     window.addEventListener('load', () => { // make the height static, useful with mobile keyboard
       const viewport = (document.querySelector('meta[name=viewport]') as HTMLMetaElement);
@@ -25,18 +20,8 @@ const LoggedHome: React.FC = () => {
         <LoggedNavBar />
         <HelloUser />
         <MessagesTable />
-        <StyledHelloUser>תרצה לשלוח הודעה חדשה?</StyledHelloUser>
-        <SendMessageContainer>
-          <InputNumber />
-          <ErrorMessage showErr={showErr}>
-            מספר קצר מדי :(
-            מספר תקין הוא משהו בסגנון של 054-123-4567
-          </ErrorMessage>
-          <FlexContainer>
-            <WriteMessage />
-            <LoggedSendButton setShowErr={setShowErr} />
-          </FlexContainer>
-        </SendMessageContainer>
+        <MediumTitle>תרצה לשלוח הודעה חדשה?</MediumTitle>
+        <SendMessage />
       </StyledWrap>
     </StyledLoggedHome>
   );

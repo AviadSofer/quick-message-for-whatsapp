@@ -1,7 +1,8 @@
 import { ChangeEvent, useState } from 'react';
+import saveMessage from '../api/saveMessage';
 import { useNumberContext } from '../NumberContext';
-import LoggedSendButton from './LoggedSendButton';
-import { InputContainer, StyledSendMessage } from './styles/SendMessage.styled';
+import ErrorMessage from './styles/ErrorMessage.styled';
+import { InputContainer, SendButton, StyledSendMessage } from './styles/SendMessage.styled';
 import StyledInput from './styles/TextField.styled';
 
 const SendMessage: React.FC = () => {
@@ -9,6 +10,17 @@ const SendMessage: React.FC = () => {
     prefix, phone, message, changePrefix, changePhone, changeMessage,
   } = useNumberContext();
   const [showErr, setShowErr] = useState(0);
+  const createLink = async () => {
+    setShowErr(0);
+    const phoneWithoutZero = phone[0] === '0' ? phone.slice(1) : phone;
+    if (phoneWithoutZero.length >= 9) {
+      const link = `https://wa.me/${prefix}${phone}?text=${message}`;
+      window.open(link, '_blank');
+      if (localStorage.getItem('token')) await saveMessage(prefix, phoneWithoutZero, message);
+    } else {
+      setShowErr(+true);
+    }
+  };
   return (
     <StyledSendMessage>
       <InputContainer>
@@ -32,6 +44,10 @@ const SendMessage: React.FC = () => {
             e.target.value = e.target.value.slice(0, 3);
           }}
         />
+        <ErrorMessage showErr={showErr}>
+          מספר קצר מדי :(
+          מספר תקין הוא משהו בסגנון של 054-123-4567
+        </ErrorMessage>
         <StyledInput
           value={message}
           placeholder="הודעה"
@@ -39,7 +55,12 @@ const SendMessage: React.FC = () => {
           onChange={(e) => changeMessage(e.target.value)}
         />
       </InputContainer>
-      <LoggedSendButton setShowErr={setShowErr} />
+      <SendButton
+        green={+true}
+        onClick={createLink}
+      >
+        שלח
+      </SendButton>
     </StyledSendMessage>
   );
 };

@@ -17,8 +17,8 @@ display: flex;
 flex-direction: column;
 flex-basis: 80%;
 justify-content: space-between;
-margin-top: 20px;
-margin-bottom: 30px;
+margin-top: 3vh;
+margin-bottom: 6vh;
 `;
 
 export const Explain = styled(MediumTitle)`

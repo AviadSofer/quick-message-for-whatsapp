@@ -19,14 +19,3 @@ flex-basis: 80%;
 margin-top: 3vh;
 margin-bottom: 3vh;
 `;
-
-export const SendMessageContainer = styled.div`
-height: 25vh;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-@media (max-width: 768px) {
-    height: 20vh;
-    margin-bottom:30vh;
-}
-`;

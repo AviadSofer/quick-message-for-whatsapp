@@ -54,7 +54,7 @@ font-size: 1.1rem;
 font-family: Arial, Helvetica, sans-serif;
 @media (max-width: 768px) {
     font-size: 1.2rem;
-  }
+}
 `;
 
 export const ToSignUp = styled.span`

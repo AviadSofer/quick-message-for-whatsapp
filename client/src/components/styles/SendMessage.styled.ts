@@ -5,7 +5,6 @@ export const StyledSendMessage = styled.div`
 height: 33vh;
 display: flex;
 justify-content: space-between;
-margin-bottom: 20px;
 `;
 
 export const InputContainer = styled.div`

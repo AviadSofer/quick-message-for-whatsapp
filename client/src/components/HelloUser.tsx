@@ -1,19 +1,32 @@
+import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import fetchData from '../api/fetchData';
 import { MediumTitle } from './styles/Title.styled';
 
 const HelloUser: React.FC = () => {
+  const [greet, setGreet] = useState('');
   const { data, error } = useSWR('/api/get-user-profile', fetchData);
+  useEffect(() => {
+    const day = new Date();
+    const hr = day.getHours();
+    if (hr >= 0 && hr < 12) {
+      setGreet('בוקר טוב');
+    } else if (hr >= 12 && hr <= 17) {
+      setGreet('צהריים טובים');
+    } else {
+      setGreet('ערב טוב');
+    }
+  }, []);
   if (error) return <MediumTitle>שגיאה :(</MediumTitle>;
   if (!data) return <MediumTitle>בטעינה...</MediumTitle>;
   const firstName = `${data.fullName}`.split(' ')[0];
   return (
     <MediumTitle>
-      היי
+      {greet}
       {' '}
       {firstName}
-      ,
-      ההודעות האחרונות ששלחת כאן
+      {' '}
+      :)
     </MediumTitle>
   );
 };

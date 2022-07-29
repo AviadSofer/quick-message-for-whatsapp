@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MediumTitle } from './Title.styled';
 
 export const StyledHome = styled.div`
 max-height: 100vh;
@@ -20,7 +21,6 @@ margin-top: 20px;
 margin-bottom: 30px;
 `;
 
-export const Explain = styled.h2`
-font-size: 0.8rem;
+export const Explain = styled(MediumTitle)`
 margin-top: 50px;
 `;

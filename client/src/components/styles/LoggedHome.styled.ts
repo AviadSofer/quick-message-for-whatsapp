@@ -17,8 +17,8 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 flex-basis: 80%;
-margin-top: 3vh;
-margin-bottom: 3vh;
+margin-top: 4vh;
+margin-bottom: 4vh;
 `;
 
 export const StyledModal = styled(Modal)`

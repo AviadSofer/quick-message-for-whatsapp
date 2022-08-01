@@ -5,15 +5,19 @@ import deleteMessageById from '../api/deleteMessageById';
 import * as Styled from './styles/MessagesTable.styled';
 import Columns from '../static/columns';
 import { useNumberContext } from '../NumberContext';
+import Loading from './styles/Loading.styled';
 
 const MessagesTable: React.FC = () => {
   const { changePrefix, changePhone, changeMessage } = useNumberContext();
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [sort, setSort] = useState(false);
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       const rows = await fetchData('/api/get-messages');
       setData(rows); // set tableData to array
+      setIsLoading(false);
     })();
   }, []);
 
@@ -34,6 +38,8 @@ const MessagesTable: React.FC = () => {
     changePhone(`${phoneNumber.slice(5, 7)}${phoneNumber.slice(8, 11)}${phoneNumber.slice(12, 16)}`);
     changeMessage(textMessage);
   };
+
+  if (isLoading) return (<Loading />);
 
   return (
     <Styled.TableWrap>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import fetchData from '../api/fetchData';
+import Loading from './styles/Loading.styled';
 import { MediumTitle } from './styles/Title.styled';
 
 const HelloUser: React.FC = () => {
@@ -18,7 +19,7 @@ const HelloUser: React.FC = () => {
     }
   }, []);
   if (error) return <MediumTitle>שגיאה :(</MediumTitle>;
-  if (!data) return <MediumTitle>בטעינה...</MediumTitle>;
+  if (!data) return <Loading />;
   const firstName = `${data.fullName}`.split(' ')[0];
   return (
     <MediumTitle>

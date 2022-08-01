@@ -1,9 +1,13 @@
 import {
-  AuthButtons, Logo, Nav, NavButton,
+  Nav, Logo, NavButtons, NavButton,
 } from './styles/NavBar.styled';
 import logo from '../logo.png';
 
-const LoggedNavBar: React.FC = () => {
+interface Props {
+  handleModal: () => void
+}
+
+const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     window.location.href = '/';
@@ -11,9 +15,10 @@ const LoggedNavBar: React.FC = () => {
   return (
     <Nav>
       <Logo src={logo} />
-      <AuthButtons>
+      <NavButtons>
+        <NavButton onClick={handleModal}>הודעות</NavButton>
         <NavButton green={+true} onClick={handleLogout}>יציאה</NavButton>
-      </AuthButtons>
+      </NavButtons>
     </Nav>
   );
 };

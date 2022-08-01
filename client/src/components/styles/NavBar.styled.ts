@@ -16,7 +16,7 @@ object-fit: contain;
 }
 `;
 
-export const AuthButtons = styled.div`
+export const NavButtons = styled.div`
 display: flex;
 `;
 

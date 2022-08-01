@@ -4,12 +4,14 @@ import CallReceivedIcon from '@mui/icons-material/CallReceived';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export const TableWrap = styled.div`
-max-height: 35vh;
+max-height: 70vh;
+width: 50%;
 overflow: auto;
+background-color: white;
+border: 3px solid #7ED956;
 `;
 
 export const Table = styled.table`
-width: 100%;
 border-collapse: collapse;
 tr:nth-child(even) {
   background: #f2f2f2;

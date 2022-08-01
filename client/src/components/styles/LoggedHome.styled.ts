@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Modal from '@mui/material/Modal';
 
 export const StyledLoggedHome = styled.div`
 max-height: 100vh;
@@ -18,4 +19,10 @@ justify-content: space-between;
 flex-basis: 80%;
 margin-top: 3vh;
 margin-bottom: 3vh;
+`;
+
+export const StyledModal = styled(Modal)`
+display: flex;
+justify-content: center;
+align-items: center;
 `;

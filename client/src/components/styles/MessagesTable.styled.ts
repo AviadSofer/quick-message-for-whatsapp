@@ -12,15 +12,16 @@ border: 3px solid #7ED956;
 `;
 
 export const Table = styled.table`
+width: 100%;
+* {
+  font-size: 0.6rem;
+}
 border-collapse: collapse;
 tr:nth-child(even) {
   background: #f2f2f2;
 }
 @media (max-width: 768px) {
   width: 100vw;
-}
-* {
-  font-size: 0.6rem;
 }
 `;
 
@@ -30,9 +31,7 @@ top: 0;
 background-color: #7ED956;
 `;
 
-export const ThContainer = styled.div`
-display: flex;
-align-items: center;
+export const TH = styled.th`
 text-align: right;
 color: white;
 font-size: 0.7rem;
@@ -52,20 +51,20 @@ interface Props {
 }
 
 export const TD = styled.td<Props>`
-width: ${({ width }) => `${width}%` || '20%'};
-vertical-align: top;
-overflow: hidden;
-padding: 8px;
+width: ${({ width }) => `${width}%`};
+padding: 15px;
 `;
 
-export const TablePhone = styled.div`
+export const TDContainer = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 0.7rem;
+`;
+
+export const Phone = styled.div`
 direction: ltr;
 text-align: right;
-`;
-
-export const TableTextMessage = styled.div`
-display: flex;
-align-items: center;
 `;
 
 export const MessageText = styled.div`

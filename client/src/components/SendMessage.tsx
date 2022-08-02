@@ -51,7 +51,7 @@ const SendMessage: React.FC = () => {
         <StyledInput
           value={message}
           placeholder="הודעה"
-          gridArea="2 / 1 / 2 / 3"
+          gridarea="2 / 1 / 2 / 3"
           onChange={(e) => changeMessage(e.target.value)}
         />
       </InputContainer>

@@ -2,12 +2,12 @@ import { Input } from '@mui/material';
 import styled from 'styled-components';
 
 interface Props {
-  gridArea?: string
+  gridarea?: string
   ltr?: number
 }
 
 const StyledInput = styled(Input)<Props>`
-grid-area: ${({ gridArea }) => gridArea};
+grid-area: ${({ gridarea }) => gridarea};
 input {
   &::placeholder {
     text-align: right;

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const Loading = styled.div`
-border: 16px solid white;
-border-top: 16px solid #7ED956;
+border: 8px solid white;
+border-top: 8px solid #7ED956;
 border-radius: 50%;
-width: 15vh;
-height: 15vh;
+width: 5vh;
+height: 5vh;
 animation: spin 0.5s linear infinite;
 
 @keyframes spin {

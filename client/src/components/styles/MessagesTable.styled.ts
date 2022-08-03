@@ -9,19 +9,22 @@ width: 100%;
 overflow: auto;
 background-color: white;
 border: 3px solid #7ED956;
+@media (max-width: 768px) {
+  border: 0;
+}
 `;
 
 export const Table = styled.table`
 width: 100%;
 * {
   font-size: 0.6rem;
+  @media (max-width: 768px) {
+    font-size: 0.55rem;
+  }
 }
 border-collapse: collapse;
 tr:nth-child(even) {
   background: #f2f2f2;
-}
-@media (max-width: 768px) {
-  width: 100vw;
 }
 `;
 
@@ -39,9 +42,12 @@ export const TH = styled.th<Props>`
 width: ${({ width }) => `${width}%`};
 text-align: right;
 color: white;
+padding: 9px 5px 9px 0;
 font-size: 0.7rem;
 font-weight: normal;
-padding: 9px 5px 9px 0;
+@media (max-width: 768px) {
+  font-size: 0.6rem;
+}
 `;
 
 export const Arrows = styled(UnfoldMoreIcon)`
@@ -53,6 +59,9 @@ font-size: 0.7rem !important;
 
 export const TD = styled.td`
 padding: 15px;
+@media (max-width: 768px) {
+  padding: 5px;
+}
 `;
 
 export const TDContainer = styled.div`

@@ -6,7 +6,7 @@ height: 33vh;
 display: flex;
 justify-content: space-between;
 @media (max-width: 768px) {
-  height: 20vh;
+  height: 15vh;
 }
 `;
 

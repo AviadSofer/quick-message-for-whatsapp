@@ -12,6 +12,11 @@ animation: spin 0.5s linear infinite;
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+@media (max-width: 768px) {
+  border: 5px solid white;
+  border-top: 5px solid #7ED956;
+}
 `;
 
 export default Loading;

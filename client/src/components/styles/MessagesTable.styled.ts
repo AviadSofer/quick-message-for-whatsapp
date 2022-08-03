@@ -62,6 +62,7 @@ font-size: 0.7rem !important;
 
 export const TD = styled.td`
 padding: 15px;
+
 @media (max-width: 768px) {
   padding: 5px;
 }

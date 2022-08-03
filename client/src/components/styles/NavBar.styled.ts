@@ -11,6 +11,7 @@ justify-content: space-between;
 export const Logo = styled.img`
 width: 12%;
 object-fit: contain;
+
 @media (max-width: 768px) {
     width: 20%;
 }

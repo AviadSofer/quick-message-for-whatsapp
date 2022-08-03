@@ -2,7 +2,9 @@ import { ChangeEvent, useState } from 'react';
 import saveMessage from '../api/saveMessage';
 import { useNumberContext } from '../NumberContext';
 import ErrorMessage from './styles/ErrorMessage.styled';
-import { InputContainer, SendButton, StyledSendMessage } from './styles/SendMessage.styled';
+import {
+  ErrorContainer, InputContainer, SendButton, StyledSendMessage,
+} from './styles/SendMessage.styled';
 import StyledInput from './styles/TextField.styled';
 
 const SendMessage: React.FC = () => {
@@ -44,9 +46,11 @@ const SendMessage: React.FC = () => {
             e.target.value = e.target.value.slice(0, 3);
           }}
         />
-        <ErrorMessage showErr={showErr} gridarea="2 / 1 / 2 / 3">
-          מספר קצר מדי :( מספר תקין הוא משהו בסגנון של 054-123-4567
-        </ErrorMessage>
+        <ErrorContainer>
+          <ErrorMessage showErr={showErr}>
+            מספר קצר מדי :( מספר תקין הוא משהו בסגנון של 054-123-4567
+          </ErrorMessage>
+        </ErrorContainer>
         <StyledInput
           value={message}
           placeholder="הודעה"

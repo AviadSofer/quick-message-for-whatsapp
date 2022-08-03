@@ -20,6 +20,13 @@ grid-template-rows: 1fr 1fr;
 grid-gap: 10% 5%;
 `;
 
+export const ErrorContainer = styled.div`
+grid-area: 2 / 1 / 2 / 3;
+width: 145%;
+display: flex;
+align-self: flex-start;
+`;
+
 export const SendButton = styled(StyledButton)`
 && {
   align-self: flex-end;

@@ -44,14 +44,13 @@ const SendMessage: React.FC = () => {
             e.target.value = e.target.value.slice(0, 3);
           }}
         />
-        <ErrorMessage showErr={showErr}>
-          מספר קצר מדי :(
-          מספר תקין הוא משהו בסגנון של 054-123-4567
+        <ErrorMessage showErr={showErr} gridarea="2 / 1 / 2 / 3">
+          מספר קצר מדי :( מספר תקין הוא משהו בסגנון של 054-123-4567
         </ErrorMessage>
         <StyledInput
           value={message}
           placeholder="הודעה"
-          gridarea="2 / 1 / 2 / 3"
+          gridarea={showErr ? '3 / 1 / 3 / 3' : '2 / 1 / 2 / 3'}
           onChange={(e) => changeMessage(e.target.value)}
         />
       </InputContainer>

@@ -15,7 +15,7 @@ align-items: center;
 background-color: #F5F5F5;
 flex: 2;
 @media (max-width: 768px) {
-  min-height: ${window.innerHeight}px;
+  height: ${window.innerHeight}px;
 }
 `;
 
@@ -34,7 +34,7 @@ border-color: #DCDCDC;
 border-radius: 5px;
 box-shadow: 0px 0px 8px 4px #E0E0E0;
 @media (max-width: 768px) {
-  min-height: ${window.innerHeight}px;
+  height: 100%;
   width: 100%;
   padding: 0;
   justify-content: space-around;
@@ -120,7 +120,7 @@ export const SubmitButton = styled(StyledButton)`
   width: 70%;
   font-size: 0.7rem;
   @media (max-width: 768px) {
-    margin-bottom: 40vh;
+    margin-bottom: 30vh;
     font-size: 0.9rem;
   }
 }

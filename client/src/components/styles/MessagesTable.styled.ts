@@ -9,6 +9,7 @@ width: 100%;
 overflow: auto;
 background-color: white;
 border: 3px solid #7ED956;
+
 @media (max-width: 768px) {
   border: 0;
 }
@@ -21,7 +22,7 @@ border-collapse: collapse;
 * {
   font-size: 0.6rem;
   @media (max-width: 768px) {
-    font-size: 0.55rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -49,7 +50,8 @@ font-size: 0.7rem;
 font-weight: normal;
 
 @media (max-width: 768px) {
-  font-size: 0.6rem;
+  font-size: 0.85rem;
+  width: 33%;
 }
 `;
 

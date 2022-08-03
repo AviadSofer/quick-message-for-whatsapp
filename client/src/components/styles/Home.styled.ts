@@ -19,6 +19,9 @@ flex-basis: 80%;
 justify-content: space-between;
 margin-top: 3vh;
 margin-bottom: 6vh;
+@media (max-width: 768px) {
+    margin-bottom: 42vh;
+}
 `;
 
 export const Explain = styled(MediumTitle)`

@@ -5,6 +5,9 @@ export const StyledSendMessage = styled.div`
 height: 33vh;
 display: flex;
 justify-content: space-between;
+@media (max-width: 768px) {
+  height: 20vh;
+}
 `;
 
 export const InputContainer = styled.div`

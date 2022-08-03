@@ -16,13 +16,15 @@ border: 3px solid #7ED956;
 
 export const Table = styled.table`
 width: 100%;
+border-collapse: collapse;
+
 * {
   font-size: 0.6rem;
   @media (max-width: 768px) {
     font-size: 0.55rem;
   }
 }
-border-collapse: collapse;
+
 tr:nth-child(even) {
   background: #f2f2f2;
 }
@@ -45,6 +47,7 @@ color: white;
 padding: 9px 5px 9px 0;
 font-size: 0.7rem;
 font-weight: normal;
+
 @media (max-width: 768px) {
   font-size: 0.6rem;
 }

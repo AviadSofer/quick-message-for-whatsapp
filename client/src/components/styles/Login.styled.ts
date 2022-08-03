@@ -14,6 +14,7 @@ justify-content: center;
 align-items: center;
 background-color: #F5F5F5;
 flex: 2;
+
 @media (max-width: 768px) {
   height: ${window.innerHeight}px;
 }
@@ -33,6 +34,7 @@ border-width: 1px;
 border-color: #DCDCDC;
 border-radius: 5px;
 box-shadow: 0px 0px 8px 4px #E0E0E0;
+
 @media (max-width: 768px) {
   height: 100%;
   width: 100%;
@@ -44,6 +46,7 @@ box-shadow: 0px 0px 8px 4px #E0E0E0;
 export const LoginLogo = styled.img`
 width: 7vw;
 object-fit: contain;
+
 @media (max-width: 768px) {
   width: 20vw;
 }
@@ -52,6 +55,7 @@ object-fit: contain;
 export const LoginTitle = styled.span`
 font-size: 1.1rem;
 font-family: Arial, Helvetica, sans-serif;
+
 @media (max-width: 768px) {
     font-size: 1.2rem;
 }
@@ -60,9 +64,10 @@ font-family: Arial, Helvetica, sans-serif;
 export const ToSignUp = styled.span`
 font-size: 0.6rem;
 font-family: Arial, Helvetica, sans-serif;
+
 @media (max-width: 768px) {
-    font-size: 0.8rem;
-  }
+  font-size: 0.8rem;
+}
 `;
 
 export const SignUpLink = styled(Link)`
@@ -70,7 +75,7 @@ font-size: 0.6rem;
 font-family: Arial, Helvetica, sans-serif;
 @media (max-width: 768px) {
     font-size: 0.8rem;
-  }
+}
 `;
 
 export const InputAndIcon = styled.div`
@@ -82,11 +87,14 @@ align-items: flex-end;
 
 export const LoginInput = styled(StyledInput)`
 width: 86%;
+
 input {
+  font-size: 0.7rem;
+
   &:-webkit-autofill {
     box-shadow: 0 0 0 30px #FFFFFF inset;
   }
-  font-size: 0.7rem;
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
@@ -103,6 +111,7 @@ font-size: 1.1rem !important;
 
 export const ShowPasswordIcon = styled(Visibility)`
 font-size: 0.7rem !important;
+
 @media (max-width: 768px) {
   font-size: 0.9rem !important;
 }
@@ -110,6 +119,7 @@ font-size: 0.7rem !important;
 
 export const ShowPasswordOffIcon = styled(VisibilityOff)`
 font-size: 0.7rem !important;
+
 @media (max-width: 768px) {
   font-size: 0.9rem !important;
 }
@@ -119,6 +129,7 @@ export const SubmitButton = styled(StyledButton)`
 && {
   width: 70%;
   font-size: 0.7rem;
+
   @media (max-width: 768px) {
     margin-bottom: 30vh;
     font-size: 0.9rem;

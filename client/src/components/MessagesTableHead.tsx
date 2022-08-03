@@ -20,8 +20,8 @@ const MessagesTableHead: React.FC<Props> = ({ data, setData }) => {
   return (
     <TableHead>
       <tr>
-        {Columns.map(({ Header, accessor }) => (
-          <TH key={accessor}>
+        {Columns.map(({ Header, accessor, width }) => (
+          <TH key={accessor} width={width}>
             {Header}
             <IconButton onClick={() => sortData(accessor)}>
               <Arrows />

@@ -26,3 +26,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 `;
+
+export const ModalWrap = styled.div`
+width: 50%;
+`;

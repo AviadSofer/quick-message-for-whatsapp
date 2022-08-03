@@ -25,11 +25,15 @@ const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
 
   if (data.length < 1) {
     return (
-      <TD colSpan={3}>
-        <TDContainer>
-          אין הודעות עדיין
-        </TDContainer>
-      </TD>
+      <tbody>
+        <tr>
+          <TD colSpan={3}>
+            <TDContainer>
+              אין הודעות עדיין
+            </TDContainer>
+          </TD>
+        </tr>
+      </tbody>
     );
   }
 
@@ -39,17 +43,17 @@ const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
         _id, date, phoneNumber, textMessage,
       }) => (
         <tr key={_id}>
-          <TD width={20}>
+          <TD>
             {`${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString('he-IL', {
               hour12: false,
               hour: 'numeric',
               minute: 'numeric',
             })}`}
           </TD>
-          <TD width={20}>
+          <TD>
             <Phone>{phoneNumber}</Phone>
           </TD>
-          <TD width={40}>
+          <TD>
             <TDContainer>
               <MessageText>{textMessage || '—'}</MessageText>
               <IconButton onClick={() => deleteMessage(_id)}>

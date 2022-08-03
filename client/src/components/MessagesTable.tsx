@@ -25,11 +25,15 @@ const MessagesTable: React.FC = () => {
         <MessagesTableHead data={data} setData={setData} />
         {isLoading
           ? (
-            <TD colSpan={3}>
-              <TDContainer>
-                <Loading />
-              </TDContainer>
-            </TD>
+            <tbody>
+              <tr>
+                <TD colSpan={3}>
+                  <TDContainer>
+                    <Loading />
+                  </TDContainer>
+                </TD>
+              </tr>
+            </tbody>
           )
           : <MessagesTableBody data={data} setData={setData} />}
       </Table>

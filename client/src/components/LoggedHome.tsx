@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import HelloUser from './HelloUser';
 import MessagesTable from './MessagesTable';
 import LoggedNavBar from './LoggedNavBar';
-import { StyledLoggedHome, StyledModal, StyledWrap } from './styles/LoggedHome.styled';
+import {
+  ModalWrap, StyledLoggedHome, StyledModal, StyledWrap,
+} from './styles/LoggedHome.styled';
 import SendMessage from './SendMessage';
 import { MediumTitle } from './styles/Title.styled';
 
@@ -21,7 +23,9 @@ const LoggedHome: React.FC = () => {
       <StyledWrap>
         <LoggedNavBar handleModal={handleModal} />
         <StyledModal open={modal} onClose={handleModal}>
-          <MessagesTable />
+          <ModalWrap>
+            <MessagesTable />
+          </ModalWrap>
         </StyledModal>
         <HelloUser />
         <MediumTitle>

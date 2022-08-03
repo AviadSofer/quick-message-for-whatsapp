@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export const TableWrap = styled.div`
 max-height: 70vh;
-width: 50%;
+width: 100%;
 overflow: auto;
 background-color: white;
 border: 3px solid #7ED956;
@@ -31,7 +31,12 @@ top: 0;
 background-color: #7ED956;
 `;
 
-export const TH = styled.th`
+interface Props {
+  width: number
+}
+
+export const TH = styled.th<Props>`
+width: ${({ width }) => `${width}%`};
 text-align: right;
 color: white;
 font-size: 0.7rem;
@@ -46,12 +51,7 @@ font-size: 0.7rem !important;
 }
 `;
 
-interface Props {
-  width?: number
-}
-
-export const TD = styled.td<Props>`
-width: ${({ width }) => `${width}%`};
+export const TD = styled.td`
 padding: 15px;
 `;
 

@@ -1,11 +1,11 @@
+import Logo from './styles/Logo.styled';
 import {
-  NavButtons, Logo, Nav, NavButton, StyledLink,
+  NavButtons, Nav, NavButton, StyledLink,
 } from './styles/NavBar.styled';
-import logo from '../logo.png';
 
 const NavBar: React.FC = () => (
   <Nav>
-    <Logo src={logo} />
+    <Logo width="12%" mobilewidth="20%" />
     <NavButtons>
       <StyledLink to="/login">
         <NavButton>כניסה</NavButton>

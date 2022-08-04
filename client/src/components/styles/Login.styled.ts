@@ -43,15 +43,6 @@ box-shadow: 0px 0px 8px 4px #E0E0E0;
 }
 `;
 
-export const LoginLogo = styled.img`
-width: 7vw;
-object-fit: contain;
-
-@media (max-width: 768px) {
-  width: 20vw;
-}
-`;
-
 export const LoginTitle = styled.span`
 font-size: 1.1rem;
 font-family: Arial, Helvetica, sans-serif;

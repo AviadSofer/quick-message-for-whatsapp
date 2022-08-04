@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { IconButton } from '@mui/material';
 import * as Styled from './styles/Login.styled';
-import logo from '../logo.png';
 import getToken from '../api/getToken';
 import ErrorMessage from './styles/ErrorMessage.styled';
+import Logo from './styles/Logo.styled';
 
 const Login: React.FC = () => {
   const [userName, setUserName] = useState('');
@@ -39,7 +39,7 @@ const Login: React.FC = () => {
   return (
     <Styled.StyledLogin>
       <Styled.LoginContainer>
-        <Styled.LoginLogo src={logo} />
+        <Logo width="7vw" mobilewidth="20vw" />
         <Styled.LoginTitle>כניסה</Styled.LoginTitle>
         <Styled.ToSignUp>
           אין לך חשבון?

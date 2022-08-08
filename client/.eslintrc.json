@@ -24,6 +24,8 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "indent": "off",
+        "@typescript-eslint/indent": ["error", 2],
         "react/prop-types": "off",
         "no-underscore-dangle": "off",
         "linebreak-style": 0,

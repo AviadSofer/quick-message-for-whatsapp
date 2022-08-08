@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface ErrorMessageProps {
-    showErr: number
+  showErr: number
 }
 
 const ErrorMessage = styled.span<ErrorMessageProps>`

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import logo from '../../logo.png';
 
 interface Props {
-    width?: string
-    mobilewidth?: string
+  width?: string
+  mobilewidth?: string
 }
 
 const Logo = styled.img<Props>`

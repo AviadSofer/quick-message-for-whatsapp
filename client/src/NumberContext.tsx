@@ -3,12 +3,12 @@ import React, {
 } from 'react';
 
 type ProviderOptions = {
-    prefix: string
-    phone: string
-    message: string
-    changePrefix: (num: string) => void
-    changePhone: (num: string) => void
-    changeMessage: (msg: string) => void
+  prefix: string
+  phone: string
+  message: string
+  changePrefix: (num: string) => void
+  changePhone: (num: string) => void
+  changeMessage: (msg: string) => void
 }
 type EmptyObject = Record<string, never>
 

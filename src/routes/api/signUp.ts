@@ -9,6 +9,34 @@ import logger from '../../logger/logger';
 
 const router: Router = express.Router();
 
+router.post('/validation/mail', async (req: Request, res: Response) => {
+  const { mail } = req.body;
+  try {
+    await isMailAlreadyExist(mail);
+    res.status(200).json({
+      available: true,
+    });
+  } catch (err) {
+    res.status(409).json({
+      available: false,
+    });
+  }
+});
+
+router.post('/validation/userName', async (req: Request, res: Response) => {
+  const { userName } = req.body;
+  try {
+    await isUserNameAlradyExist(userName);
+    res.status(200).json({
+      available: true,
+    });
+  } catch (err) {
+    res.status(409).json({
+      available: false,
+    });
+  }
+});
+
 router.post('/', async (req: Request, res: Response) => {
   const {
     fullName, mail, userName, password,

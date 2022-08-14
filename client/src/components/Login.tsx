@@ -4,6 +4,7 @@ import * as Styled from './styles/Login.styled';
 import getToken from '../api/getToken';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import Logo from './styles/Logo.styled';
+import { LinkTitle, SmallTitle } from './styles/Title.styled';
 
 const Login: React.FC = () => {
   const [userName, setUserName] = useState('');
@@ -41,11 +42,11 @@ const Login: React.FC = () => {
       <Styled.LoginContainer>
         <Logo width="7vw" mobilewidth="20vw" />
         <Styled.LoginTitle>כניסה</Styled.LoginTitle>
-        <Styled.ToSignUp>
+        <SmallTitle>
           אין לך חשבון?
           {' '}
-          <Styled.SignUpLink to="/signup">הרשמה</Styled.SignUpLink>
-        </Styled.ToSignUp>
+          <LinkTitle to="/signup">הרשמה</LinkTitle>
+        </SmallTitle>
         <Styled.InputAndIcon>
           <Styled.AccountLogo />
           <Styled.LoginInput

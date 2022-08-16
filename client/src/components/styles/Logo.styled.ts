@@ -17,6 +17,9 @@ object-fit: contain;
 
 Logo.defaultProps = {
   src: logo,
+  onClick: () => {
+    window.location.href = '/';
+  },
 };
 
 export default Logo;

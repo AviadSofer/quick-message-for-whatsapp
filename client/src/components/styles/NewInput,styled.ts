@@ -38,6 +38,9 @@ input {
   & .MuiFormHelperText-root { /*helper text*/
     text-align: right;
     font-size: 0.5rem;
+    @media (max-width: 768px) {
+      font-size: 0.6rem;
+    }
   }
 
   .MuiInput-underline:after { /*change border-bottom-color after clicked*/

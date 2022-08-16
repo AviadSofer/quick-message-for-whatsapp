@@ -13,6 +13,8 @@ flex: 2;
 
 @media (max-width: 768px) {
   height: ${window.innerHeight}px;
+  margin-top: 3vh;
+  margin-bottom: 25vh;
 }
 `;
 
@@ -35,7 +37,8 @@ box-shadow: 0px 0px 8px 4px #E0E0E0;
   height: 100%;
   width: 100%;
   padding: 0;
-  justify-content: space-around;
+  border: 0;
+  box-shadow: 0px 0px 0px 0px;
 }
 `;
 
@@ -46,6 +49,9 @@ display: grid;
 grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 1fr 1.3fr;
 grid-gap: 0% 5%;
+@media (max-width: 768px) {
+  height: 55%;
+}
 `;
 
 export const SignUpInput = styled(NewInput)``;

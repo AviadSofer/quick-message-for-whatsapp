@@ -8,13 +8,17 @@ interface Props {
   error?: boolean
 }
 
-const StyledTextField = styled(TextField)<Props>`
+const StyledInput = styled(TextField)<Props>`
 grid-area: ${({ gridarea }) => gridarea};
 
 input {
   direction: ${({ ltr }) => (ltr ? 'ltr' : 'rtl')};
   font-size: ${({ font }) => font};
   color: black;
+
+  &:-webkit-autofill { 
+    transition: background-color 5000s ease-in-out 0s; /*remove color in autofill*/
+  }
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -53,8 +57,9 @@ input::-webkit-inner-spin-button { /*disable the counter when the type is "numbe
 }
 `;
 
-StyledTextField.defaultProps = {
+StyledInput.defaultProps = {
   variant: 'standard',
+  autoComplete: 'off', // should disable the auto complete
 };
 
-export default StyledTextField;
+export default StyledInput;

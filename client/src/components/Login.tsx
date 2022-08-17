@@ -50,7 +50,7 @@ const Login: React.FC = () => {
         <Styled.InputAndIcon>
           <Styled.AccountLogo />
           <Styled.LoginInput
-            placeholder="שם משתמש"
+            label="שם משתמש"
             onChange={(e) => setUserName(e.target.value)}
           />
         </Styled.InputAndIcon>
@@ -59,13 +59,15 @@ const Login: React.FC = () => {
           <Styled.KeyLogo />
           <Styled.LoginInput
             type={showPassword ? 'text' : 'password'}
-            placeholder="סיסמה"
+            label="סיסמה"
             onChange={(e) => setPasswoed(e.target.value)}
-            endAdornment={(
-              <IconButton onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <Styled.ShowPasswordIcon /> : <Styled.ShowPasswordOffIcon />}
-              </IconButton>
-            )}
+            InputProps={{
+              endAdornment: (
+                <IconButton onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <Styled.ShowPasswordIcon /> : <Styled.ShowPasswordOffIcon />}
+                </IconButton>
+              ),
+            }}
           />
         </Styled.InputAndIcon>
         <ErrorMessage showErr={emptyPasswordErr}>שדה חובה</ErrorMessage>

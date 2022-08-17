@@ -5,7 +5,7 @@ import ErrorMessage from './styles/ErrorMessage.styled';
 import {
   ErrorContainer, InputContainer, SendButton, StyledSendMessage,
 } from './styles/SendMessage.styled';
-import StyledInput from './styles/Input.styled';
+import StyledInput from './styles/TextField.styled';
 
 const SendMessage: React.FC = () => {
   const {
@@ -28,7 +28,7 @@ const SendMessage: React.FC = () => {
       <InputContainer>
         <StyledInput
           value={phone}
-          placeholder="מספר טלפון"
+          label="מספר טלפון"
           type="number"
           ltr={+true}
           onChange={(e) => changePhone(e.target.value)}
@@ -38,7 +38,7 @@ const SendMessage: React.FC = () => {
         />
         <StyledInput
           value={prefix}
-          placeholder="קידומת"
+          label="קידומת"
           type="number"
           ltr={+true}
           onChange={(e) => changePrefix(e.target.value)}
@@ -53,7 +53,7 @@ const SendMessage: React.FC = () => {
         </ErrorContainer>
         <StyledInput
           value={message}
-          placeholder="הודעה"
+          label="ההודעה שלך (לא חובה)"
           gridarea={showErr ? '3 / 1 / 3 / 3' : '2 / 1 / 2 / 3'}
           onChange={(e) => changeMessage(e.target.value)}
         />

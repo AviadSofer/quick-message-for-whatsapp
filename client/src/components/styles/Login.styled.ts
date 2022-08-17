@@ -4,7 +4,7 @@ import KeyIcon from '@mui/icons-material/Key';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
 import StyledButton from './Button.styled';
-import StyledInput from './Input.styled';
+import StyledInput from './TextField.styled';
 
 export const StyledLogin = styled.div`
 max-height: 100vh;
@@ -51,19 +51,10 @@ align-items: flex-end;
 
 export const LoginInput = styled(StyledInput)`
 width: 86%;
-
-input {
-  font-size: 0.7rem;
-
-  &:-webkit-autofill {
-    box-shadow: 0 0 0 30px #FFFFFF inset;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-  }
-}
 `;
+LoginInput.defaultProps = {
+  font: '0.7rem',
+};
 
 export const AccountLogo = styled(AccountCircleIcon)`
 font-size: 1.1rem !important;

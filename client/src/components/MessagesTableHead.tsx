@@ -4,8 +4,8 @@ import Columns from '../static/columns';
 import { TableHead, TH, Arrows } from './styles/MessagesTable.styled';
 
 interface Props {
-    data: never[]
-    setData: (newData: never[]) => void
+  data: never[]
+  setData: (newData: never[]) => void
 }
 
 const MessagesTableHead: React.FC<Props> = ({ data, setData }) => {

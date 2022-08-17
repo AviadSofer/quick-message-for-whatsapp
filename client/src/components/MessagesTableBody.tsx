@@ -6,8 +6,8 @@ import {
 } from './styles/MessagesTable.styled';
 
 interface Props {
-    data: never[]
-    setData: (newData: never[]) => void
+  data: never[]
+  setData: (newData: never[]) => void
 }
 
 const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {

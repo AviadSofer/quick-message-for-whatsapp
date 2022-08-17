@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 export const LargeTitle = styled.span`
 font-size: 1.1rem;
+
+@media (max-width: 768px) {
+    font-size: 1.2rem;
+}
 `;
 
 export const MediumTitle = styled.span`

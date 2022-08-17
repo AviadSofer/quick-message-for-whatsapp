@@ -11,7 +11,9 @@ const SendMessage: React.FC = () => {
   const {
     prefix, phone, message, changePrefix, changePhone, changeMessage,
   } = useNumberContext();
+
   const [showErr, setShowErr] = useState(0);
+
   const createLink = async () => {
     setShowErr(0);
     const phoneWithoutZero = phone[0] === '0' ? phone.slice(1) : phone;
@@ -23,6 +25,7 @@ const SendMessage: React.FC = () => {
       setShowErr(+true);
     }
   };
+
   return (
     <StyledSendMessage>
       <InputContainer>
@@ -31,7 +34,10 @@ const SendMessage: React.FC = () => {
           label="מספר טלפון"
           type="number"
           ltr={+true}
-          onChange={(e) => changePhone(e.target.value)}
+          onChange={(e) => {
+            changePhone(e.target.value);
+            if (phone.length > 0) setShowErr(0);
+          }}
           onInput={(e: ChangeEvent<HTMLInputElement>) => {
             e.target.value = e.target.value.slice(0, 10);
           }}

@@ -5,7 +5,7 @@ import ErrorMessage from './styles/ErrorMessage.styled';
 import {
   ErrorContainer, InputContainer, SendButton, StyledSendMessage,
 } from './styles/SendMessage.styled';
-import StyledInput from './styles/TextField.styled';
+import StyledInput from './styles/Input.styled';
 
 const SendMessage: React.FC = () => {
   const {

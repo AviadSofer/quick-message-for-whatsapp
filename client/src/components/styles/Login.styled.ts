@@ -4,7 +4,7 @@ import KeyIcon from '@mui/icons-material/Key';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
 import StyledButton from './Button.styled';
-import StyledInput from './TextField.styled';
+import StyledInput from './Input.styled';
 
 export const StyledLogin = styled.div`
 max-height: 100vh;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import StyledButton from './Button.styled';
-import NewInput from './NewInput,styled';
-import StyledInput from './TextField.styled';
+import StyledTextField from './TextField.styled';
 
 export const StyledSignUp = styled.div`
 max-height: 100vh;
@@ -54,7 +53,7 @@ grid-gap: 0% 5%;
 }
 `;
 
-export const SignUpInput = styled(NewInput)``;
+export const SignUpInput = styled(StyledTextField)``;
 SignUpInput.defaultProps = {
   font: '0.65rem',
   autoComplete: 'new-password', // should disable the auto complete

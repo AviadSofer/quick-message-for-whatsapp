@@ -22,7 +22,7 @@ margin-top: 3vh;
 margin-bottom: 6vh;
 
 @media (max-width: 768px) {
-    margin-bottom: 45vh;
+    margin-bottom: 28vh;
 }
 `;
 

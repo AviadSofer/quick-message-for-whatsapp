@@ -30,6 +30,8 @@ input {
     font-size: ${({ font }) => font};
     transform-origin: right !important;
     right: 0 !important;
+    text-align: right;
+
     @media (max-width: 768px) {
       font-size: 0.9rem;
     }

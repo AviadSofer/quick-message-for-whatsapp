@@ -42,15 +42,6 @@ box-shadow: 0px 0px 8px 4px #E0E0E0;
 }
 `;
 
-export const LoginTitle = styled.span`
-font-size: 1.1rem;
-font-family: Arial, Helvetica, sans-serif;
-
-@media (max-width: 768px) {
-    font-size: 1.2rem;
-}
-`;
-
 export const InputAndIcon = styled.div`
 width: 70%;
 display: flex;

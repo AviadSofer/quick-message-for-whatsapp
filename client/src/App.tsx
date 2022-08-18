@@ -13,10 +13,17 @@ import SignUp from './components/SignUp';
 
 const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => { // make the height static, useful with mobile keyboard
+    const viewport = (document.querySelector('meta[name=viewport]') as HTMLMetaElement);
+    viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
+  }, []);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) setLoggedIn(true);
   }, []);
+
   return (
     <BrowserRouter>
       <NumberProvider>

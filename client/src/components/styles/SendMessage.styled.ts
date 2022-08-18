@@ -7,7 +7,6 @@ display: flex;
 justify-content: space-between;
 
 @media (max-width: 768px) {
-  height: 33vh;
   flex-direction: column;
 }
 `;

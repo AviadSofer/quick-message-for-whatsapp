@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import HelloUser from './HelloUser';
 import MessagesTable from './MessagesTable';
 import LoggedNavBar from './LoggedNavBar';
@@ -10,12 +10,6 @@ import { MediumTitle } from './styles/Title.styled';
 
 const LoggedHome: React.FC = () => {
   const [modal, setModal] = useState(false);
-  useEffect(() => {
-    window.addEventListener('load', () => { // make the height static, useful with mobile keyboard
-      const viewport = (document.querySelector('meta[name=viewport]') as HTMLMetaElement);
-      viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
-    });
-  });
   const handleModal = () => setModal(!modal);
 
   return (

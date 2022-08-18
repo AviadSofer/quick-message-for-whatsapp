@@ -50,13 +50,6 @@ const SignUp: React.FC = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('load', () => { // make the height static, useful with mobile keyboard
-      const viewport = (document.querySelector('meta[name=viewport]') as HTMLMetaElement);
-      viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
-    });
-  });
-
-  useEffect(() => {
     const validateFullName = () => {
       if (fullName.length > 0 && fullName.length < 6) {
         changeErrors({ fullNameErr: true });

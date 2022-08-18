@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { IconButton } from '@mui/material';
 import * as Styled from './styles/Login.styled';
 import getToken from '../api/getToken';
@@ -13,13 +13,6 @@ const Login: React.FC = () => {
   const [emptyPasswordErr, setEmptyPasswordErr] = useState(0);
   const [authErr, setAuthErr] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('load', () => { // make the height static, useful with mobile keyboard
-      const viewport = (document.querySelector('meta[name=viewport]') as HTMLMetaElement);
-      viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
-    });
-  });
 
   const handleSubmit = async () => {
     setAuthErr(0);

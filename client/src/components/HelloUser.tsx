@@ -10,12 +10,14 @@ const HelloUser: React.FC = () => {
   useEffect(() => {
     const day = new Date();
     const hr = day.getHours();
-    if (hr >= 0 && hr < 12) {
+    if (hr >= 5 && hr < 12) {
       setGreet('בוקר טוב');
     } else if (hr >= 12 && hr <= 17) {
       setGreet('צהריים טובים');
-    } else {
+    } else if (hr >= 17 && hr <= 22) {
       setGreet('ערב טוב');
+    } else {
+      setGreet('לילה טוב');
     }
   }, []);
   if (error) return <MediumTitle>שגיאה :(</MediumTitle>;

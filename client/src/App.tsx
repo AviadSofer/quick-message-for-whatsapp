@@ -15,8 +15,10 @@ const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => { // make the height static, useful with mobile keyboard
-    const viewport = (document.querySelector('meta[name=viewport]') as HTMLMetaElement);
-    viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
+    window.addEventListener('load', () => {
+      const viewport = (document.querySelector('meta[name=viewport]') as HTMLMetaElement);
+      viewport.setAttribute('content', `${viewport.content}, height=${window.innerHeight}`);
+    });
   }, []);
 
   useEffect(() => {

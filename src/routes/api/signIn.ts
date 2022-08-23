@@ -13,13 +13,22 @@ router.post('/', async (req: Request, res: Response) => {
   try {
     const user = await checkUser(userName, password);
     const token = jwt.sign({ user }, `${process.env.JWT_KEY}`, { expiresIn: '24h' });
-    res.status(200).json({
-      token,
-    });
-    logger.info(`token:${token} created :)`);
+    res
+      .status(201)
+      .cookie('token', token, {
+        maxAge: 86400000, // 24h
+        httpOnly: true,
+      })
+      .cookie('checkToken', true, {
+        maxAge: 86400000, // 24h
+      })
+      .json({
+        message: 'token created :)',
+      });
+    logger.info(`token:${token} created`);
   } catch (err) {
     res.status(401).json({
-      message: 'auth failed',
+      message: 'auth failed :(',
     });
     logger.error(err);
     throw err;

@@ -10,6 +10,7 @@ import MessageView from './components/MessageView';
 import Login from './components/Login';
 import LoggedHome from './components/LoggedHome';
 import SignUp from './components/SignUp';
+import getCookie from './helpers/getCookie';
 
 const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -22,8 +23,8 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) setLoggedIn(true);
+    const checkToken = getCookie('checkToken');
+    if (checkToken) setLoggedIn(true);
   }, []);
 
   return (

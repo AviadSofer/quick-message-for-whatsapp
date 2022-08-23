@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import createUser from '../api/createUser';
 import { isMailAvailable, isUserNameAvailable } from '../api/fetchSignUpValidation';
+import getCookie from '../helpers/getCookie';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import Logo from './styles/Logo.styled';
 import {
@@ -129,9 +130,9 @@ const SignUp: React.FC = () => {
   }, [confirmPassword]);
 
   const handleSubmit = async () => {
-    const token = await createUser(credentials);
-    if (token) {
-      localStorage.setItem('token', token);
+    await createUser(credentials);
+    const checkToken = getCookie('checkToken');
+    if (checkToken) {
       window.location.href = '/';
     } else {
       changeErrors({ authErr: +true });

@@ -84,15 +84,23 @@ router.post('/', async (req: Request, res: Response) => {
   try {
     const user = await createUser(fullName, mail, userName, password);
     const token = jwt.sign({ user }, `${process.env.JWT_KEY}`, { expiresIn: '24h' });
-    res.status(201).json({
-      message: `success, user:${user.userName} created :)`,
-      token,
-    });
-    logger.info(`success, user:${user.userName} created :)`);
-    logger.info(`token:${token} created :)`);
+    res
+      .status(201)
+      .cookie('token', token, {
+        maxAge: 86400000, // 24h
+        httpOnly: true,
+      })
+      .cookie('checkToken', true, {
+        maxAge: 86400000, // 24h
+      })
+      .json({
+        message: `success, user:${user.userName} and token created :)`,
+      });
+    logger.info(`success, user:${user.userName} created`);
+    logger.info(`token:${token} created`);
   } catch (err) {
     res.status(500).json({
-      message: 'created failed',
+      message: 'created failed :(',
     });
     logger.error(err);
     throw err;

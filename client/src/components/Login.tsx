@@ -5,6 +5,7 @@ import getToken from '../api/getToken';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import Logo from './styles/Logo.styled';
 import { LargeTitle, LinkTitle, SmallTitle } from './styles/Title.styled';
+import getCookie from '../helpers/getCookie';
 
 const Login: React.FC = () => {
   const [userName, setUserName] = useState('');
@@ -21,9 +22,9 @@ const Login: React.FC = () => {
     if (!userName) setEmptyUserNameErr(+true);
     if (!password) setEmptyPasswordErr(+true);
     if (userName && password) {
-      const token = await getToken({ userName, password });
-      if (token) {
-        localStorage.setItem('token', token);
+      await getToken({ userName, password });
+      const checkToken = getCookie('checkToken');
+      if (checkToken) {
         window.location.href = '/';
       } else {
         setAuthErr(+true);

@@ -1,3 +1,4 @@
+import logout from '../api/logout';
 import Logo from './styles/Logo.styled';
 import {
   Nav, NavButtons, NavButton,
@@ -8,8 +9,9 @@ interface Props {
 }
 
 const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
-  const handleLogout = () => {
-    localStorage.removeItem('token');
+  const handleLogout = async () => {
+    await logout();
+    document.cookie = 'checkToken=; Max-Age=0';
     window.location.href = '/';
   };
   return (

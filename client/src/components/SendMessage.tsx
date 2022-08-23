@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import saveMessage from '../api/saveMessage';
+import getCookie from '../helpers/getCookie';
 import { useNumberContext } from '../NumberContext';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import {
@@ -20,7 +21,8 @@ const SendMessage: React.FC = () => {
     if (phoneWithoutZero.length >= 9) {
       const link = `https://wa.me/${prefix}${phone}?text=${message}`;
       window.open(link, '_blank');
-      if (localStorage.getItem('token')) await saveMessage(prefix, phoneWithoutZero, message);
+      const checkToken = getCookie('checkToken');
+      if (checkToken) await saveMessage(prefix, phoneWithoutZero, message);
     } else {
       setShowErr(+true);
     }

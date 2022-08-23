@@ -40,7 +40,7 @@ router.post('/', async (req: Request, res: Response) => {
     logger.info(`message from user:${decoded.user.userName} saved`);
   } catch (err) {
     res.status(401).json({
-      message: 'saved failed',
+      message: 'saved failed :(',
       error: `${err}`,
     });
     logger.error(err);
@@ -48,12 +48,13 @@ router.post('/', async (req: Request, res: Response) => {
 });
 
 router.delete('/', async (req: Request, res: Response) => {
-  const { _id } = req.body;
+  const { decoded, _id } = req.body;
   try {
     await Message.deleteOne({ _id });
     res.status(200).json({
-      message: 'message deleted',
+      message: 'message deleted :)',
     });
+    logger.info(`message from user:${decoded.user.userName} deleted`);
   } catch (err) {
     res.status(500).json({
       message: 'something wrong :(',

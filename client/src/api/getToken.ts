@@ -5,6 +5,6 @@ const getToken = async (credentials: {userName: string, password: string}) => fe
   },
   body: JSON.stringify(credentials),
 }).then((data) => data.json())
-  .then((data) => data.token);
+  .then((data) => data.message);
 
 export default getToken;

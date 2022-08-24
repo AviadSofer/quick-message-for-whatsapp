@@ -32,9 +32,12 @@ describe('login with user', () => {
 
   it('login with correct user', async () => {
     const res = await request(app).post('/api/signin').send({ userName, password });
-    expect(res.statusCode).to.equal(200);
+    const cookies = res.headers['set-cookie'];
+    const tokenCookie = cookies.filter((value: string) => value.split('token=')[1]);
+    const token = tokenCookie[0].split('token=')[1].split(';')[0];
+    expect(res.statusCode).to.equal(201);
     // should verify and not fail
-    jwt.verify(res.body.token, `${process.env.JWT_KEY}`);
+    jwt.verify(token, `${process.env.JWT_KEY}`);
   });
 
   it('incorrect userName, should return 401', async () => {

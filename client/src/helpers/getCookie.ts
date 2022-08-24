@@ -1,4 +1,4 @@
-function getCookie(name: string) {
+const getCookie = (name: string) => {
   const pattern = RegExp(`${name}=.[^;]*`);
   const matched = document.cookie.match(pattern);
   if (matched) {
@@ -6,6 +6,6 @@ function getCookie(name: string) {
     return cookie[1];
   }
   return false;
-}
+};
 
 export default getCookie;

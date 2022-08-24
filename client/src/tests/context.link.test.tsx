@@ -12,12 +12,12 @@ const msg = 'Hi!';
 
 it('should open the right link', () => {
   // render the app into this test
-  const { getByText, getByPlaceholderText } = render(<App />);
+  const { getByText, getByLabelText } = render(<App />);
 
   // input value in all 3 text fields
-  fireEvent.change(getByPlaceholderText('קידומת'), { target: { value: prefix } });
-  fireEvent.change(getByPlaceholderText('מספר טלפון'), { target: { value: phone } });
-  fireEvent.change(getByPlaceholderText('הודעה'), { target: { value: msg } });
+  fireEvent.change(getByLabelText('קידומת'), { target: { value: prefix } });
+  fireEvent.change(getByLabelText('מספר טלפון'), { target: { value: phone } });
+  fireEvent.change(getByLabelText('ההודעה שלך (לא חובה)'), { target: { value: msg } });
 
   window.open = vi.fn();
 

@@ -1,0 +1,41 @@
+POST http://localhost:5000/api/signup HTTP/1.1
+content-type: application/json
+
+{
+    "fullName": "Joan Huan",
+    "mail": "joanHun@gmail.com",
+    "userName": "joan1234",
+    "password": "41234"
+}
+
+###
+
+POST http://localhost:5000/api/signin HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "dra5235ratri14",
+    "password": "41234"
+}
+
+###
+
+POST http://localhost:5000/api/get-messages HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyNzhlOWFmZmRkODRhMzllYTY3ZjVhMCIsImZ1bGxOYW1lIjoiSm9hbiBIdWFuIiwibWFpbCI6IjUzNDU0cmk0OTVyMUBnbWFpbC5jb20iLCJ1c2VyTmFtZSI6ImRyYTUyMzVyYXRyaTE0IiwiaGFzaGVkUGFzc3dvcmQiOiIkMmIkMTAkRk10MmFTSUxkdTlrQU5NNG9TWkQ0T1BRRTZKcFM1amVqcnN1dlpRZmlLSS5ZSk9SZTQuc20iLCJfX3YiOjB9LCJpYXQiOjE2NTIzNjMwNjEsImV4cCI6MTY1MjQ0OTQ2MX0.gaPxmP0tspVMNeJv_nya-3ABZ2D4Mf-Co3LyoLki86c
+content-type: application/json
+
+{
+    "phoneNumber": "0541234567",
+    "textMessage": "Hi!"
+}
+###
+
+GET  http://localhost:5000/api/get-messages HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyNzhlOWFmZmRkODRhMzllYTY3ZjVhMCIsImZ1bGxOYW1lIjoiSm9hbiBIdWFuIiwibWFpbCI6IjUzNDU0cmk0OTVyMUBnbWFpbC5jb20iLCJ1c2VyTmFtZSI6ImRyYTUyMzVyYXRyaTE0IiwiaGFzaGVkUGFzc3dvcmQiOiIkMmIkMTAkRk10MmFTSUxkdTlrQU5NNG9TWkQ0T1BRRTZKcFM1amVqcnN1dlpRZmlLSS5ZSk9SZTQuc20iLCJfX3YiOjB9LCJpYXQiOjE2NTIzNjMwNjEsImV4cCI6MTY1MjQ0OTQ2MX0.gaPxmP0tspVMNeJv_nya-3ABZ2D4Mf-Co3LyoLki86c
+content-type: application/json
+
+###
+
+GET  http://localhost:5000/api/get-user-profile HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyNzhlOWFmZmRkODRhMzllYTY3ZjVhMCIsImZ1bGxOYW1lIjoiSm9hbiBIdWFuIiwibWFpbCI6IjUzNDU0cmk0OTVyMUBnbWFpbC5jb20iLCJ1c2VyTmFtZSI6ImRyYTUyMzVyYXRyaTE0IiwiaGFzaGVkUGFzc3dvcmQiOiIkMmIkMTAkRk10MmFTSUxkdTlrQU5NNG9TWkQ0T1BRRTZKcFM1amVqcnN1dlpRZmlLSS5ZSk9SZTQuc20iLCJfX3YiOjB9LCJpYXQiOjE2NTUyMjEzNDAsImV4cCI6MTY1NTMwNzc0MH0.qAmS06tQJTkYUNFozWsXKs9j0HDGf3Nq7sPmrtekrmg
+content-type: application/json

@@ -34,3 +34,11 @@ font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
 }
 `;
+
+export const ATitle = styled.a`
+font-size: 0.6rem;
+
+@media (max-width: 768px) {
+    font-size: 0.8rem;
+}
+`;

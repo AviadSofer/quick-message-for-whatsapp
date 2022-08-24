@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import createUser from '../api/createUser';
 import { isMailAvailable, isUserNameAvailable } from '../api/fetchSignUpValidation';
 import getCookie from '../helpers/getCookie';
+import Footer from './Footer';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import Logo from './styles/Logo.styled';
 import {
@@ -35,6 +36,10 @@ const SignUp: React.FC = () => {
     confirmPwdErr: false,
     confirmPwdMsgErr: '',
   });
+
+  const {
+    fullNameErr, mailErr, userNameErr, pwdErr, confirmPwdErr,
+  } = errors;
 
   const changeCredentials = (newCredential: { [key: string]: string }) => {
     setCredentials((state) => ({
@@ -130,10 +135,25 @@ const SignUp: React.FC = () => {
   }, [confirmPassword]);
 
   const handleSubmit = async () => {
-    await createUser(credentials);
-    const checkToken = getCookie('checkToken');
-    if (checkToken) {
-      window.location.href = '/';
+    if (
+      fullName
+      && mail
+      && userName
+      && password
+      && confirmPassword
+      && !fullNameErr
+      && !mailErr
+      && !userNameErr
+      && !pwdErr
+      && !confirmPwdErr
+    ) {
+      await createUser(credentials);
+      const checkToken = getCookie('checkToken');
+      if (checkToken) {
+        window.location.href = '/';
+      } else {
+        changeErrors({ authErr: +true });
+      }
     } else {
       changeErrors({ authErr: +true });
     }
@@ -188,6 +208,7 @@ const SignUp: React.FC = () => {
           <LinkTitle to="/login">התחברות</LinkTitle>
         </SmallTitle>
       </SignUpContainer>
+      <Footer />
     </StyledSignUp>
   );
 };

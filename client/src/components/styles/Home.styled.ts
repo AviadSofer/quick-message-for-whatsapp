@@ -2,27 +2,29 @@ import styled from 'styled-components';
 import { MediumTitle } from './Title.styled';
 
 export const StyledHome = styled.div`
-max-height: 100vh;
+height: 100vh;
 flex: 2;
 display: flex;
-justify-content: center;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
 
 @media (max-width: 768px) {
+    height: ${window.innerHeight}px;
     text-align: center;
-    min-height: ${window.innerHeight}px;
 }
 `;
 
 export const StyledWrap = styled.div`
+height: 85%;
+width: 80%;
 display: flex;
 flex-direction: column;
-flex-basis: 80%;
 justify-content: space-between;
 margin-top: 3vh;
-margin-bottom: 6vh;
 
 @media (max-width: 768px) {
-    margin-bottom: 28vh;
+    margin-bottom: 22vh;
 }
 `;
 

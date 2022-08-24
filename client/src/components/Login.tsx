@@ -6,6 +6,7 @@ import ErrorMessage from './styles/ErrorMessage.styled';
 import Logo from './styles/Logo.styled';
 import { LargeTitle, LinkTitle, SmallTitle } from './styles/Title.styled';
 import getCookie from '../helpers/getCookie';
+import Footer from './Footer';
 
 const Login: React.FC = () => {
   const [userName, setUserName] = useState('');
@@ -68,6 +69,7 @@ const Login: React.FC = () => {
         <ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</ErrorMessage>
         <Styled.SubmitButton green={+true} onClick={handleSubmit}>כניסה</Styled.SubmitButton>
       </Styled.LoginContainer>
+      <Footer />
     </Styled.StyledLogin>
   );
 };

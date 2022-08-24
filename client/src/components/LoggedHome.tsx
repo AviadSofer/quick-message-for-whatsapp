@@ -7,6 +7,7 @@ import {
 } from './styles/LoggedHome.styled';
 import SendMessage from './SendMessage';
 import { MediumTitle } from './styles/Title.styled';
+import Footer from './Footer';
 
 const LoggedHome: React.FC = () => {
   const [modal, setModal] = useState(false);
@@ -29,6 +30,7 @@ const LoggedHome: React.FC = () => {
         <MediumTitle>תרצה לשלוח הודעה חדשה?</MediumTitle>
         <SendMessage />
       </StyledWrap>
+      <Footer />
     </StyledLoggedHome>
   );
 };

@@ -5,7 +5,9 @@ export const StyledLoggedHome = styled.div`
 height: 100vh;
 flex: 2;
 display: flex;
-justify-content: center;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
 
 @media (max-width: 768px) {
     height: ${window.innerHeight}px;
@@ -14,15 +16,15 @@ justify-content: center;
 `;
 
 export const StyledWrap = styled.div`
+height: 85%;
+width: 80%;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-flex-basis: 80%;
 margin-top: 4vh;
-margin-bottom: 4vh;
 
 @media (max-width: 768px) {
-    margin-bottom: 28vh;
+    margin-bottom: 22vh;
 }
 `;
 

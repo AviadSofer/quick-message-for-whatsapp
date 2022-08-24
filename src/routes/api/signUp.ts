@@ -9,6 +9,34 @@ import logger from '../../logger/logger';
 
 const router: Router = express.Router();
 
+router.post('/validation/mail', async (req: Request, res: Response) => {
+  const { mail } = req.body;
+  try {
+    await isMailAlreadyExist(mail);
+    res.status(200).json({
+      available: true,
+    });
+  } catch (err) {
+    res.status(409).json({
+      available: false,
+    });
+  }
+});
+
+router.post('/validation/userName', async (req: Request, res: Response) => {
+  const { userName } = req.body;
+  try {
+    await isUserNameAlradyExist(userName);
+    res.status(200).json({
+      available: true,
+    });
+  } catch (err) {
+    res.status(409).json({
+      available: false,
+    });
+  }
+});
+
 router.post('/', async (req: Request, res: Response) => {
   const {
     fullName, mail, userName, password,
@@ -56,15 +84,23 @@ router.post('/', async (req: Request, res: Response) => {
   try {
     const user = await createUser(fullName, mail, userName, password);
     const token = jwt.sign({ user }, `${process.env.JWT_KEY}`, { expiresIn: '24h' });
-    res.status(201).json({
-      message: `success, user:${user.userName} created :)`,
-      token,
-    });
-    logger.info(`success, user:${user.userName} created :)`);
-    logger.info(`token:${token} created :)`);
+    res
+      .status(201)
+      .cookie('token', token, {
+        maxAge: 86400000, // 24h
+        httpOnly: true,
+      })
+      .cookie('checkToken', true, {
+        maxAge: 86400000, // 24h
+      })
+      .json({
+        message: `success, user:${user.userName} and token created :)`,
+      });
+    logger.info(`success, user:${user.userName} created`);
+    logger.info(`token:${token} created`);
   } catch (err) {
     res.status(500).json({
-      message: 'created failed',
+      message: 'created failed :(',
     });
     logger.error(err);
     throw err;

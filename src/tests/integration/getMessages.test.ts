@@ -12,7 +12,7 @@ chai.use(chaiSubset);
 const { expect } = chai;
 logger.level = 'fatal';
 
-describe('login with user', () => {
+describe('getMessages.test.ts', () => {
   const randomString = (Math.random() + 1).toString(36).substring(7);
   const user = {
     fullName: 'Joan Huan',
@@ -22,13 +22,14 @@ describe('login with user', () => {
   };
   const { mail, userName } = user;
 
-  let token: string;
+  let tokenCookie: string;
 
   before(async () => {
     await dbConnect();
     await User.deleteOne({ mail });
     const newUser = await request(app).post('/api/signup').send(user);
-    token = newUser.body.token;
+    const cookies = newUser.headers['set-cookie'];
+    tokenCookie = cookies.filter((value: string) => value.split('token=')[1]);
   });
   after(async () => {
     await User.deleteOne({ mail });
@@ -40,39 +41,31 @@ describe('login with user', () => {
     const newPost = await request(app).post('/api/get-messages').send({});
     expect(newPost.statusCode).to.equal(401);
     expect(newPost.body).to.include({
-      message: 'invalid token',
+      message: 'invalid token :(',
     });
   });
 
-  it('POST TEST - post new message with token, and without phoneNumber/textMessage', async () => {
+  it('POST TEST - post new message with token (should work), and without phoneNumber (should fail)', async () => {
     const newPost = await request(app).post('/api/get-messages')
-      .set({ Authorization: `Bearer ${token}` })
+      .set('Cookie', [tokenCookie])
       .send({
         phoneNumber: '0541234567',
         textMessage: 'Hi!',
       });
     expect(newPost.statusCode).to.equal(201);
 
-    // textMessage missing
-    const resWithoutTextMessage = await request(app).post('/api/get-messages')
-      .set({ Authorization: `Bearer ${token}` })
-      .send({
-        phoneNumber: '0541234567',
-      });
-    expect(resWithoutTextMessage.statusCode).to.equal(401);
-
     // phoneNumber missing
     const resWithoutPhoneNumber = await request(app).post('/api/get-messages')
-      .set({ Authorization: `Bearer ${token}` })
+      .set('Cookie', [tokenCookie])
       .send({
         textMessage: '0541234567',
       });
     expect(resWithoutPhoneNumber.statusCode).to.equal(401);
   });
 
-  it('GET TEST - sould get the relevant messages', async () => {
+  it('GET TEST - should get the relevant messages', async () => {
     const messages = await request(app).get('/api/get-messages')
-      .set({ Authorization: `Bearer ${token}` });
+      .set('Cookie', [tokenCookie]);
     expect(messages.statusCode).to.equal(200);
     expect(messages.body).to.containSubset([{
       userName,

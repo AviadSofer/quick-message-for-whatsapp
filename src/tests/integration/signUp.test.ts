@@ -30,7 +30,7 @@ describe('creating new user', () => {
     const res = await request(app).post('/api/signup').send(user);
     expect(res.statusCode).to.equal(201);
     expect(res.body).to.include({
-      message: `success, user:${user.userName} created :)`,
+      message: `success, user:${user.userName} and token created :)`,
     });
   });
 

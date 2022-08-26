@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IconButton } from '@mui/material';
 import * as Styled from './styles/Login.styled';
-import getToken from '../api/getToken';
+import createToken from '../api/createToken ';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import Logo from './styles/Logo.styled';
 import { LargeTitle, LinkTitle, SmallTitle } from './styles/Title.styled';
@@ -23,7 +23,7 @@ const Login: React.FC = () => {
     if (!userName) setEmptyUserNameErr(+true);
     if (!password) setEmptyPasswordErr(+true);
     if (userName && password) {
-      await getToken({ userName, password });
+      await createToken({ userName, password });
       const checkToken = getCookie('checkToken');
       if (checkToken) {
         window.location.href = '/';

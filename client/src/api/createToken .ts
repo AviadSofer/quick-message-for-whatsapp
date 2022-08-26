@@ -1,4 +1,4 @@
-const getToken = async (credentials: {userName: string, password: string}) => fetch('/api/signin', {
+const createToken = async (credentials: {userName: string, password: string}) => fetch('/api/signin', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -7,4 +7,4 @@ const getToken = async (credentials: {userName: string, password: string}) => fe
 }).then((data) => data.json())
   .then((data) => data.message);
 
-export default getToken;
+export default createToken;

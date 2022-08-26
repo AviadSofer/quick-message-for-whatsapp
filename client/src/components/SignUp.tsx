@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import createUser from '../api/createUser';
-import { isMailAvailable, isUserNameAvailable } from '../api/fetchSignUpValidation';
+import { isMailAvailable, isUserNameAvailable } from '../api/isCredentialsAvailable';
 import getCookie from '../helpers/getCookie';
 import Footer from './Footer';
 import ErrorMessage from './styles/ErrorMessage.styled';

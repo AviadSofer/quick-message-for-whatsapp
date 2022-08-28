@@ -27,7 +27,12 @@ app.use('/api/signin', signIn);
 app.use('/api/signout', signOut);
 app.use('/api/get-user-profile', auth, getUserProfile);
 app.use('/api/get-messages', auth, getMessages);
+
+// serve the client
 app.use(express.static(path.join(path.resolve(), 'client', 'dist')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(path.resolve(), 'client', 'dist', 'index.html'));
+});
 
 // start express server on port 5000
 app.listen(port, () => {

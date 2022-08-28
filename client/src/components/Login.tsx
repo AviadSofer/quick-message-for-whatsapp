@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IconButton } from '@mui/material';
 import * as Styled from './styles/Login.styled';
-import createToken from '../api/createToken ';
+import createToken from '../api/createToken';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import Logo from './styles/Logo.styled';
 import { LargeTitle, LinkTitle, SmallTitle } from './styles/Title.styled';

@@ -9,9 +9,8 @@ import {
 import StyledInput from './styles/TextField.styled';
 
 const SendMessage: React.FC = () => {
-  const {
-    prefix, phone, message, changePrefix, changePhone, changeMessage,
-  } = useNumberContext();
+  const { message, changeMessage } = useNumberContext();
+  const { prefix, phone, textMessage } = message;
 
   const [showErr, setShowErr] = useState(0);
 
@@ -22,7 +21,7 @@ const SendMessage: React.FC = () => {
       const link = `https://wa.me/${prefix}${phone}?text=${message}`;
       window.open(link, '_blank');
       const checkToken = getCookie('checkToken');
-      if (checkToken) await saveMessage(prefix, phoneWithoutZero, message);
+      if (checkToken) await saveMessage(prefix, phoneWithoutZero, textMessage);
     } else {
       setShowErr(+true);
     }
@@ -37,7 +36,7 @@ const SendMessage: React.FC = () => {
           type="number"
           ltr={+true}
           onChange={(e) => {
-            changePhone(e.target.value);
+            changeMessage({ phone: e.target.value });
             if (phone.length > 0) setShowErr(0);
           }}
           onInput={(e: ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +48,7 @@ const SendMessage: React.FC = () => {
           label="קידומת"
           type="number"
           ltr={+true}
-          onChange={(e) => changePrefix(e.target.value)}
+          onChange={(e) => changeMessage({ prefix: e.target.value })}
           onInput={(e: ChangeEvent<HTMLInputElement>) => {
             e.target.value = e.target.value.slice(0, 3);
           }}
@@ -60,10 +59,10 @@ const SendMessage: React.FC = () => {
           </ErrorMessage>
         </ErrorContainer>
         <StyledInput
-          value={message}
+          value={textMessage}
           label="ההודעה שלך (לא חובה)"
           gridarea={showErr ? '3 / 1 / 3 / 3' : '2 / 1 / 2 / 3'}
-          onChange={(e) => changeMessage(e.target.value)}
+          onChange={(e) => changeMessage({ textMessage: e.target.value })}
         />
       </InputContainer>
       <SendButton

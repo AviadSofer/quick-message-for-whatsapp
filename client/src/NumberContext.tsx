@@ -3,12 +3,12 @@ import React, {
 } from 'react';
 
 type ProviderOptions = {
-  prefix: string
-  phone: string
-  message: string
-  changePrefix: (num: string) => void
-  changePhone: (num: string) => void
-  changeMessage: (msg: string) => void
+  message: {
+    prefix: string
+    phone: string
+    textMessage: string
+  }
+  changeMessage: (newValue: { [key: string]: string}) => void
 }
 type EmptyObject = Record<string, never>
 
@@ -18,20 +18,21 @@ export const useNumberContext = () => useContext(NumberContext);
 
 // React Component that wrap the components below it, and provide them the context
 export const NumberProvider: React.FC = ({ children }) => {
-  const [prefix, setPrefix] = useState('972');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
-  const providerOptions: ProviderOptions = {
-    prefix,
-    phone,
-    message,
-    changePrefix: (num: string) => setPrefix(num),
-    changePhone: (num: string) => setPhone(num),
-    changeMessage: (msg: string) => setMessage(msg),
+  const [message, setMessage] = useState({
+    prefix: '972',
+    phone: '',
+    textMessage: '',
+  });
+
+  const changeMessage = (newValue: { [key: string]: string }) => {
+    setMessage((state) => ({
+      ...state,
+      ...newValue,
+    }));
   };
-  // by default React re-rendering all the content, every change
-  // with useMemo React will re-render the code inside it, only when the second argument will change
-  const value = useMemo(() => providerOptions, [providerOptions]);
+
+  const value = useMemo(() => ({ message, changeMessage }), [message]);
+
   return (
     <NumberContext.Provider value={value}>
       {children}

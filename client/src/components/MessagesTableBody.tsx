@@ -11,16 +11,19 @@ interface Props {
 }
 
 const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
-  const { changePrefix, changePhone, changeMessage } = useNumberContext();
+  const { changeMessage } = useNumberContext();
+
   const deleteMessage = async (_id: string) => {
     await deleteMessageById(_id);
-    setData([...data].filter((message: { _id: string }) => message._id !== _id));
+    setData([...data].filter((someMessage: { _id: string }) => someMessage._id !== _id));
   };
 
   const sendMessage = (phoneNumber: string, textMessage: string) => {
-    changePrefix(`${phoneNumber.slice(1, 4)}`);
-    changePhone(`${phoneNumber.slice(5, 7)}${phoneNumber.slice(8, 11)}${phoneNumber.slice(12, 16)}`);
-    changeMessage(textMessage);
+    changeMessage({
+      prefix: `${phoneNumber.slice(1, 4)}`,
+      phone: `${phoneNumber.slice(5, 7)}${phoneNumber.slice(8, 11)}${phoneNumber.slice(12, 16)}`,
+      textMessage,
+    });
   };
 
   if (data.length < 1) {

@@ -1,8 +1,4 @@
 import styled from 'styled-components';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import KeyIcon from '@mui/icons-material/Key';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Visibility from '@mui/icons-material/Visibility';
 import StyledButton from './Button.styled';
 import StyledInput from './TextField.styled';
 
@@ -61,30 +57,6 @@ width: 86%;
 LoginInput.defaultProps = {
   font: '0.7rem',
 };
-
-export const AccountLogo = styled(AccountCircleIcon)`
-font-size: 1.1rem !important;
-`;
-
-export const KeyLogo = styled(KeyIcon)`
-font-size: 1.1rem !important;
-`;
-
-export const ShowPasswordIcon = styled(Visibility)`
-font-size: 0.7rem !important;
-
-@media (max-width: 768px) {
-  font-size: 0.9rem !important;
-}
-`;
-
-export const ShowPasswordOffIcon = styled(VisibilityOff)`
-font-size: 0.7rem !important;
-
-@media (max-width: 768px) {
-  font-size: 0.9rem !important;
-}
-`;
 
 export const SubmitButton = styled(StyledButton)`
 && {

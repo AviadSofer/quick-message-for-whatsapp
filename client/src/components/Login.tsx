@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import { IconButton } from '@mui/material';
-import * as Styled from './styles/Login.styled';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import KeyIcon from '@mui/icons-material/Key';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Visibility from '@mui/icons-material/Visibility';
+import {
+  InputAndIcon, LoginContainer, LoginInput, StyledLogin, SubmitButton,
+} from './styles/Login.styled';
 import createToken from '../api/createToken';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import Logo from './styles/Logo.styled';
 import { LargeTitle, LinkTitle, SmallTitle } from './styles/Title.styled';
 import getCookie from '../helpers/getCookie';
 import Footer from './Footer';
+import Icon from './Icon';
 
 const Login: React.FC = () => {
   const [userName, setUserName] = useState('');
@@ -32,9 +39,10 @@ const Login: React.FC = () => {
       }
     }
   };
+
   return (
-    <Styled.StyledLogin>
-      <Styled.LoginContainer>
+    <StyledLogin>
+      <LoginContainer>
         <Logo width="7vw" mobilewidth="20vw" />
         <LargeTitle>כניסה</LargeTitle>
         <SmallTitle>
@@ -42,35 +50,37 @@ const Login: React.FC = () => {
           {' '}
           <LinkTitle to="/signup">הרשמה</LinkTitle>
         </SmallTitle>
-        <Styled.InputAndIcon>
-          <Styled.AccountLogo />
-          <Styled.LoginInput
+        <InputAndIcon>
+          <Icon src={<AccountCircleIcon />} size="1.1" />
+          <LoginInput
             label="שם משתמש"
             onChange={(e) => setUserName(e.target.value)}
           />
-        </Styled.InputAndIcon>
+        </InputAndIcon>
         <ErrorMessage showErr={emptyUserNameErr}>שדה חובה</ErrorMessage>
-        <Styled.InputAndIcon>
-          <Styled.KeyLogo />
-          <Styled.LoginInput
+        <InputAndIcon>
+          <Icon src={<KeyIcon />} size="1.1" />
+          <LoginInput
             type={showPassword ? 'text' : 'password'}
             label="סיסמה"
             onChange={(e) => setPasswoed(e.target.value)}
             InputProps={{
               endAdornment: (
                 <IconButton onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? <Styled.ShowPasswordIcon /> : <Styled.ShowPasswordOffIcon />}
+                  {showPassword
+                    ? <Icon src={<Visibility />} size="0.7" mobilesize="0.9" />
+                    : <Icon src={<VisibilityOff />} size="0.7" mobilesize="0.9" />}
                 </IconButton>
               ),
             }}
           />
-        </Styled.InputAndIcon>
+        </InputAndIcon>
         <ErrorMessage showErr={emptyPasswordErr}>שדה חובה</ErrorMessage>
         <ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</ErrorMessage>
-        <Styled.SubmitButton green={+true} onClick={handleSubmit}>כניסה</Styled.SubmitButton>
-      </Styled.LoginContainer>
+        <SubmitButton green={+true} onClick={handleSubmit}>כניסה</SubmitButton>
+      </LoginContainer>
       <Footer />
-    </Styled.StyledLogin>
+    </StyledLogin>
   );
 };
 

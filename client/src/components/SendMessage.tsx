@@ -18,7 +18,7 @@ const SendMessage: React.FC = () => {
     setShowErr(0);
     const phoneWithoutZero = phone[0] === '0' ? phone.slice(1) : phone;
     if (phoneWithoutZero.length >= 9) {
-      const link = `https://wa.me/${prefix}${phone}?text=${message}`;
+      const link = `https://wa.me/${prefix}${phone}?text=${textMessage}`;
       window.open(link, '_blank');
       const checkToken = getCookie('checkToken');
       if (checkToken) await saveMessage(prefix, phoneWithoutZero, textMessage);

@@ -8,7 +8,7 @@ max-height: 70vh;
 width: 100%;
 overflow: auto;
 background-color: white;
-border: 3px solid #7ED956;
+border: 3px solid ${({ theme }) => theme.colors.green};
 
 @media (max-width: 768px) {
   border: 0;
@@ -34,7 +34,7 @@ tr:nth-child(even) {
 export const TableHead = styled.thead`
 position: sticky;
 top: 0;
-background-color: #7ED956;
+background-color: ${({ theme }) => theme.colors.green};
 `;
 
 interface Props {

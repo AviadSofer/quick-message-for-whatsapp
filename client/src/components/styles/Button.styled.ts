@@ -11,7 +11,7 @@ const StyledButton = styled(Button)<Props>`
   justify-content: center;
   border-radius: 10px;
   font-family: Secular One, sans-serif;
-  background-color: ${({ green }) => (green ? '#7ED956' : 'transparent')};
+  background-color: ${({ theme, green }) => (green ? theme.colors.green : 'transparent')};
   color: ${({ green }) => (green ? 'white' : 'gray')};
   box-shadow:  ${({ green }) => (green ? '0px 5px 9px -4px rgba(135,135,135,0.82)' : 'none')};
 }

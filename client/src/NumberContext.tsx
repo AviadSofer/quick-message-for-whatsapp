@@ -16,7 +16,7 @@ type EmptyObject = Record<string, never>
 const NumberContext = createContext<ProviderOptions | EmptyObject>({});
 export const useNumberContext = () => useContext(NumberContext);
 
-// React Component that wrap the components below it, and provide them the context
+// react component that wrap the components below it, and provide them the context
 export const NumberProvider: React.FC = ({ children }) => {
   const [message, setMessage] = useState({
     prefix: '972',

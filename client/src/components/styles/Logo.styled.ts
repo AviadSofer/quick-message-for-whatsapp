@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../../logo.svg';
+import logo from '../../logo.png';
 
 interface Props {
   width?: string

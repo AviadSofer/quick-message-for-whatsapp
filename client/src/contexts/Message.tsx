@@ -2,7 +2,7 @@ import React, {
   createContext, useContext, useMemo, useState,
 } from 'react';
 
-type ProviderOptions = {
+interface ProviderOptions {
   message: {
     prefix: string
     phone: string
@@ -10,14 +10,13 @@ type ProviderOptions = {
   }
   changeMessage: (newValue: { [key: string]: string}) => void
 }
-type EmptyObject = Record<string, never>
 
 // export hook for using the context
-const NumberContext = createContext<ProviderOptions | EmptyObject>({});
-export const useNumberContext = () => useContext(NumberContext);
+const MessageContext = createContext<Record<string, never> | ProviderOptions>({});
+const useMessageContext = () => useContext(MessageContext);
 
 // react component that wrap the components below it, and provide them the context
-export const NumberProvider: React.FC = ({ children }) => {
+const Message: React.FC = ({ children }) => {
   const [message, setMessage] = useState({
     prefix: '972',
     phone: '',
@@ -34,8 +33,10 @@ export const NumberProvider: React.FC = ({ children }) => {
   const value = useMemo(() => ({ message, changeMessage }), [message]);
 
   return (
-    <NumberContext.Provider value={value}>
+    <MessageContext.Provider value={value}>
       {children}
-    </NumberContext.Provider>
+    </MessageContext.Provider>
   );
 };
+
+export { useMessageContext, Message };

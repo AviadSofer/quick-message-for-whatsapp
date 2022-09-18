@@ -1,6 +1,6 @@
 import { IconButton } from '@mui/material';
 import deleteMessageById from '../api/deleteMessageById';
-import { useNumberContext } from '../NumberContext';
+import { useMessageContext } from '../contexts/Message';
 import {
   ArrowDown, Delete, MessageText, Phone, TDContainer, TD,
 } from './styles/MessagesTable.styled';
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
-  const { changeMessage } = useNumberContext();
+  const { changeMessage } = useMessageContext();
 
   const deleteMessage = async (_id: string) => {
     await deleteMessageById(_id);

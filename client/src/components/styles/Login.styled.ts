@@ -8,7 +8,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: #F5F5F5;
+background-color: ${({ theme }) => theme.backgrounds.thirdary};
 flex: 2;
 
 @media (max-width: 768px) {
@@ -26,12 +26,10 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 align-items: center;
-background-color: white;
-border-style: solid;
-border-width: 1px;
-border-color: #DCDCDC;
+background-color: ${({ theme }) => theme.backgrounds.secondary};
+border: ${({ theme }) => (!theme.isDarkMode ? '1px solid #DCDCDC' : 'none')};
 border-radius: 5px;
-box-shadow: 0px 0px 8px 4px #E0E0E0;
+box-shadow:  ${({ theme }) => (!theme.isDarkMode ? '0px 0px 8px 4px #E0E0E0' : 'none')};
 
 @media (max-width: 768px) {
   height: 100%;

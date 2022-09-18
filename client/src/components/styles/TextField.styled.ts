@@ -14,10 +14,11 @@ grid-area: ${({ gridarea }) => gridarea};
 input {
   direction: ${({ ltr }) => (ltr ? 'ltr' : 'rtl')};
   font-size: ${({ font }) => font};
-  color: black;
+  color: ${({ theme }) => theme.fonts.inputText};
 
   &:-webkit-autofill { 
     transition: background-color 5000s ease-in-out 0s; /*remove color in autofill*/
+    -webkit-text-fill-color: ${({ theme }) => theme.fonts.inputText};
   }
 
   @media (max-width: 768px) {
@@ -28,6 +29,7 @@ input {
 & {
   label {
     font-size: ${({ font }) => font};
+    color: ${({ theme }) => theme.fonts.text};
     transform-origin: right !important;
     right: 0 !important;
     text-align: right;
@@ -44,9 +46,18 @@ input {
   & .MuiFormHelperText-root { /*helper text*/
     text-align: right;
     font-size: 0.5rem;
+
     @media (max-width: 768px) {
       font-size: 0.6rem;
     }
+  }
+
+  .MuiInput-underline:before {
+    border-bottom-color: ${({ theme }) => theme.fonts.text};
+  }
+
+  && .MuiInput-underline:hover:before {
+    border-bottom-color: ${({ theme }) => theme.fonts.text};
   }
 
   .MuiInput-underline:after { /*change border-bottom-color after clicked*/

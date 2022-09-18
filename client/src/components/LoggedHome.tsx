@@ -11,6 +11,7 @@ import Footer from './Footer';
 
 const LoggedHome: React.FC = () => {
   const [modal, setModal] = useState(false);
+
   const handleModal = () => setModal(!modal);
 
   return (

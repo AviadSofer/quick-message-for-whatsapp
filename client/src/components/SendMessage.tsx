@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import saveMessage from '../api/saveMessage';
 import getCookie from '../helpers/getCookie';
-import { useNumberContext } from '../NumberContext';
+import { useMessageContext } from '../contexts/Message';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import {
   ErrorContainer, InputContainer, SendButton, StyledSendMessage,
@@ -9,7 +9,7 @@ import {
 import StyledInput from './styles/TextField.styled';
 
 const SendMessage: React.FC = () => {
-  const { message, changeMessage } = useNumberContext();
+  const { message, changeMessage } = useMessageContext();
   const { prefix, phone, textMessage } = message;
 
   const [showErr, setShowErr] = useState(0);

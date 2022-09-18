@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 * {
     direction: rtl;
-    color: gray;
+    color: ${({ theme }) => theme.fonts.text};
     font-family: Secular One, sans-serif;
     font-size: 1.7rem;
 
@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
 }
     
 body {
+    background-color: ${({ theme }) => theme.backgrounds.primary};
     margin: 0;
 } 
 `;

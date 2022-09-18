@@ -8,7 +8,7 @@ max-height: 70vh;
 width: 100%;
 overflow: auto;
 background-color: white;
-border: 3px solid ${({ theme }) => theme.colors.green};
+border: 3px solid ${({ theme }) => theme.green};
 
 @media (max-width: 768px) {
   border: 0;
@@ -18,6 +18,7 @@ border: 3px solid ${({ theme }) => theme.colors.green};
 export const Table = styled.table`
 width: 100%;
 border-collapse: collapse;
+background-color: ${({ theme }) => theme.backgrounds.primary};
 
 * {
   font-size: 0.6rem;
@@ -27,14 +28,14 @@ border-collapse: collapse;
 }
 
 tr:nth-child(even) {
-  background: #f2f2f2;
+  background-color: ${({ theme }) => theme.backgrounds.secondary};
 }
 `;
 
 export const TableHead = styled.thead`
 position: sticky;
 top: 0;
-background-color: ${({ theme }) => theme.colors.green};
+background-color: ${({ theme }) => theme.green};
 `;
 
 interface Props {

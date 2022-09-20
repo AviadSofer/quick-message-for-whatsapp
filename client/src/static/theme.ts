@@ -10,10 +10,10 @@ export const lightTheme: DefaultTheme = {
   },
 
   backgrounds: {
-    primary: '#FFF', // white or black
-    secondary: '#FFF', // white or grey
-    thirdary: '#F5F5F5', // grey or black
-    leftSide: 'radial-gradient(circle, rgba(96,199,133,1) 0%, rgba(67,227,125,1) 98%);', // green or grey
+    primary: '#FFF', // white or grey
+    secondary: '#FFF', // white or black
+    thirdary: '#F5F5F5', // light grey or dark grey
+    leftSide: 'radial-gradient(circle, rgba(96,199,133,1) 0%, rgba(67,227,125,1) 98%);', // green or black
   },
 };
 
@@ -27,9 +27,9 @@ export const darkTheme: DefaultTheme = {
   },
 
   backgrounds: {
-    primary: '#181818',
-    secondary: '#212121',
-    thirdary: '#181818',
-    leftSide: '#212121',
+    primary: '#212121',
+    secondary: '#181818',
+    thirdary: '#212121',
+    leftSide: '#181818',
   },
 };

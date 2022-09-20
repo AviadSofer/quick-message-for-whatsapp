@@ -14,8 +14,10 @@ import { LargeTitle, LinkTitle, SmallTitle } from './styles/Title.styled';
 import getCookie from '../helpers/getCookie';
 import Footer from './Footer';
 import Icon from './Icon';
+import { LoadingButton } from './styles/Button.styled';
 
 const Login: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [userName, setUserName] = useState('');
   const [password, setPasswoed] = useState('');
   const [emptyUserNameErr, setEmptyUserNameErr] = useState(0);
@@ -30,11 +32,14 @@ const Login: React.FC = () => {
     if (!userName) setEmptyUserNameErr(+true);
     if (!password) setEmptyPasswordErr(+true);
     if (userName && password) {
+      setIsLoading(true);
       await createToken({ userName, password });
       const checkToken = getCookie('checkToken');
       if (checkToken) {
         window.location.href = '/';
+        setIsLoading(false);
       } else {
+        setIsLoading(false);
         setAuthErr(+true);
       }
     }
@@ -77,7 +82,7 @@ const Login: React.FC = () => {
         </InputAndIcon>
         <ErrorMessage showErr={emptyPasswordErr}>שדה חובה</ErrorMessage>
         <ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</ErrorMessage>
-        <SubmitButton green={+true} onClick={handleSubmit}>כניסה</SubmitButton>
+        <SubmitButton green={+true} onClick={handleSubmit}>{!isLoading ? 'כניסה' : (<LoadingButton />)}</SubmitButton>
       </LoginContainer>
       <Footer />
     </StyledLogin>

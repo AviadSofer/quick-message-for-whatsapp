@@ -4,10 +4,11 @@ import { useMessageContext } from '../contexts/Message';
 import {
   ArrowDown, Delete, MessageText, Phone, TDContainer, TD,
 } from './styles/MessagesTable.styled';
+import { Message } from './MessagesTable';
 
 interface Props {
-  data: never[]
-  setData: (newData: never[]) => void
+  data: Message[]
+  setData: (newData: Message[]) => void
 }
 
 const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {

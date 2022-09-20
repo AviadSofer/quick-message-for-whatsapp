@@ -7,8 +7,16 @@ import {
   Table, TableWrap, TD, TDContainer,
 } from './styles/MessagesTable.styled';
 
+export interface Message {
+  _id: string,
+  date: string,
+  userName: string,
+  phoneNumber: string,
+  textMessage: string
+}
+
 const MessagesTable: React.FC = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     (async () => {

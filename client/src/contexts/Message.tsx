@@ -13,7 +13,7 @@ interface ProviderOptions {
 
 // export hook for using the context
 const MessageContext = createContext<Record<string, never> | ProviderOptions>({});
-const useMessageContext = () => useContext(MessageContext);
+const useMessage = () => useContext(MessageContext);
 
 // react component that wrap the components below it, and provide them the context
 const Message: React.FC = ({ children }) => {
@@ -39,4 +39,4 @@ const Message: React.FC = ({ children }) => {
   );
 };
 
-export { useMessageContext, Message };
+export { useMessage, Message };

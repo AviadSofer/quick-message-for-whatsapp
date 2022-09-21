@@ -1,9 +1,9 @@
 import WhatsappUi from 'react-whatsapp-styled-ui-hebrew';
 import StyledMessageView from './styles/MessageView.styled';
-import { useMessageContext } from '../contexts/Message';
+import { useMessage } from '../contexts/Message';
 
 const MessageView: React.FC = () => {
-  const { message } = useMessageContext();
+  const { message } = useMessage();
   const { prefix, phone, textMessage } = message;
 
   return (

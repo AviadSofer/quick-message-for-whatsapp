@@ -1,22 +1,22 @@
 import { IconButton } from '@mui/material';
 import deleteMessageById from '../api/deleteMessageById';
-import { useMessageContext } from '../contexts/Message';
+import { useMessage } from '../contexts/Message';
 import {
   ArrowDown, Delete, MessageText, Phone, TDContainer, TD,
 } from './styles/MessagesTable.styled';
-import { Message } from './MessagesTable';
+import { useSavedMessages } from '../contexts/SavedMessages';
 
-interface Props {
-  data: Message[]
-  setData: (newData: Message[]) => void
-}
+const MessagesTableBody: React.FC = () => {
+  const { changeMessage } = useMessage();
 
-const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
-  const { changeMessage } = useMessageContext();
+  const { savedMessages, setSavedMessages } = useSavedMessages();
 
   const deleteMessage = async (_id: string) => {
     await deleteMessageById(_id);
-    setData([...data].filter((someMessage: { _id: string }) => someMessage._id !== _id));
+    setSavedMessages(
+      [...savedMessages]
+        .filter((someMessage: { _id: string }) => someMessage._id !== _id),
+    );
   };
 
   const sendMessage = (phoneNumber: string, textMessage: string) => {
@@ -27,7 +27,7 @@ const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
     });
   };
 
-  if (data.length < 1) {
+  if (savedMessages.length < 1) {
     return (
       <tbody>
         <tr>
@@ -43,7 +43,7 @@ const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
 
   return (
     <tbody>
-      {data.map(({
+      {savedMessages.map(({
         _id, date, phoneNumber, textMessage,
       }) => (
         <tr key={_id}>

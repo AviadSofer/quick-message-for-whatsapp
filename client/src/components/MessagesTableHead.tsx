@@ -3,22 +3,21 @@ import { useState } from 'react';
 import Columns from '../static/columns';
 import { TableHead, TH, Arrows } from './styles/MessagesTable.styled';
 import { Message } from './MessagesTable';
+import { useSavedMessages } from '../contexts/SavedMessages';
 
-interface Props {
-  data: Message[]
-  setData: (newData: Message[]) => void
-}
+const MessagesTableHead: React.FC = () => {
+  const { savedMessages, setSavedMessages } = useSavedMessages();
 
-const MessagesTableHead: React.FC<Props> = ({ data, setData }) => {
   const [sort, setSort] = useState(false);
+
   const sortData = (accessor: string) => {
-    const lastToFirst = [...data]
+    const lastToFirst = [...savedMessages]
       .sort((a, b) => (`${a[accessor as keyof Message]}`)
         .localeCompare(b[accessor as keyof Message]));
-    const firstToLast = [...data]
+    const firstToLast = [...savedMessages]
       .sort((a, b) => (`${b[accessor as keyof Message]}`)
         .localeCompare(a[accessor as keyof Message]));
-    setData(sort ? firstToLast : lastToFirst);
+    setSavedMessages(sort ? firstToLast : lastToFirst);
     setSort(!sort);
   };
 

@@ -3,14 +3,14 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import { useState } from 'react';
 import Icon from './Icon';
 import { useThemeStore } from '../contexts/ThemeStore';
-import StyledSwitchButton from './styles/SwitchButton.styled';
+import StyledSwitchThemeButton from './styles/SwitchThemeButton.styled';
 
-const SwitchButton: React.FC = () => {
+const SwitchThemeButton: React.FC = () => {
   const { isDarkMode, switchTheme } = useThemeStore();
   const [shake, setShake] = useState(0);
 
   return (
-    <StyledSwitchButton
+    <StyledSwitchThemeButton
       onClick={() => {
         setShake(+true);
         setTimeout(() => {
@@ -23,8 +23,8 @@ const SwitchButton: React.FC = () => {
       {isDarkMode
         ? <Icon src={<NightlightRoundIcon />} size="1" />
         : <Icon src={<LightModeIcon />} size="1" />}
-    </StyledSwitchButton>
+    </StyledSwitchThemeButton>
   );
 };
 
-export default SwitchButton;
+export default SwitchThemeButton;

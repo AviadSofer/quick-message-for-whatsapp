@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import HelloUser from './HelloUser';
+import LoggedMainText from './LoggedMainText';
 import MessagesTable from './MessagesTable';
 import LoggedNavBar from './LoggedNavBar';
 import {
   ModalWrap, StyledLoggedHome, StyledModal, StyledWrap,
 } from './styles/LoggedHome.styled';
 import SendMessage from './SendMessage';
-import { MediumTitle } from './styles/Title.styled';
 import Footer from './Footer';
 import { SavedMessages } from '../contexts/SavedMessages';
 
@@ -25,12 +24,7 @@ const LoggedHome: React.FC = () => {
               <MessagesTable />
             </ModalWrap>
           </StyledModal>
-          <HelloUser />
-          <MediumTitle>
-            קוויק-וואטספ זו אפליקציה חופשית, שכתובה בקוד פתוח,
-            ועכשיו כשנרשמת, ההודעות האחרונות ששלחת נמצאות בכפתור למעלה&#128512;
-          </MediumTitle>
-          <MediumTitle>תרצה לשלוח הודעה חדשה?</MediumTitle>
+          <LoggedMainText />
           <SendMessage />
         </StyledWrap>
         <Footer />

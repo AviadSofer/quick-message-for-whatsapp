@@ -9,7 +9,7 @@ const Home: React.FC = () => (
   <StyledHome>
     <StyledWrap>
       <HomeNavBar />
-      <Explain>שליחת הודעה בוואטספ בלי לשמור את המספר</Explain>
+      <Explain>שליחת הודעה בוואטספ בלי לשמור את המספר.</Explain>
       <SendMessage />
     </StyledWrap>
     <Footer />

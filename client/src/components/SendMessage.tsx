@@ -7,8 +7,11 @@ import {
   ErrorContainer, InputContainer, SendButton, StyledSendMessage,
 } from './styles/SendMessage.styled';
 import StyledInput from './styles/TextField.styled';
+import fetchData from '../api/fetchData';
+import { useSavedMessages } from '../contexts/SavedMessages';
 
 const SendMessage: React.FC = () => {
+  const { setSavedMessages } = useSavedMessages();
   const { message, changeMessage } = useMessage();
   const { prefix, phone, textMessage } = message;
 
@@ -20,8 +23,13 @@ const SendMessage: React.FC = () => {
     if (phoneWithoutZero.length >= 9) {
       const link = `https://wa.me/${prefix}${phone}?text=${textMessage}`;
       window.open(link, '_blank');
+
       const checkToken = getCookie('checkToken');
-      if (checkToken) await saveMessage(prefix, phoneWithoutZero, textMessage);
+      if (checkToken) {
+        await saveMessage(prefix, phoneWithoutZero, textMessage);
+        const messagesList = await fetchData('/api/get-messages');
+        setSavedMessages(messagesList);
+      }
     } else {
       setShowErr(+true);
     }

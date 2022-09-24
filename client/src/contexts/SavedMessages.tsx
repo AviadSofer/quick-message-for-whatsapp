@@ -1,7 +1,6 @@
 import React, {
-  createContext, useContext, useEffect, useMemo, useState,
+  createContext, useContext, useMemo, useState,
 } from 'react';
-import fetchData from '../api/fetchData';
 
 interface Message {
   _id: string,
@@ -23,13 +22,6 @@ const useSavedMessages = () => useContext(SavedMessagesContext);
 // react component that wrap the components below it, and provide them the context
 const SavedMessages: React.FC = ({ children }) => {
   const [savedMessages, setSavedMessages] = useState<Message[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const messagesList = await fetchData('/api/get-messages');
-      setSavedMessages(messagesList);
-    })();
-  }, []);
 
   const value = useMemo(() => ({ savedMessages, setSavedMessages }), [savedMessages]);
 

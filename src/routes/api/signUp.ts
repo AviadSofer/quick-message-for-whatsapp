@@ -1,9 +1,11 @@
-import express, { Request, Response, Router } from 'express';
+import express, {
+  NextFunction, Request, Response, Router,
+} from 'express';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 import createUser from '../../controllers/createUser';
 import {
-  isHttpReqUndefind, isMailAlreadyExist, isMailAndUserNameAlradyExist, isUserNameAlradyExist,
+  isHttpReqUndefind, isMailAlreadyExist, isUserNameAlradyExist,
 } from '../../controllers/signUpValidation';
 import logger from '../../logger/logger';
 
@@ -37,7 +39,7 @@ router.post('/validation/userName', async (req: Request, res: Response) => {
   }
 });
 
-router.post('/', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   const {
     fullName, mail, userName, password,
   } = req.body;
@@ -50,16 +52,7 @@ router.post('/', async (req: Request, res: Response) => {
       message: `${err}`,
     });
     logger.error(err);
-    throw err;
-  }
-  try {
-    await isMailAndUserNameAlradyExist(mail, userName);
-  } catch (err) {
-    res.status(409).json({
-      message: `${err}`,
-    });
-    logger.error(err);
-    throw err;
+    next(err);
   }
   try {
     await isMailAlreadyExist(mail);
@@ -68,7 +61,7 @@ router.post('/', async (req: Request, res: Response) => {
       message: `${err}`,
     });
     logger.error(err);
-    throw err;
+    next(err);
   }
   try {
     await isUserNameAlradyExist(userName);
@@ -77,7 +70,7 @@ router.post('/', async (req: Request, res: Response) => {
       message: `${err}`,
     });
     logger.error(err);
-    throw err;
+    next(err);
   }
 
   // create new user
@@ -94,16 +87,16 @@ router.post('/', async (req: Request, res: Response) => {
         maxAge: 86400000, // 24h
       })
       .json({
-        message: `success, user:${user.userName} and token created :)`,
+        message: `success, user:${user.userName} and token created, at ${new Date()}.`,
       });
-    logger.info(`success, user:${user.userName} created`);
-    logger.info(`token:${token} created`);
+    logger.info(`success, user:${user.userName} created, at ${new Date()}.`);
+    logger.info(`token:${token} created, at ${new Date()}.`);
   } catch (err) {
     res.status(500).json({
-      message: 'created failed :(',
+      message: `created failed, at ${new Date()}.`,
     });
     logger.error(err);
-    throw err;
+    next(err);
   }
 });
 

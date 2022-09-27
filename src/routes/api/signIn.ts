@@ -1,4 +1,6 @@
-import express, { Request, Response, Router } from 'express';
+import express, {
+  NextFunction, Request, Response, Router,
+} from 'express';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 import logger from '../../logger/logger';
@@ -6,7 +8,7 @@ import checkUser from '../../controllers/signInValidation';
 
 const router: Router = express.Router();
 
-router.post('/', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   const { userName, password } = req.body;
 
   // validate user, and send token to the client
@@ -23,15 +25,15 @@ router.post('/', async (req: Request, res: Response) => {
         maxAge: 86400000, // 24h
       })
       .json({
-        message: 'token created :)',
+        message: 'token created.',
       });
-    logger.info(`token:${token} created`);
+    logger.info(`token:${token} created, at ${new Date()}.`);
   } catch (err) {
     res.status(401).json({
-      message: 'auth failed :(',
+      message: `auth failed, at ${new Date()}.`,
     });
     logger.error(err);
-    throw err;
+    next(err);
   }
 });
 

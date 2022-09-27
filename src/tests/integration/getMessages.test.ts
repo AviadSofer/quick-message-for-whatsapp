@@ -41,7 +41,7 @@ describe('getMessages.test.ts', () => {
     const newPost = await request(app).post('/api/get-messages').send({});
     expect(newPost.statusCode).to.equal(401);
     expect(newPost.body).to.include({
-      message: 'invalid token :(',
+      message: `invalid token, at ${new Date()}.`,
     });
   });
 

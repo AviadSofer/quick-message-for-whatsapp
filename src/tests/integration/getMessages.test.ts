@@ -40,9 +40,6 @@ describe('getMessages.test.ts', () => {
   it('sould fail, try to post new message without token', async () => {
     const newPost = await request(app).post('/api/get-messages').send({});
     expect(newPost.statusCode).to.equal(401);
-    expect(newPost.body).to.include({
-      message: `invalid token, at ${Date.now()}.`,
-    });
   });
 
   it('POST TEST - post new message with token (should work), and without phoneNumber (should fail)', async () => {

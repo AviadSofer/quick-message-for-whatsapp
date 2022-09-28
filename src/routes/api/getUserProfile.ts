@@ -13,7 +13,7 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     res.status(500).json({
       message: 'something wrong!',
     });
-    logger.error(err);
+    logger.error(`load profile failed, at ${Date.now()}. ${err}`);
     next(err);
   }
 });

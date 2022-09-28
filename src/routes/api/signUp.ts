@@ -51,7 +51,7 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
     res.status(400).json({
       message: `${err}`,
     });
-    logger.error(err);
+    logger.error(`HTTP req is empty! at ${Date.now()}. ${err}`);
     next(err);
   }
   try {
@@ -60,7 +60,7 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
     res.status(409).json({
       message: `${err}`,
     });
-    logger.error(err);
+    logger.error(`mail:${mail} is already exist, at ${Date.now()}. ${err}`);
     next(err);
   }
   try {
@@ -69,7 +69,7 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
     res.status(409).json({
       message: `${err}`,
     });
-    logger.error(err);
+    logger.error(`userName:${userName} is already exist, at ${Date.now()}. ${err}`);
     next(err);
   }
 
@@ -87,15 +87,15 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
         maxAge: 86400000, // 24h
       })
       .json({
-        message: `success, user:${user.userName} and token created, at ${new Date()}.`,
+        message: `success, user:${user.userName} and token created, at ${Date.now()}.`,
       });
-    logger.info(`success, user:${user.userName} created, at ${new Date()}.`);
-    logger.info(`token:${token} created, at ${new Date()}.`);
+    logger.info(`success, user:${user.userName} created, at ${Date.now()}.`);
+    logger.info(`token:${token} created, at ${Date.now()}.`);
   } catch (err) {
     res.status(500).json({
-      message: `created failed, at ${new Date()}.`,
+      message: `created failed, at ${Date.now()}.`,
     });
-    logger.error(err);
+    logger.error(`created new user failed, at ${Date.now()}. ${err}`);
     next(err);
   }
 });

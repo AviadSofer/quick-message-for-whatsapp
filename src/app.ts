@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/api/signup', signUp);
 app.use('/api/signin', signIn);
-app.use('/api/signout', signOut);
+app.use('/api/signout', auth, signOut);
 app.use('/api/get-user-profile', auth, getUserProfile);
 app.use('/api/get-messages', auth, getMessages);
 

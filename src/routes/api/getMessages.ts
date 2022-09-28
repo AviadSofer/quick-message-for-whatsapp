@@ -14,9 +14,9 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     res.status(200).json(allMessages);
   } catch (err) {
     res.status(500).json({
-      message: 'something wrong, load messages failed.',
+      message: `something wrong, load messages failed at ${Date.now()}.`,
     });
-    logger.error(`load messages failed. ${err}`);
+    logger.error(`load messages failed at ${Date.now()}. ${err}`);
     next(err);
   }
 });
@@ -37,15 +37,15 @@ router.post('/', async (req: Request, res: Response) => {
     await message.save();
     // send to the client
     res.status(201).json({
-      message: `message:${message._id} saved, at ${new Date()}.`,
+      message: `message:${message._id} saved, at ${Date.now()}.`,
     });
-    logger.info(`message:${message._id} from user:${decoded.user.userName} saved, at ${new Date()}.`);
+    logger.info(`message:${message._id} from user:${decoded.user.userName} saved, at ${Date.now()}.`);
   } catch (err) {
     res.status(401).json({
-      message: `saved message failed, at ${new Date()}.`,
+      message: `saved message failed, at ${Date.now()}.`,
       error: `${err}`,
     });
-    logger.error(err);
+    logger.error(`saved message failed, at ${Date.now()}. ${err}`);
   }
 });
 
@@ -54,14 +54,14 @@ router.delete('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
     await Message.deleteOne({ _id });
     res.status(200).json({
-      message: `message:${_id} deleted, at ${new Date()}.`,
+      message: `message:${_id} deleted, at ${Date.now()}.`,
     });
-    logger.info(`message:${_id} from user:${decoded.user.userName} deleted. at ${new Date()}.`);
+    logger.info(`message:${_id} from user:${decoded.user.userName} deleted. at ${Date.now()}.`);
   } catch (err) {
     res.status(500).json({
       message: 'something wrong!',
     });
-    logger.error(err);
+    logger.error(`delete message failed at ${Date.now()}. ${err}`);
     next(err);
   }
 });

@@ -9,11 +9,11 @@ const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
   try {
     const decoded = jwt.verify(token, `${process.env.JWT_KEY}`);
     req.body.decoded = decoded;
-    logger.info(`token:${token} verified successfully, at ${new Date()}.`);
+    logger.info(`token:${token} verified successfully, at ${Date.now()}.`);
   } catch (err) {
     logger.error(err);
     return res.status(401).json({
-      message: `invalid token, at ${new Date()}.`,
+      message: `invalid token, at ${Date.now()}.`,
     });
   }
 

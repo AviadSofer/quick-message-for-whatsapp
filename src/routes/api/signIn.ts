@@ -27,12 +27,12 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
       .json({
         message: 'token created.',
       });
-    logger.info(`token:${token} created, at ${new Date()}.`);
+    logger.info(`token:${token} created, at ${Date.now()}.`);
   } catch (err) {
     res.status(401).json({
-      message: `auth failed, at ${new Date()}.`,
+      message: `auth failed, at ${Date.now()}.`,
     });
-    logger.error(err);
+    logger.error(`auth failed, at ${Date.now()}. ${err}`);
     next(err);
   }
 });

@@ -1,29 +1,36 @@
 import { IconButton } from '@mui/material';
+import CallReceivedIcon from '@mui/icons-material/CallReceived';
+import DeleteIcon from '@mui/icons-material/Delete';
 import deleteMessageById from '../api/deleteMessageById';
-import { useNumberContext } from '../NumberContext';
+import { useMessage } from '../contexts/Message';
 import {
-  ArrowDown, Delete, MessageText, Phone, TDContainer, TD,
+  MessageText, Phone, TDContainer, TD,
 } from './styles/MessagesTable.styled';
+import { useSavedMessages } from '../contexts/SavedMessages';
+import Icon from './Icon';
 
-interface Props {
-  data: never[]
-  setData: (newData: never[]) => void
-}
+const MessagesTableBody: React.FC = () => {
+  const { changeMessage } = useMessage();
 
-const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
-  const { changePrefix, changePhone, changeMessage } = useNumberContext();
+  const { savedMessages, setSavedMessages } = useSavedMessages();
+
   const deleteMessage = async (_id: string) => {
     await deleteMessageById(_id);
-    setData([...data].filter((message: { _id: string }) => message._id !== _id));
+    setSavedMessages(
+      [...savedMessages]
+        .filter((someMessage: { _id: string }) => someMessage._id !== _id),
+    );
   };
 
   const sendMessage = (phoneNumber: string, textMessage: string) => {
-    changePrefix(`${phoneNumber.slice(1, 4)}`);
-    changePhone(`${phoneNumber.slice(5, 7)}${phoneNumber.slice(8, 11)}${phoneNumber.slice(12, 16)}`);
-    changeMessage(textMessage);
+    changeMessage({
+      prefix: `${phoneNumber.slice(1, 4)}`,
+      phone: `${phoneNumber.slice(5, 7)}${phoneNumber.slice(8, 11)}${phoneNumber.slice(12, 16)}`,
+      textMessage,
+    });
   };
 
-  if (data.length < 1) {
+  if (savedMessages.length < 1) {
     return (
       <tbody>
         <tr>
@@ -39,16 +46,17 @@ const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
 
   return (
     <tbody>
-      {data.map(({
+      {savedMessages.map(({
         _id, date, phoneNumber, textMessage,
       }) => (
         <tr key={_id}>
           <TD>
-            {`${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString('he-IL', {
-              hour12: false,
-              hour: 'numeric',
-              minute: 'numeric',
-            })}`}
+            {`${new Date(date).toLocaleDateString()} 
+            ${new Date(date).toLocaleTimeString('he-IL', {
+          hour12: false,
+          hour: 'numeric',
+          minute: 'numeric',
+        })}`}
           </TD>
           <TD>
             <Phone>{phoneNumber}</Phone>
@@ -57,10 +65,10 @@ const MessagesTableBody: React.FC<Props> = ({ data, setData }) => {
             <TDContainer>
               <MessageText>{textMessage || '—'}</MessageText>
               <IconButton onClick={() => deleteMessage(_id)}>
-                <Delete />
+                <Icon src={<DeleteIcon />} size="0.7" />
               </IconButton>
               <IconButton onClick={() => sendMessage(phoneNumber, textMessage)}>
-                <ArrowDown />
+                <Icon src={<CallReceivedIcon />} size="0.7" />
               </IconButton>
             </TDContainer>
           </TD>

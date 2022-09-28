@@ -8,7 +8,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: #F5F5F5;
+background-color: ${({ theme }) => theme.backgrounds.thirdary};
 flex: 2;
 
 @media (max-width: 768px) {
@@ -26,12 +26,11 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 align-items: center;
-background-color: white;
-border-style: solid;
-border-width: 1px;
-border-color: #DCDCDC;
+background-color: ${({ theme }) => theme.backgrounds.secondary};
+border: ${({ theme }) => (!theme.isDarkMode ? '1px solid #DCDCDC' : 'none')};
 border-radius: 5px;
-box-shadow: 0px 0px 8px 4px #E0E0E0;
+box-shadow:  ${({ theme }) => (!theme.isDarkMode ? '0px 0px 8px 4px #E0E0E0' : 'none')};
+
 
 @media (max-width: 768px) {
   height: 100%;
@@ -40,7 +39,7 @@ box-shadow: 0px 0px 8px 4px #E0E0E0;
   border: 0;
   box-shadow: none;
   margin-top: 3vh;
-  margin-bottom: 20vh;
+  margin-bottom: 17vh;
 }
 `;
 
@@ -51,6 +50,7 @@ display: grid;
 grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 1fr 1.3fr;
 grid-gap: 0% 5%;
+
 @media (max-width: 768px) {
   height: 60%;
 }
@@ -68,6 +68,7 @@ export const SignUpButton = styled(StyledButton)`
   font-size: 0.7rem;
 
   @media (max-width: 768px) {
+    margin-bottom: 5vh;
     font-size: 0.9rem;
   }
 }

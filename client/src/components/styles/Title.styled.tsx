@@ -10,7 +10,8 @@ font-size: 1.1rem;
 `;
 
 export const MediumTitle = styled.span`
-font-size: 0.85rem;
+font-size: 0.9rem;
+white-space: pre-line;
 
 @media (max-width: 768px) {
     font-size: 0.8rem;

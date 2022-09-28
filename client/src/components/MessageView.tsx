@@ -1,13 +1,14 @@
 import WhatsappUi from 'react-whatsapp-styled-ui-hebrew';
 import StyledMessageView from './styles/MessageView.styled';
-import { useNumberContext } from '../NumberContext';
+import { useMessage } from '../contexts/Message';
 
 const MessageView: React.FC = () => {
-  const { prefix, phone, message } = useNumberContext();
+  const { message } = useMessage();
+  const { prefix, phone, textMessage } = message;
 
   return (
     <StyledMessageView>
-      <WhatsappUi size={60} phoneNumber={`${prefix}${phone}`} message={message} />
+      <WhatsappUi size={60} phoneNumber={`${prefix}${phone}`} message={textMessage} />
     </StyledMessageView>
   );
 };

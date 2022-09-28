@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter, Route, Routes, Navigate,
 } from 'react-router-dom';
-import { NumberProvider } from './NumberContext';
+import { Message } from './contexts/Message';
 import StyledApp from './components/styles/App.styled';
-import GlobalStyles from './components/styles/Global';
 import Home from './components/Home';
 import MessageView from './components/MessageView';
 import Login from './components/Login';
 import LoggedHome from './components/LoggedHome';
 import SignUp from './components/SignUp';
 import getCookie from './helpers/getCookie';
+import { ThemeStore } from './contexts/ThemeStore';
+import Theme from './contexts/Theme';
 
 const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -29,17 +30,25 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <NumberProvider>
-        <StyledApp>
-          <GlobalStyles />
-          <Routes>
-            <Route path="/login" element={!loggedIn ? <Login /> : <Navigate to="/" />} />
-            <Route path="/signup" element={!loggedIn ? <SignUp /> : <Navigate to="/" />} />
-            <Route path="/" element={!loggedIn ? <Home /> : <LoggedHome />} />
-          </Routes>
-          <MessageView />
-        </StyledApp>
-      </NumberProvider>
+      <ThemeStore>
+        <Theme>
+          <Message>
+            <StyledApp>
+              <Routes>
+                <Route path="/login" element={!loggedIn ? <Login /> : <Navigate to="/" />} />
+                <Route path="/signup" element={!loggedIn ? <SignUp /> : <Navigate to="/" />} />
+                <Route
+                  path="/"
+                  element={!loggedIn
+                    ? <Home />
+                    : <LoggedHome />}
+                />
+              </Routes>
+              <MessageView />
+            </StyledApp>
+          </Message>
+        </Theme>
+      </ThemeStore>
     </BrowserRouter>
   );
 };

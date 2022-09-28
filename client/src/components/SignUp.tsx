@@ -3,6 +3,7 @@ import createUser from '../api/createUser';
 import { isMailAvailable, isUserNameAvailable } from '../api/isCredentialsAvailable';
 import getCookie from '../helpers/getCookie';
 import Footer from './Footer';
+import { LoadingButton } from './styles/Button.styled';
 import ErrorMessage from './styles/ErrorMessage.styled';
 import Logo from './styles/Logo.styled';
 import {
@@ -11,6 +12,8 @@ import {
 import { LargeTitle, LinkTitle, SmallTitle } from './styles/Title.styled';
 
 const SignUp: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [credentials, setCredentials] = useState({
     fullName: '',
     mail: '',
@@ -147,11 +150,14 @@ const SignUp: React.FC = () => {
       && !pwdErr
       && !confirmPwdErr
     ) {
+      setIsLoading(true);
       await createUser(credentials);
       const checkToken = getCookie('checkToken');
       if (checkToken) {
         window.location.href = '/';
+        setIsLoading(false);
       } else {
+        setIsLoading(false);
         changeErrors({ authErr: +true });
       }
     } else {
@@ -201,7 +207,7 @@ const SignUp: React.FC = () => {
           />
         </SignUpInputContainer>
         <ErrorMessage showErr={errors.authErr}>וואי, עדיין חלק מהפרטים לא נכונים</ErrorMessage>
-        <SignUpButton green={+true} onClick={handleSubmit}>המשך</SignUpButton>
+        <SignUpButton green={+true} onClick={handleSubmit}>{!isLoading ? 'המשך' : (<LoadingButton />)}</SignUpButton>
         <SmallTitle>
           כבר יש לך חשבון?
           {' '}

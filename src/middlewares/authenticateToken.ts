@@ -5,16 +5,18 @@ import logger from '../logger/logger';
 
 const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
   const { token } = req.cookies;
+
   try {
     const decoded = jwt.verify(token, `${process.env.JWT_KEY}`);
     req.body.decoded = decoded;
-    logger.info('token verified successfully');
+    logger.info(`token:${token} verified successfully, at ${Date.now()}.`);
   } catch (err) {
     logger.error(err);
     return res.status(401).json({
-      message: 'invalid token :(',
+      message: `invalid token, at ${Date.now()}.`,
     });
   }
+
   return next();
 };
 

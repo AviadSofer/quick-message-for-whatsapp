@@ -2,11 +2,13 @@ import Logo from './styles/Logo.styled';
 import {
   NavButtons, Nav, NavButton, StyledLink,
 } from './styles/NavBar.styled';
+import SwitchThemeButton from './SwitchThemeButton';
 
-const NavBar: React.FC = () => (
+const HomeNavBar: React.FC = () => (
   <Nav>
     <Logo width="12%" mobilewidth="20%" />
     <NavButtons>
+      <SwitchThemeButton />
       <StyledLink to="/login">
         <NavButton>כניסה</NavButton>
       </StyledLink>
@@ -17,4 +19,4 @@ const NavBar: React.FC = () => (
   </Nav>
 );
 
-export default NavBar;
+export default HomeNavBar;

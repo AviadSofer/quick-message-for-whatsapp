@@ -1,21 +1,23 @@
-import express, { Request, Response, Router } from 'express';
+import express, {
+  NextFunction, Request, Response, Router,
+} from 'express';
 import mongoose from 'mongoose';
 import logger from '../../logger/logger';
 import { Message, IMessage } from '../../models/Message';
 
 const router: Router = express.Router();
 
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userName } = req.body.decoded.user;
     const allMessages = await Message.find({ userName }).sort('-date');
     res.status(200).json(allMessages);
   } catch (err) {
     res.status(500).json({
-      message: 'something wrong :(',
+      message: `something wrong, load messages failed at ${Date.now()}.`,
     });
-    logger.error(err);
-    throw err;
+    logger.error(`load messages failed at ${Date.now()}. ${err}`);
+    next(err);
   }
 });
 
@@ -35,32 +37,32 @@ router.post('/', async (req: Request, res: Response) => {
     await message.save();
     // send to the client
     res.status(201).json({
-      message: 'message saved :)',
+      message: `message:${message._id} saved, at ${Date.now()}.`,
     });
-    logger.info(`message from user:${decoded.user.userName} saved`);
+    logger.info(`message:${message._id} from user:${decoded.user.userName} saved, at ${Date.now()}.`);
   } catch (err) {
     res.status(401).json({
-      message: 'saved failed :(',
+      message: `saved message failed, at ${Date.now()}.`,
       error: `${err}`,
     });
-    logger.error(err);
+    logger.error(`saved message failed, at ${Date.now()}. ${err}`);
   }
 });
 
-router.delete('/', async (req: Request, res: Response) => {
+router.delete('/', async (req: Request, res: Response, next: NextFunction) => {
   const { decoded, _id } = req.body;
   try {
     await Message.deleteOne({ _id });
     res.status(200).json({
-      message: 'message deleted :)',
+      message: `message:${_id} deleted, at ${Date.now()}.`,
     });
-    logger.info(`message from user:${decoded.user.userName} deleted`);
+    logger.info(`message:${_id} from user:${decoded.user.userName} deleted. at ${Date.now()}.`);
   } catch (err) {
     res.status(500).json({
-      message: 'something wrong :(',
+      message: 'something wrong!',
     });
-    logger.error(err);
-    throw err;
+    logger.error(`delete message failed at ${Date.now()}. ${err}`);
+    next(err);
   }
 });
 

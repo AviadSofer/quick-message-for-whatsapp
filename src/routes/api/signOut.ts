@@ -1,10 +1,13 @@
-import express, { Request, Response, Router } from 'express';
+import express, {
+  NextFunction, Request, Response, Router,
+} from 'express';
 import 'dotenv/config';
 import logger from '../../logger/logger';
 
 const router: Router = express.Router();
 
-router.delete('/', async (req: Request, res: Response) => {
+router.delete('/', async (req: Request, res: Response, next: NextFunction) => {
+  const { userName } = req.body.decoded.user;
   try {
     res
       .status(200)
@@ -15,13 +18,13 @@ router.delete('/', async (req: Request, res: Response) => {
       .json({
         message: 'token deleted :)',
       });
-    logger.info('user logout, token deleted successfully');
+    logger.info(`user:${userName} logout, token deleted successfully, at ${Date.now()}.`);
   } catch (err) {
     res.status(500).json({
-      message: 'something wrong :(',
+      message: `something wrong. logout failed, at ${Date.now()}.`,
     });
-    logger.error(err);
-    throw err;
+    logger.error(`logout failed, at ${Date.now()}. ${err}`);
+    next(err);
   }
 });
 

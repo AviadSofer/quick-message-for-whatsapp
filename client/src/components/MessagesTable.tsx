@@ -6,15 +6,26 @@ import MessagesTableBody from './MessagesTableBody';
 import {
   Table, TableWrap, TD, TDContainer,
 } from './styles/MessagesTable.styled';
+import { useSavedMessages } from '../contexts/SavedMessages';
+
+export interface Message {
+  _id: string,
+  date: string,
+  userName: string,
+  phoneNumber: string,
+  textMessage: string
+}
 
 const MessagesTable: React.FC = () => {
-  const [data, setData] = useState([]);
+  const { setSavedMessages } = useSavedMessages();
+
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      const rows = await fetchData('/api/get-messages');
-      setData(rows); // set tableData to array
+      const messagesList = await fetchData('/api/get-messages');
+      setSavedMessages(messagesList);
       setIsLoading(false);
     })();
   }, []);
@@ -22,7 +33,7 @@ const MessagesTable: React.FC = () => {
   return (
     <TableWrap>
       <Table>
-        <MessagesTableHead data={data} setData={setData} />
+        <MessagesTableHead />
         {isLoading
           ? (
             <tbody>
@@ -35,7 +46,7 @@ const MessagesTable: React.FC = () => {
               </tr>
             </tbody>
           )
-          : <MessagesTableBody data={data} setData={setData} />}
+          : <MessagesTableBody />}
       </Table>
     </TableWrap>
   );

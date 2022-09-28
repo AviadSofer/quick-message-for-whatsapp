@@ -1,10 +1,13 @@
 import { IconButton } from '@mui/material';
+import CallReceivedIcon from '@mui/icons-material/CallReceived';
+import DeleteIcon from '@mui/icons-material/Delete';
 import deleteMessageById from '../api/deleteMessageById';
 import { useMessage } from '../contexts/Message';
 import {
-  ArrowDown, Delete, MessageText, Phone, TDContainer, TD,
+  MessageText, Phone, TDContainer, TD,
 } from './styles/MessagesTable.styled';
 import { useSavedMessages } from '../contexts/SavedMessages';
+import Icon from './Icon';
 
 const MessagesTableBody: React.FC = () => {
   const { changeMessage } = useMessage();
@@ -48,11 +51,12 @@ const MessagesTableBody: React.FC = () => {
       }) => (
         <tr key={_id}>
           <TD>
-            {`${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString('he-IL', {
-              hour12: false,
-              hour: 'numeric',
-              minute: 'numeric',
-            })}`}
+            {`${new Date(date).toLocaleDateString()} 
+            ${new Date(date).toLocaleTimeString('he-IL', {
+          hour12: false,
+          hour: 'numeric',
+          minute: 'numeric',
+        })}`}
           </TD>
           <TD>
             <Phone>{phoneNumber}</Phone>
@@ -61,10 +65,10 @@ const MessagesTableBody: React.FC = () => {
             <TDContainer>
               <MessageText>{textMessage || '—'}</MessageText>
               <IconButton onClick={() => deleteMessage(_id)}>
-                <Delete />
+                <Icon src={<DeleteIcon />} size="0.7" />
               </IconButton>
               <IconButton onClick={() => sendMessage(phoneNumber, textMessage)}>
-                <ArrowDown />
+                <Icon src={<CallReceivedIcon />} size="0.7" />
               </IconButton>
             </TDContainer>
           </TD>

@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
-import CallReceivedIcon from '@mui/icons-material/CallReceived';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 export const TableWrap = styled.div`
 max-height: 70vh;
 width: 100%;
 overflow: auto;
-background-color: white;
 border: 3px solid ${({ theme }) => theme.green};
 
 @media (max-width: 768px) {
@@ -18,7 +15,7 @@ border: 3px solid ${({ theme }) => theme.green};
 export const Table = styled.table`
 width: 100%;
 border-collapse: collapse;
-background-color: ${({ theme }) => theme.backgrounds.primary};
+background-color: ${({ theme }) => theme.backgrounds.secondary};
 
 * {
   font-size: 0.6rem;
@@ -28,7 +25,7 @@ background-color: ${({ theme }) => theme.backgrounds.primary};
 }
 
 tr:nth-child(even) {
-  background-color: ${({ theme }) => theme.backgrounds.secondary};
+  background-color: ${({ theme }) => theme.backgrounds.thirdary};
 }
 `;
 
@@ -43,7 +40,7 @@ interface Props {
 }
 
 export const TH = styled.th<Props>`
-width: ${({ width }) => `${width}%`};
+width: 15%;
 text-align: right;
 color: white;
 padding: 9px 5px 9px 0;
@@ -51,13 +48,14 @@ font-size: 0.7rem;
 font-weight: normal;
 
 @media (max-width: 768px) {
+  width: ${({ width }) => `${width}%`};
   font-size: 0.85rem;
-  width: 33%;
 }
 `;
 
 export const Arrows = styled(UnfoldMoreIcon)`
 font-size: 0.7rem !important;
+
 * {
   color: white;
 }
@@ -68,6 +66,7 @@ padding: 15px;
 
 @media (max-width: 768px) {
   padding: 5px;
+  white-space: pre-line;
 }
 `;
 
@@ -85,12 +84,4 @@ text-align: right;
 
 export const MessageText = styled.div`
 flex: 1;
-`;
-
-export const Delete = styled(DeleteIcon)`
-font-size: 0.7rem !important;
-`;
-
-export const ArrowDown = styled(CallReceivedIcon)`
-font-size: 0.7rem !important;
 `;

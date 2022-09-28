@@ -7,7 +7,7 @@ const Columns = [
   {
     Header: 'מספר טלפון',
     accessor: 'phoneNumber',
-    width: 20,
+    width: 30,
   },
   {
     Header: 'הודעה',

@@ -9,7 +9,14 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 
-margin-top: 30px;
+margin-top: 20px;
+
+@media (max-width: 768px) {
+  height: 20vh;
+  margin-top: 10px;
+  justify-content: center;
+  text-align: right;
+}
 `;
 
 export const HelloTitle = styled(MediumTitle)`

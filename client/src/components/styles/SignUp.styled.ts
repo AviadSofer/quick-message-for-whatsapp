@@ -39,7 +39,7 @@ box-shadow:  ${({ theme }) => (!theme.isDarkMode ? '0px 0px 8px 4px #E0E0E0' : '
   border: 0;
   box-shadow: none;
   margin-top: 3vh;
-  margin-bottom: 20vh;
+  margin-bottom: 17vh;
 }
 `;
 
@@ -50,6 +50,7 @@ display: grid;
 grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 1fr 1.3fr;
 grid-gap: 0% 5%;
+
 @media (max-width: 768px) {
   height: 60%;
 }
@@ -67,6 +68,7 @@ export const SignUpButton = styled(StyledButton)`
   font-size: 0.7rem;
 
   @media (max-width: 768px) {
+    margin-bottom: 5vh;
     font-size: 0.9rem;
   }
 }

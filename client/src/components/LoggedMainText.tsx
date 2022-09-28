@@ -65,7 +65,8 @@ const LoggedMainText: React.FC = () => {
         setShowButton(+true);
       } else {
         setMainText(`יפה! שלחת כבר ${savedMessages.length} הודעות!
-        ההודעה האחרונה ששלחת הייתה ${lastMessageTime}, ל${lastMessagePhone}, 
+        ההודעה האחרונה ששלחת הייתה ${lastMessageTime},
+        ל${lastMessagePhone}, 
         תרצה לשלוח אותה שוב?`);
         setShowButton(+true);
       }

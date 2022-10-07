@@ -18,10 +18,10 @@ flex: 2;
 `;
 
 export const LoginContainer = styled.div`
-height: 70%;
+height: 80%;
 width: 50%;
-padding: 30px;
-margin: 30px;
+padding: 20px;
+margin: 20px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
@@ -39,6 +39,7 @@ box-shadow:  ${({ theme }) => (!theme.isDarkMode ? '0px 0px 8px 4px #E0E0E0' : '
   justify-content: space-around;
   box-shadow: none;
   border-width: 0;
+  margin-bottom: 17vh;
 }
 `;
 
@@ -63,7 +64,6 @@ export const SubmitButton = styled(StyledButton)`
 
   @media (max-width: 768px) {
     margin-top: 5vh;
-    margin-bottom: 22vh;
     font-size: 0.9rem;
   }
 }

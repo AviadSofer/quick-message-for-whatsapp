@@ -1,4 +1,6 @@
+import { GoogleLogout } from 'react-google-login';
 import logout from '../api/logout';
+import getCookie from '../helpers/getCookie';
 import Logo from './styles/Logo.styled';
 import {
   Nav, NavButtons, NavButton,
@@ -10,9 +12,12 @@ interface Props {
 }
 
 const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
+  const clientId = `${import.meta.env.VITE_CLIENT_ID}`;
+
   const handleLogout = async () => {
     await logout();
     document.cookie = 'checkToken=; Max-Age=0';
+    document.cookie = 'isGoogleAuth=; Max-Age=0';
     window.location.href = '/';
   };
 
@@ -22,7 +27,23 @@ const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
       <NavButtons>
         <SwitchThemeButton />
         <NavButton onClick={handleModal}>הודעות</NavButton>
-        <NavButton green={+true} onClick={handleLogout}>יציאה</NavButton>
+        {!getCookie('isGoogleAuth')
+          ? <NavButton green={+true} onClick={handleLogout}>יציאה</NavButton>
+          : (
+            <GoogleLogout
+              clientId={clientId}
+              onLogoutSuccess={handleLogout}
+              render={(renderProps) => (
+                <NavButton
+                  green={+true}
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                >
+                  יציאה
+                </NavButton>
+              )}
+            />
+          )}
       </NavButtons>
     </Nav>
   );

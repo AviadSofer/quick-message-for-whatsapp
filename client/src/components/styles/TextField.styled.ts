@@ -13,6 +13,7 @@ grid-area: ${({ gridarea }) => gridarea};
 
 input {
   direction: ${({ ltr }) => (ltr ? 'ltr' : 'rtl')};
+  font-family: Arial, Helvetica, sans-serif;
   font-size: ${({ font }) => font};
   color: ${({ theme }) => theme.fonts.inputText};
 

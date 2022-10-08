@@ -12,6 +12,8 @@ import SignUp from './components/SignUp';
 import getCookie from './helpers/getCookie';
 import { ThemeStore } from './contexts/ThemeStore';
 import Theme from './contexts/Theme';
+import SignUpChoice from './components/SignUpChoice';
+import LoginChoice from './components/LoginChoice';
 
 const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -35,14 +37,13 @@ const App: React.FC = () => {
           <Message>
             <StyledApp>
               <Routes>
+                <Route path="/login/choice" element={!loggedIn ? <LoginChoice /> : <Navigate to="/" />} />
                 <Route path="/login" element={!loggedIn ? <Login /> : <Navigate to="/" />} />
+
+                <Route path="/signup/choice" element={!loggedIn ? <SignUpChoice /> : <Navigate to="/" />} />
                 <Route path="/signup" element={!loggedIn ? <SignUp /> : <Navigate to="/" />} />
-                <Route
-                  path="/"
-                  element={!loggedIn
-                    ? <Home />
-                    : <LoggedHome />}
-                />
+
+                <Route path="/" element={!loggedIn ? <Home /> : <LoggedHome />} />
               </Routes>
               <MessageView />
             </StyledApp>

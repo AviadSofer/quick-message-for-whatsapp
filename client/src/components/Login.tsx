@@ -48,13 +48,8 @@ const Login: React.FC = () => {
   return (
     <StyledLogin>
       <LoginContainer>
-        <Logo width="7vw" mobilewidth="20vw" />
+        <Logo width="7vw" mobilewidth="25vw" />
         <LargeTitle>כניסה</LargeTitle>
-        <SmallTitle>
-          אין לך חשבון?
-          {' '}
-          <LinkTitle to="/signup">הרשמה</LinkTitle>
-        </SmallTitle>
         <InputAndIcon>
           <Icon src={<AccountCircleIcon />} size="1.1" />
           <LoginInput
@@ -83,6 +78,11 @@ const Login: React.FC = () => {
         <ErrorMessage showErr={emptyPasswordErr}>שדה חובה</ErrorMessage>
         <ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</ErrorMessage>
         <SubmitButton green={+true} onClick={handleSubmit}>{!isLoading ? 'כניסה' : (<LoadingButton />)}</SubmitButton>
+        <SmallTitle>
+          אין לך חשבון?
+          {' '}
+          <LinkTitle to="/signup">הרשמה</LinkTitle>
+        </SmallTitle>
       </LoginContainer>
       <Footer />
     </StyledLogin>

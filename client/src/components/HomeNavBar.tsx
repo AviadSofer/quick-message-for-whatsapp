@@ -9,10 +9,10 @@ const HomeNavBar: React.FC = () => (
     <Logo width="12%" mobilewidth="20%" />
     <NavButtons>
       <SwitchThemeButton />
-      <StyledLink to="/login">
+      <StyledLink to="/login/choice">
         <NavButton>כניסה</NavButton>
       </StyledLink>
-      <StyledLink to="/signup">
+      <StyledLink to="/signup/choice">
         <NavButton green={+true}>הרשמה</NavButton>
       </StyledLink>
     </NavButtons>

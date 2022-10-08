@@ -169,7 +169,7 @@ const SignUp: React.FC = () => {
     <StyledSignUp>
       <SignUpContainer>
         <Logo width="7vw" mobilewidth="20vw" />
-        <LargeTitle>היי, נעים להכיר</LargeTitle>
+        <LargeTitle>הרשמה</LargeTitle>
         <SignUpInputContainer>
           <SignUpInput
             label="שם מלא"

@@ -22,9 +22,9 @@ const GoogleLoginButton: React.FC = () => {
   const responseGoogle = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     if ('tokenId' in res) {
       const googleToken = res.tokenId;
-      document.cookie = `token=${googleToken}`;
-      document.cookie = 'checkToken=true';
-      document.cookie = 'isGoogleAuth=true';
+      document.cookie = `token=${googleToken}; max-age=3600`;
+      document.cookie = 'checkToken=true; max-age=3600';
+      document.cookie = 'isGoogleAuth=true; max-age=3600';
       window.location.href = '/';
     } else {
       setShowErr(+true);
@@ -50,7 +50,6 @@ const GoogleLoginButton: React.FC = () => {
       onSuccess={responseGoogle}
       onFailure={responseGoogle}
       cookiePolicy="single_host_origin"
-      isSignedIn
     />
   );
 };

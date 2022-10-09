@@ -12,7 +12,7 @@ interface Props {
 }
 
 const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
-  const clientId = `${import.meta.env.VITE_CLIENT_ID}`;
+  const clientId = import.meta.env.VITE_CLIENT_ID || process.env.VITE_CLIENT_ID;
 
   const handleLogout = async () => {
     await logout();
@@ -31,7 +31,7 @@ const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
           ? <NavButton green={+true} onClick={handleLogout}>יציאה</NavButton>
           : (
             <GoogleLogout
-              clientId={clientId}
+              clientId={`${clientId}`}
               onLogoutSuccess={handleLogout}
               render={(renderProps) => (
                 <NavButton

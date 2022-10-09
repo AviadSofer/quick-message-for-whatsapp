@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "tsc": "npm run tsc",
     "preview": "vite preview",
     "test": "vitest",
     "lint": "npx eslint . --ext .tsx,.ts"

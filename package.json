@@ -9,7 +9,6 @@
     "test": "mocha --exit -r ts-node/register 'src/tests/**/*.ts' --timeout 10000",
     "lint": "npx eslint . --ext .ts",
     "build": "npm install && tsc && cd client && npm install && npm run build",
-    "tsc": "npm run tsc"
   },
   "author": "",
   "license": "ISC",

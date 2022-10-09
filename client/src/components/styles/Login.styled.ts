@@ -13,7 +13,7 @@ flex: 2;
 
 @media (max-width: 768px) {
   height: ${window.innerHeight}px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.backgrounds.secondary};
 }
 `;
 

@@ -12,7 +12,7 @@ interface Props {
 }
 
 const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
-  const clientId = `${import.meta.env.VITE_CLIENT_ID}`;
+  const clientId = '27378581193-0oui5pt2qm345p1u41gpim0gbnvsm5jm.apps.googleusercontent.com';
 
   const handleLogout = async () => {
     await logout();

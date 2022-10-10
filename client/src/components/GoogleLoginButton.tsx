@@ -33,7 +33,7 @@ const GoogleLoginButton: React.FC = () => {
 
   return (
     <GoogleLogin
-      clientId={`${clientId}`}
+      clientId={clientId}
       buttonText="Google"
       render={(renderProps) => (
         <>

@@ -31,7 +31,7 @@ const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
           ? <NavButton green={+true} onClick={handleLogout}>יציאה</NavButton>
           : (
             <GoogleLogout
-              clientId={`${clientId}`}
+              clientId={clientId}
               onLogoutSuccess={handleLogout}
               render={(renderProps) => (
                 <NavButton

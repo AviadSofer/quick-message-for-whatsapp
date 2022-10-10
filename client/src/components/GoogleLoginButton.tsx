@@ -7,7 +7,7 @@ import ErrorMessage from './styles/ErrorMessage.styled';
 const GoogleLoginButton: React.FC = () => {
   const [showErr, setShowErr] = useState(0);
 
-  const clientId = import.meta.env.VITE_CLIENT_ID || process.env.VITE_CLIENT_ID;
+  const clientId = '27378581193-0oui5pt2qm345p1u41gpim0gbnvsm5jm.apps.googleusercontent.com';
 
   useEffect(() => {
     const initClient = () => {
@@ -33,7 +33,7 @@ const GoogleLoginButton: React.FC = () => {
 
   return (
     <GoogleLogin
-      clientId={`${clientId}`}
+      clientId={clientId}
       buttonText="Google"
       render={(renderProps) => (
         <>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   LoginContainer, StyledLogin,
 } from './styles/Login.styled';
@@ -11,24 +12,30 @@ import HorizontalLine from './styles/HorizontalLine.styled';
 import { StyledLink } from './styles/NavBar.styled';
 import { ContinueButton } from './styles/SignUpChoice.styled';
 
-const LoginChoice: React.FC = () => (
-  <StyledLogin>
-    <LoginContainer>
-      <Logo width="7vw" mobilewidth="25vw" />
-      <LargeTitle>כניסה</LargeTitle>
-      <GoogleLoginButton />
-      <HorizontalLine data-content="או" />
-      <StyledLink to="/login">
-        <ContinueButton green={+true}>המשך לכניסה</ContinueButton>
-      </StyledLink>
-      <SmallTitle>
-        אין לך חשבון?
-        {' '}
-        <LinkTitle to="/signup/choice">הרשמה</LinkTitle>
-      </SmallTitle>
-    </LoginContainer>
-    <Footer />
-  </StyledLogin>
-);
+const LoginChoice: React.FC = () => {
+  const { t } = useTranslation();
+
+  return (
+    <StyledLogin>
+      <LoginContainer>
+        <Logo width="7vw" mobilewidth="25vw" />
+        <LargeTitle>{t('Login.login')}</LargeTitle>
+        <GoogleLoginButton />
+        <HorizontalLine data-content={t('Login.or')} />
+        <StyledLink to="/login">
+          <ContinueButton green={+true}>{t('buttons.continueForLogin')}</ContinueButton>
+        </StyledLink>
+        <SmallTitle>
+          {t('Login.youHaveNoAccount')}
+          {' '}
+          <LinkTitle to="/signup/choice">
+            {t('Login.signup')}
+          </LinkTitle>
+        </SmallTitle>
+      </LoginContainer>
+      <Footer />
+    </StyledLogin>
+  );
+};
 
 export default LoginChoice;

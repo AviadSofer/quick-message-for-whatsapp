@@ -4,6 +4,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyIcon from '@mui/icons-material/Key';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
+import { useTranslation } from 'react-i18next';
 import {
   InputAndIcon, LoginContainer, LoginInput, StyledLogin, SubmitButton,
 } from './styles/Login.styled';
@@ -17,6 +18,8 @@ import Icon from './Icon';
 import { LoadingButton } from './styles/Button.styled';
 
 const Login: React.FC = () => {
+  const { t } = useTranslation();
+
   const [isLoading, setIsLoading] = useState(false);
   const [userName, setUserName] = useState('');
   const [password, setPasswoed] = useState('');
@@ -49,20 +52,20 @@ const Login: React.FC = () => {
     <StyledLogin>
       <LoginContainer>
         <Logo width="7vw" mobilewidth="25vw" />
-        <LargeTitle>כניסה</LargeTitle>
+        <LargeTitle>{t('Login.login')}</LargeTitle>
         <InputAndIcon>
           <Icon src={<AccountCircleIcon />} size="1.1" />
           <LoginInput
-            label="שם משתמש"
+            label={t('labels.username')}
             onChange={(e) => setUserName(e.target.value)}
           />
         </InputAndIcon>
-        <ErrorMessage showErr={emptyUserNameErr}>שדה חובה</ErrorMessage>
+        <ErrorMessage showErr={emptyUserNameErr}>{t('errors.requiredField')}</ErrorMessage>
         <InputAndIcon>
           <Icon src={<KeyIcon />} size="1.1" />
           <LoginInput
             type={showPassword ? 'text' : 'password'}
-            label="סיסמה"
+            label={t('labels.password')}
             onChange={(e) => setPasswoed(e.target.value)}
             InputProps={{
               endAdornment: (
@@ -75,13 +78,18 @@ const Login: React.FC = () => {
             }}
           />
         </InputAndIcon>
-        <ErrorMessage showErr={emptyPasswordErr}>שדה חובה</ErrorMessage>
-        <ErrorMessage showErr={authErr}>שם משתמש או סיסמה שגויים ):</ErrorMessage>
-        <SubmitButton green={+true} onClick={handleSubmit}>{!isLoading ? 'כניסה' : (<LoadingButton />)}</SubmitButton>
+        <ErrorMessage showErr={emptyPasswordErr}>{t('errors.requiredField')}</ErrorMessage>
+        <ErrorMessage showErr={authErr}>{t('errors.incorrect')}</ErrorMessage>
+        <SubmitButton
+          green={+true}
+          onClick={handleSubmit}
+        >
+          {!isLoading ? t('buttons.login') : (<LoadingButton />)}
+        </SubmitButton>
         <SmallTitle>
-          אין לך חשבון?
+          {t('Login.youHaveNoAccount')}
           {' '}
-          <LinkTitle to="/signup">הרשמה</LinkTitle>
+          <LinkTitle to="/signup">{t('Login.signup')}</LinkTitle>
         </SmallTitle>
       </LoginContainer>
       <Footer />

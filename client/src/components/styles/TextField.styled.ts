@@ -10,9 +10,10 @@ interface Props {
 
 const StyledInput = styled(TextField)<Props>`
 grid-area: ${({ gridarea }) => gridarea};
+direction: ${({ theme }) => theme.i18n.dir()};
 
 input {
-  direction: ${({ ltr }) => (ltr ? 'ltr' : 'rtl')};
+  direction: ${({ theme, ltr }) => (ltr ? 'ltr' : theme.i18n.dir())};
   font-family: Arial, Helvetica, sans-serif;
   font-size: ${({ font }) => font};
   color: ${({ theme }) => theme.fonts.inputText};
@@ -31,9 +32,9 @@ input {
   label {
     font-size: ${({ font }) => font};
     color: ${({ theme }) => theme.fonts.text};
-    transform-origin: right !important;
-    right: 0 !important;
-    text-align: right;
+
+    transform-origin: ${({ theme }) => ((theme.i18n.dir() === 'rtl') ? 'right !important' : 'left !important')};
+    right: ${({ theme }) => ((theme.i18n.dir() === 'rtl') ? '0 !important' : 'auto')};
 
     @media (max-width: 768px) {
       font-size: 0.9rem;
@@ -45,7 +46,7 @@ input {
   }
 
   & .MuiFormHelperText-root { /*helper text*/
-    text-align: right;
+    text-align: ${({ theme }) => ((theme.i18n.dir() === 'rtl') ? 'right' : 'left')};
     font-size: 0.5rem;
 
     @media (max-width: 768px) {

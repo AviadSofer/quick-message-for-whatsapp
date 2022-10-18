@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import createUser from '../api/createUser';
 import { isMailAvailable, isUserNameAvailable } from '../api/isCredentialsAvailable';
 import getCookie from '../helpers/getCookie';
@@ -12,6 +13,8 @@ import {
 import { LargeTitle, LinkTitle, SmallTitle } from './styles/Title.styled';
 
 const SignUp: React.FC = () => {
+  const { t } = useTranslation();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [credentials, setCredentials] = useState({
@@ -62,7 +65,7 @@ const SignUp: React.FC = () => {
     const validateFullName = () => {
       if (fullName.length > 0 && fullName.length < 6) {
         changeErrors({ fullNameErr: true });
-        changeErrors({ fullNameMsgErr: 'שם קצר מדי :(' });
+        changeErrors({ fullNameMsgErr: t('errors.tooShortName') });
       } else {
         changeErrors({ fullNameErr: false });
         changeErrors({ fullNameMsgErr: '' });
@@ -75,12 +78,12 @@ const SignUp: React.FC = () => {
     const validateMail = async () => {
       if (mail.length > 0 && !/\S+@\S+\.\S+/.test(mail)) {
         changeErrors({ mailErr: true });
-        changeErrors({ mailMsgErr: 'אימייל לא תקין :(' });
+        changeErrors({ mailMsgErr: t('errors.invalidEmail') });
       } else {
         const mailAvailable = await isMailAvailable(mail);
         if (!mailAvailable) {
           changeErrors({ mailErr: true });
-          changeErrors({ mailMsgErr: 'המייל הזה תפוס כבר :(' });
+          changeErrors({ mailMsgErr: t('errors.emailAlreadyExist') });
         } else {
           setErrors((state) => ({ ...state, mailErr: false, mailMsgErr: '' }));
           changeErrors({ mailErr: false });
@@ -95,12 +98,12 @@ const SignUp: React.FC = () => {
     const validateUserName = async () => {
       if (userName.length > 0 && userName.length < 5) {
         changeErrors({ userNameErr: true });
-        changeErrors({ userNameMsgErr: 'קצר מדי :( תנסו עם יותר מ5 תווים' });
+        changeErrors({ userNameMsgErr: t('errors.tooShortUsername') });
       } else {
         const userNameAvailable = await isUserNameAvailable(userName);
         if (!userNameAvailable) {
           changeErrors({ userNameErr: true });
-          changeErrors({ userNameMsgErr: 'שם המשתמש הזה תפוס כבר :(' });
+          changeErrors({ userNameMsgErr: t('errors.usernameAlreadyExist') });
         } else {
           setErrors((state) => ({ ...state, userNameErr: false, userNameMsgErr: '' }));
           changeErrors({ userNameErr: false });
@@ -115,7 +118,7 @@ const SignUp: React.FC = () => {
     const validatePassword = () => {
       if (password.length > 0 && !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
         changeErrors({ pwdErr: true });
-        changeErrors({ pwdMsgErr: 'הסיסמה צריכה להכיל לפחות 8 תווים, אות אחת ומספר אחד :(' });
+        changeErrors({ pwdMsgErr: t('errors.invalidPassword') });
       } else {
         changeErrors({ pwdErr: false });
         changeErrors({ pwdMsgErr: '' });
@@ -128,7 +131,7 @@ const SignUp: React.FC = () => {
     const validateConfirmPassword = () => {
       if (confirmPassword.length > 0 && confirmPassword !== password) {
         changeErrors({ confirmPwdErr: true });
-        changeErrors({ confirmPwdMsgErr: 'הסיסמאות לא זהות :(' });
+        changeErrors({ confirmPwdMsgErr: t('errors.confirmPasswordErr') });
       } else {
         changeErrors({ confirmPwdErr: false });
         changeErrors({ confirmPwdMsgErr: '' });
@@ -169,49 +172,49 @@ const SignUp: React.FC = () => {
     <StyledSignUp>
       <SignUpContainer>
         <Logo width="7vw" mobilewidth="20vw" />
-        <LargeTitle>הרשמה</LargeTitle>
+        <LargeTitle>{t('SignUp.signup')}</LargeTitle>
         <SignUpInputContainer>
           <SignUpInput
-            label="שם מלא"
+            label={t('labels.fullName')}
             error={errors.fullNameErr}
             helperText={errors.fullNameMsgErr}
             onChange={(e) => changeCredentials({ fullName: e.target.value })}
           />
           <SignUpInput
-            label="שם משתמש"
+            label={t('labels.username')}
             error={errors.userNameErr}
             helperText={errors.userNameMsgErr}
             onChange={(e) => changeCredentials({ userName: e.target.value })}
           />
           <SignUpInput
             gridarea="2 / 1 / 2 / 3"
-            label="מייל"
+            label={t('labels.email')}
             error={errors.mailErr}
             helperText={errors.mailMsgErr}
             onChange={(e) => changeCredentials({ mail: e.target.value })}
             ltr={+true}
           />
           <SignUpInput
-            label="סיסמה"
+            label={t('labels.password')}
             type="password"
             error={errors.pwdErr}
             helperText={errors.pwdMsgErr}
             onChange={(e) => changeCredentials({ password: e.target.value })}
           />
           <SignUpInput
-            label="אימות סיסמה"
+            label={t('labels.confirmPassword')}
             type="password"
             error={errors.confirmPwdErr}
             helperText={errors.confirmPwdMsgErr}
             onChange={(e) => changeCredentials({ confirmPassword: e.target.value })}
           />
         </SignUpInputContainer>
-        <ErrorMessage showErr={errors.authErr}>וואי, עדיין חלק מהפרטים לא נכונים</ErrorMessage>
-        <SignUpButton green={+true} onClick={handleSubmit}>{!isLoading ? 'המשך' : (<LoadingButton />)}</SignUpButton>
+        <ErrorMessage showErr={errors.authErr}>{t('errors.stillSomeDetailsWrong')}</ErrorMessage>
+        <SignUpButton green={+true} onClick={handleSubmit}>{!isLoading ? t('buttons.continue') : (<LoadingButton />)}</SignUpButton>
         <SmallTitle>
-          כבר יש לך חשבון?
+          {t('SignUp.alreadyHaveAnAccount')}
           {' '}
-          <LinkTitle to="/login">התחברות</LinkTitle>
+          <LinkTitle to="/login">{t('SignUp.signIn')}</LinkTitle>
         </SmallTitle>
       </SignUpContainer>
       <Footer />

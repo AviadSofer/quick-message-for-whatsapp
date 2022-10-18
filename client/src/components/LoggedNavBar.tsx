@@ -1,18 +1,21 @@
 import { GoogleLogout } from 'react-google-login';
+import { useTranslation } from 'react-i18next';
 import logout from '../api/logout';
 import getCookie from '../helpers/getCookie';
+import googleAuth from '../static/googleAuth';
 import Logo from './styles/Logo.styled';
 import {
   Nav, NavButtons, NavButton,
 } from './styles/NavBar.styled';
-import SwitchThemeButton from './SwitchThemeButton';
+import SwitchLanguage from './SwitchLanguage';
+import SwitchTheme from './SwitchTheme';
 
 interface Props {
   handleModal: () => void
 }
 
 const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
-  const clientId = '27378581193-0oui5pt2qm345p1u41gpim0gbnvsm5jm.apps.googleusercontent.com';
+  const { t } = useTranslation();
 
   const handleLogout = async () => {
     await logout();
@@ -25,13 +28,23 @@ const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
     <Nav>
       <Logo width="12%" mobilewidth="20%" />
       <NavButtons>
-        <SwitchThemeButton />
-        <NavButton onClick={handleModal}>הודעות</NavButton>
+        <SwitchLanguage />
+        <SwitchTheme />
+        <NavButton onClick={handleModal}>
+          {t('buttons.messages')}
+        </NavButton>
         {!getCookie('isGoogleAuth')
-          ? <NavButton green={+true} onClick={handleLogout}>יציאה</NavButton>
+          ? (
+            <NavButton
+              green={+true}
+              onClick={handleLogout}
+            >
+              {t('buttons.signOut')}
+            </NavButton>
+          )
           : (
             <GoogleLogout
-              clientId={clientId}
+              clientId={googleAuth.clientId}
               onLogoutSuccess={handleLogout}
               render={(renderProps) => (
                 <NavButton
@@ -39,7 +52,7 @@ const LoggedNavBar: React.FC<Props> = ({ handleModal }) => {
                   onClick={renderProps.onClick}
                   disabled={renderProps.disabled}
                 >
-                  יציאה
+                  {t('buttons.signOut')}
                 </NavButton>
               )}
             />

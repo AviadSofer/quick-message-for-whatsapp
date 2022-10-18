@@ -5,7 +5,7 @@ interface Props {
   shake: number
 }
 
-const StyledSwitchThemeButton = styled(IconButton)<Props>`
+const StyledSwitchTheme = styled(IconButton)<Props>`
 * {
   color: ${({ theme }) => (theme.isDarkMode ? 'white' : '#E49B0F')};
 }
@@ -20,4 +20,4 @@ animation-timing-function: ease;
 }
 `;
 
-export default StyledSwitchThemeButton;
+export default StyledSwitchTheme;

@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 * {
-    direction: rtl;
     color: ${({ theme }) => theme.fonts.text};
     font-family: Secular One, sans-serif;
     font-size: 1.7rem;

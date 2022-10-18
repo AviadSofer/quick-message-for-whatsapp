@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Message } from './contexts/Message';
 import StyledApp from './components/styles/App.styled';
 import Home from './components/Home';
+import MessageView from './components/MessageView';
 import Login from './components/Login';
 import LoggedHome from './components/LoggedHome';
 import SignUp from './components/SignUp';
@@ -52,6 +53,7 @@ const App: React.FC = () => {
 
                 <Route path="/" element={!loggedIn ? <Home /> : <LoggedHome />} />
               </Routes>
+              <MessageView />
             </StyledApp>
           </Message>
         </Theme>

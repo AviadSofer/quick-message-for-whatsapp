@@ -20,6 +20,6 @@ export const NavButton = styled(StyledButton)`
 && {
   width: 7vw;
   margin: 0px 6px 0px 6px;
-  font-size: 0.75rem;
+  font-size: ${({ theme }) => ((theme.i18n.dir() === 'rtl') ? '0.75rem' : '0.7rem')};
 }
 `;

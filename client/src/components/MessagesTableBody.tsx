@@ -1,6 +1,7 @@
 import { IconButton } from '@mui/material';
 import CallReceivedIcon from '@mui/icons-material/CallReceived';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useTranslation } from 'react-i18next';
 import deleteMessageById from '../api/deleteMessageById';
 import { useMessage } from '../contexts/Message';
 import {
@@ -10,6 +11,8 @@ import { useSavedMessages } from '../contexts/SavedMessages';
 import Icon from './Icon';
 
 const MessagesTableBody: React.FC = () => {
+  const { t } = useTranslation();
+
   const { changeMessage } = useMessage();
 
   const { savedMessages, setSavedMessages } = useSavedMessages();
@@ -36,7 +39,7 @@ const MessagesTableBody: React.FC = () => {
         <tr>
           <TD colSpan={3}>
             <TDContainer>
-              אין הודעות עדיין
+              {t('MessageTable.noMessagesYet')}
             </TDContainer>
           </TD>
         </tr>

@@ -1,6 +1,9 @@
 import { DefaultTheme } from 'styled-components';
+import i18n from 'i18next';
 
 export const lightTheme: DefaultTheme = {
+  i18n,
+
   isDarkMode: false,
   green: '#7ED956',
 
@@ -18,6 +21,8 @@ export const lightTheme: DefaultTheme = {
 };
 
 export const darkTheme: DefaultTheme = {
+  i18n,
+
   isDarkMode: true,
   green: '#7ED956',
 

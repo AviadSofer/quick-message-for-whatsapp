@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import saveMessage from '../api/saveMessage';
 import getCookie from '../helpers/getCookie';
 import { useMessage } from '../contexts/Message';
@@ -11,6 +12,8 @@ import fetchData from '../api/fetchData';
 import { useSavedMessages } from '../contexts/SavedMessages';
 
 const SendMessage: React.FC = () => {
+  const { t } = useTranslation();
+
   const { setSavedMessages } = useSavedMessages();
   const { message, changeMessage } = useMessage();
   const { prefix, phone, textMessage } = message;
@@ -39,8 +42,18 @@ const SendMessage: React.FC = () => {
     <StyledSendMessage>
       <InputContainer>
         <StyledInput
+          value={prefix}
+          label={t('labels.prefix')}
+          type="number"
+          ltr={+true}
+          onChange={(e) => changeMessage({ prefix: e.target.value })}
+          onInput={(e: ChangeEvent<HTMLInputElement>) => {
+            e.target.value = e.target.value.slice(0, 3);
+          }}
+        />
+        <StyledInput
           value={phone}
-          label="מספר טלפון"
+          label={t('labels.phone')}
           type="number"
           ltr={+true}
           onChange={(e) => {
@@ -51,24 +64,12 @@ const SendMessage: React.FC = () => {
             e.target.value = e.target.value.slice(0, 10);
           }}
         />
-        <StyledInput
-          value={prefix}
-          label="קידומת"
-          type="number"
-          ltr={+true}
-          onChange={(e) => changeMessage({ prefix: e.target.value })}
-          onInput={(e: ChangeEvent<HTMLInputElement>) => {
-            e.target.value = e.target.value.slice(0, 3);
-          }}
-        />
         <ErrorContainer>
-          <ErrorMessage showErr={showErr}>
-            מספר קצר מדי :( מספר תקין הוא משהו בסגנון של 054-123-4567
-          </ErrorMessage>
+          <ErrorMessage showErr={showErr}>{t('errors.tooShort')}</ErrorMessage>
         </ErrorContainer>
         <StyledInput
           value={textMessage}
-          label="ההודעה שלך (לא חובה)"
+          label={t('labels.textMessage')}
           gridarea={showErr ? '3 / 1 / 3 / 3' : '2 / 1 / 2 / 3'}
           onChange={(e) => changeMessage({ textMessage: e.target.value })}
         />
@@ -77,7 +78,7 @@ const SendMessage: React.FC = () => {
         green={+true}
         onClick={createLink}
       >
-        שלח
+        {t('buttons.send')}
       </SendButton>
     </StyledSendMessage>
   );

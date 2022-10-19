@@ -7,9 +7,10 @@ export const StyledGoogleLogin = styled(StyledButton)`
     background-color: white;
     color: grey;
     font-size: 0.7rem;
-    text-transform: capitalize;
     font-family: 'Roboto', sans-serif;
     box-shadow: 0 1px 3px 0 grey;
+    
+    flex-direction: ${({ theme }) => ((theme.i18n.dir() === 'ltr') ? 'row-reverse' : 'row')};
 
     @media (max-width: 768px) {
     width: 70vw;

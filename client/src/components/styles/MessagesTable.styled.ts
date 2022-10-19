@@ -41,7 +41,7 @@ interface Props {
 
 export const TH = styled.th<Props>`
 width: 15%;
-text-align: right;
+text-align: ${({ theme }) => ((theme.i18n.dir() === 'ltr') ? 'center' : 'right')};
 color: white;
 padding: 9px 5px 9px 0;
 font-size: 0.7rem;
@@ -63,6 +63,7 @@ font-size: 0.7rem !important;
 
 export const TD = styled.td`
 padding: 15px;
+text-align: ${({ theme }) => ((theme.i18n.dir() === 'ltr') ? 'center' : 'right')};
 
 @media (max-width: 768px) {
   padding: 5px;
@@ -79,7 +80,7 @@ font-size: 0.7rem;
 
 export const Phone = styled.div`
 direction: ltr;
-text-align: right;
+text-align: ${({ theme }) => ((theme.i18n.dir() === 'ltr') ? 'left' : 'right')};
 `;
 
 export const MessageText = styled.div`

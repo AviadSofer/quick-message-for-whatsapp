@@ -12,10 +12,12 @@ justify-content: space-between;
 `;
 
 export const InputContainer = styled.div`
+direction: ltr;
+
 width: 70%;
 display: grid;
 align-items: flex-end;
-grid-template-columns: 3.2fr 1fr;
+grid-template-columns: 1fr 3.2fr;
 grid-template-rows: 1fr 1fr;
 grid-gap: 10% 5%;
 @media (max-width: 768px) {

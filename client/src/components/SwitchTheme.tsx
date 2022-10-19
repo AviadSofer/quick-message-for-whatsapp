@@ -3,7 +3,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import { useState } from 'react';
 import Icon from './Icon';
 import { useThemeStore } from '../contexts/ThemeStore';
-import StyledSwitchThemeButton from './styles/SwitchThemeButton.styled';
+import StyledSwitchThemeButton from './styles/SwitchTheme.styled';
 
 const SwitchThemeButton: React.FC = () => {
   const { isDarkMode, switchTheme } = useThemeStore();

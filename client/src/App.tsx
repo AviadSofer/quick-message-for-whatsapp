@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter, Route, Routes, Navigate,
 } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Message } from './contexts/Message';
 import StyledApp from './components/styles/App.styled';
 import Home from './components/Home';
@@ -16,6 +17,8 @@ import SignUpChoice from './components/SignUpChoice';
 import LoginChoice from './components/LoginChoice';
 
 const App: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => { // make the height static, useful with mobile keyboard
@@ -29,6 +32,16 @@ const App: React.FC = () => {
     const checkToken = getCookie('checkToken');
     if (checkToken) setLoggedIn(true);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+    document.title = t('title');
+    if (i18n.language === 'he') {
+      document.body.dir = 'rtl';
+    } else {
+      document.body.dir = 'ltr';
+    }
+  });
 
   return (
     <BrowserRouter>

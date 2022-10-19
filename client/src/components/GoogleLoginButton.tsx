@@ -1,18 +1,20 @@
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { GoogleIcon, StyledGoogleLogin } from './styles/GoogleLogin.styled';
 import ErrorMessage from './styles/ErrorMessage.styled';
+import googleAuth from '../static/googleAuth';
 
 const GoogleLoginButton: React.FC = () => {
-  const [showErr, setShowErr] = useState(0);
+  const { t } = useTranslation();
 
-  const clientId = '27378581193-0oui5pt2qm345p1u41gpim0gbnvsm5jm.apps.googleusercontent.com';
+  const [showErr, setShowErr] = useState(0);
 
   useEffect(() => {
     const initClient = () => {
       gapi.auth2.init({
-        clientId,
+        clientId: googleAuth.clientId,
         scope: '',
       });
     };
@@ -33,18 +35,17 @@ const GoogleLoginButton: React.FC = () => {
 
   return (
     <GoogleLogin
-      clientId={clientId}
-      buttonText="Google"
+      clientId={googleAuth.clientId}
       render={(renderProps) => (
         <>
           <StyledGoogleLogin
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
           >
-            להמשיך עם Google
+            {t('buttons.continueWithGoogle')}
             <GoogleIcon />
           </StyledGoogleLogin>
-          <ErrorMessage showErr={showErr}>משהו לא עובד!</ErrorMessage>
+          <ErrorMessage showErr={showErr}>{t('errors.somthingNotWork')}</ErrorMessage>
         </>
       )}
       onSuccess={responseGoogle}

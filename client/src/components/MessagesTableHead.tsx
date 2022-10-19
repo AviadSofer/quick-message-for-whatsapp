@@ -1,11 +1,13 @@
 import { IconButton } from '@mui/material';
 import { useState } from 'react';
-import Columns from '../static/columns';
+import { useTranslation } from 'react-i18next';
 import { TableHead, TH, Arrows } from './styles/MessagesTable.styled';
 import { Message } from './MessagesTable';
 import { useSavedMessages } from '../contexts/SavedMessages';
 
 const MessagesTableHead: React.FC = () => {
+  const { t } = useTranslation();
+
   const { savedMessages, setSavedMessages } = useSavedMessages();
 
   const [sort, setSort] = useState(false);
@@ -20,6 +22,24 @@ const MessagesTableHead: React.FC = () => {
     setSavedMessages(sort ? firstToLast : lastToFirst);
     setSort(!sort);
   };
+
+  const Columns = [
+    {
+      Header: t('MessageTable.date'),
+      accessor: 'date',
+      width: 20,
+    },
+    {
+      Header: t('MessageTable.phoneNumber'),
+      accessor: 'phoneNumber',
+      width: 30,
+    },
+    {
+      Header: t('MessageTable.textMessage'),
+      accessor: 'textMessage',
+      width: 40,
+    },
+  ];
 
   return (
     <TableHead>

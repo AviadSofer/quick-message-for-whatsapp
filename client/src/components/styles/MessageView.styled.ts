@@ -1,6 +1,7 @@
+import WhatsappUi from 'react-whatsapp-styled-ui';
 import styled from 'styled-components';
 
-const StyledMessageView = styled.div`
+export const StyledMessageView = styled.div`
 height: 100vh;
 display: flex;
 flex: 1;
@@ -15,4 +16,4 @@ box-shadow:  ${({ theme }) => (!theme.isDarkMode
 }
 `;
 
-export default StyledMessageView;
+export const EnglishWhatsappUi = styled(WhatsappUi)``;

@@ -21,5 +21,9 @@ export const NavButton = styled(StyledButton)`
   width: 7vw;
   margin: 0px 6px 0px 6px;
   font-size: ${({ theme }) => ((theme.i18n.dir() === 'rtl') ? '0.75rem' : '0.7rem')};
+
+  @media (max-width: 768px) {
+    width: ${({ theme }) => ((theme.i18n.dir() === 'rtl') ? '7vw' : '20vw')};
+  }
 }
 `;

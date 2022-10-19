@@ -32,7 +32,8 @@ const en = {
         {{timeExpression}}, to {{phoneNumber}},
         Would you like to send it again?`,
       manyMessages: `Well done! You have already sent {{numberOfMessages}} messages!
-        The last message you sent was {{timeExpression}}, to {{phoneNumber}},
+        The last message you sent was {{timeExpression}}, 
+        to {{phoneNumber}},
         Would you like to send it again?`,
     },
 

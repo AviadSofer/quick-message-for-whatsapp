@@ -15,7 +15,7 @@ margin-top: 20px;
   height: 20vh;
   margin-top: 10px;
   justify-content: center;
-  text-align: right;
+  text-align: ${({ theme }) => ((theme.i18n.dir() === 'ltr') ? 'left' : 'right')};
 }
 `;
 

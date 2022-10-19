@@ -35,6 +35,7 @@ input {
 
     transform-origin: ${({ theme }) => ((theme.i18n.dir() === 'rtl') ? 'right !important' : 'left !important')};
     right: ${({ theme }) => ((theme.i18n.dir() === 'rtl') ? '0 !important' : 'auto')};
+    text-align: ${({ theme }) => ((theme.i18n.dir() === 'rtl') ? 'right' : 'left')};
 
     @media (max-width: 768px) {
       font-size: 0.9rem;

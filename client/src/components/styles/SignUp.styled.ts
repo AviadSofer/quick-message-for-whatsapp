@@ -52,6 +52,7 @@ grid-template-rows: 1fr 1fr 1.3fr;
 grid-gap: 0% 5%;
 
 @media (max-width: 768px) {
+  width: 90%;
   height: 60%;
 }
 `;

@@ -19,8 +19,9 @@ background-color: ${({ theme }) => theme.backgrounds.secondary};
 
 * {
   font-size: 0.6rem;
+
   @media (max-width: 768px) {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 }
 
@@ -49,7 +50,7 @@ font-weight: normal;
 
 @media (max-width: 768px) {
   width: ${({ width }) => `${width}%`};
-  font-size: 0.85rem;
+  font-size: 0.65rem;
 }
 `;
 
@@ -66,8 +67,9 @@ padding: 15px;
 text-align: ${({ theme }) => ((theme.i18n.dir() === 'ltr') ? 'center' : 'right')};
 
 @media (max-width: 768px) {
-  padding: 5px;
+  padding: 10px;
   white-space: pre-line;
+  text-align: ${({ theme }) => ((theme.i18n.dir() === 'ltr') ? 'left' : 'right')};
 }
 `;
 

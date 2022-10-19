@@ -24,6 +24,7 @@ justify-content: space-between;
 margin-top: 4vh;
 
 @media (max-width: 768px) {
+    width: 90%;
     margin-bottom: 20vh;
 }
 `;

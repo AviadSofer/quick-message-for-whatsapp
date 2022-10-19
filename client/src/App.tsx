@@ -18,6 +18,7 @@ import LoginChoice from './components/LoginChoice';
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
+
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => { // make the height static, useful with mobile keyboard
@@ -33,9 +34,13 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    document.body.dir = i18n.dir();
     document.documentElement.lang = i18n.language;
     document.title = t('title');
+    if (i18n.language === 'he') {
+      document.body.dir = 'rtl';
+    } else {
+      document.body.dir = 'ltr';
+    }
   });
 
   return (

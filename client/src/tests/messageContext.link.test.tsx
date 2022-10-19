@@ -15,14 +15,14 @@ it('should open the right link', () => {
   const { getByText, getByLabelText } = render(<App />);
 
   // input value in all 3 text fields
-  fireEvent.change(getByLabelText('קידומת'), { target: { value: prefix } });
-  fireEvent.change(getByLabelText('מספר טלפון'), { target: { value: phone } });
-  fireEvent.change(getByLabelText('ההודעה שלך (לא חובה)'), { target: { value: msg } });
+  fireEvent.change(getByLabelText('labels.prefix'), { target: { value: prefix } });
+  fireEvent.change(getByLabelText('labels.phone'), { target: { value: phone } });
+  fireEvent.change(getByLabelText('labels.textMessage'), { target: { value: msg } });
 
   window.open = vi.fn();
 
   // click on 'send' button
-  fireEvent.click(getByText('שלח'));
+  fireEvent.click(getByText('buttons.send'));
 
   // expect: open the correct whatsapp link in new tab
   expect(window.open).toBeCalledWith(`https://wa.me/${prefix}${phone}?text=${msg}`, '_blank');

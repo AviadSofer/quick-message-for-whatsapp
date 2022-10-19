@@ -7,6 +7,6 @@ test('the prefix in whatsapp UI should change to 123', () => {
 
   // expect the '972' in the whatsapp UI will change, after we will change the ptefix
   expect(getByText(/972/).textContent).toContain('972');
-  fireEvent.change(getByLabelText('קידומת'), { target: { value: '321' } });
+  fireEvent.change(getByLabelText('labels.prefix'), { target: { value: '321' } });
   expect(getByText(/321/).textContent).toContain('321');
 });

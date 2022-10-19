@@ -1,7 +1,6 @@
 import WhatsappUi from 'react-whatsapp-styled-ui-hebrew';
 import { useTheme } from 'styled-components';
-import EnglishWhatsappUi from './styles/EnglishWhatsappUi.styled';
-import StyledMessageView from './styles/MessageView.styled';
+import { EnglishWhatsappUi, StyledMessageView } from './styles/MessageView.styled';
 import { useMessage } from '../contexts/Message';
 
 const MessageView: React.FC = () => {

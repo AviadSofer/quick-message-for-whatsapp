@@ -4,13 +4,12 @@ import useSWR from 'swr';
 import fetchData from '../api/fetchData';
 import { useMessage } from '../contexts/Message';
 import { useSavedMessages } from '../contexts/SavedMessages';
-import i18n from '../i18n';
 import Loading from './styles/Loading.styled';
 import { HelloTitle, ReSendButton, StyledLoggedMainText } from './styles/LoggedMainText.styles';
 import { MediumTitle } from './styles/Title.styled';
 
 const LoggedMainText: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { changeMessage } = useMessage();
   const { savedMessages, setSavedMessages } = useSavedMessages();

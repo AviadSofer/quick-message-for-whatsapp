@@ -18,11 +18,13 @@ Quick-Message provides the following features:
 - Adding Contect to Message
 - Message View Animation in left side of the screen (right now Only in Desktop)
 - Dark Mode
+- Auto saving theme preferences in localstorge
 - User Management and Authentication
 - Authentication with Google
 - Automatic Saving Message after Sending (only where user connected)
 - show-all-messsages-that-sended Button
 - Re-Send (message that already sended) Button
+- Fully responsive design
 
 # Technologies
 
@@ -31,18 +33,24 @@ For Front-End:
 - TypeScript
 - Vite
 - React.js
-- React.Context
+- React Context
+- React Hooks, like useState, useEffect And useContext
+- MUI
 - Styled-Components
 - React-Router
+- React-i18next
+- And my component Whatsapp Design - [react-whatsapp-styled-ui](https://github.com/AviadSofer/react-whatsapp-styled-ui)
 
 For Back-End:
 
 - TypeScript
 - Node.js
 - Express.js
+- Mongoose
 - JWT
 - Bcrypt
-- Mongoose
+- Dotenv
+- Google-auth-library
 - Pino Logger
 
 For DB:
@@ -56,6 +64,10 @@ For Testing:
 - Chai
 - Supertest
 - Mocha
+
+For Linting:
+
+- Eslit as airbnb
 
 # Getting Started
 

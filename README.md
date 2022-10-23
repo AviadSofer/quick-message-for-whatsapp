@@ -65,6 +65,12 @@ For Testing:
 - Supertest
 - Mocha
 
+For CI/CD:
+
+- GitHub Actions
+- GitHub Branch Protection Rules
+- [Render](https://render.com/) for CD
+
 For Linting:
 
 - Eslint as airbnb

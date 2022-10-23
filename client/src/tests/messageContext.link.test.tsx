@@ -2,7 +2,11 @@ import {
   expect, afterEach, vi, it,
 } from 'vitest';
 import { render, fireEvent, cleanup } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import App from '../App';
+import { ThemeStore } from '../contexts/ThemeStore';
+import Theme from '../contexts/Theme';
+import { Message } from '../contexts/Message';
 
 afterEach(cleanup);
 
@@ -12,7 +16,17 @@ const msg = 'Hi!';
 
 it('should open the right link', () => {
   // render the app into this test
-  const { getByText, getByLabelText } = render(<App />);
+  const { getByText, getByLabelText } = render(
+    <BrowserRouter>
+      <ThemeStore>
+        <Theme>
+          <Message>
+            <App />
+          </Message>
+        </Theme>
+      </ThemeStore>
+    </BrowserRouter>,
+  );
 
   // input value in all 3 text fields
   fireEvent.change(getByLabelText('labels.prefix'), { target: { value: prefix } });

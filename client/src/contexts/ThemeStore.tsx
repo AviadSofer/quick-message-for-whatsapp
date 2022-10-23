@@ -1,5 +1,5 @@
 import React, {
-  createContext, useContext, useMemo, useState,
+  createContext, useContext, useEffect, useMemo, useState,
 } from 'react';
 
 interface ThemeStore {
@@ -12,6 +12,14 @@ const useThemeStore = () => useContext(ThemeContext);
 
 const ThemeStore: React.FC = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      localStorage.setItem('isDarkMode', 'true');
+    } else {
+      localStorage.removeItem('isDarkMode');
+    }
+  }, [isDarkMode]);
 
   const switchTheme = () => setIsDarkMode(!isDarkMode);
 

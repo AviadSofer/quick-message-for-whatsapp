@@ -44,7 +44,7 @@ box-shadow:  ${({ theme }) => (!theme.isDarkMode ? '0px 0px 8px 4px #E0E0E0' : '
 `;
 
 export const InputAndIcon = styled.div`
-width: 70%;
+width: 80%;
 display: flex;
 justify-content: space-between;
 align-items: flex-end;
@@ -59,7 +59,7 @@ LoginInput.defaultProps = {
 
 export const SubmitButton = styled(StyledButton)`
 && {
-  width: 70%;
+  width: 80%;
   font-size: 0.7rem;
 
   @media (max-width: 768px) {

@@ -48,6 +48,10 @@ width: 70%;
 display: flex;
 justify-content: space-between;
 align-items: flex-end;
+
+@media (max-width: 768px) {
+  width: 80%;
+}
 `;
 
 export const LoginInput = styled(StyledInput)`
@@ -63,6 +67,7 @@ export const SubmitButton = styled(StyledButton)`
   font-size: 0.7rem;
 
   @media (max-width: 768px) {
+    width: 80%;
     margin-top: 5vh;
     font-size: 0.9rem;
   }

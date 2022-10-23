@@ -39,7 +39,7 @@ For Front-End:
 - Styled-Components
 - React-Router
 - React-i18next
-- And my component Whatsapp Design - [react-whatsapp-styled-ui](https://github.com/AviadSofer/react-whatsapp-styled-ui)
+- My Component Whatsapp Design - [react-whatsapp-styled-ui](https://github.com/AviadSofer/react-whatsapp-styled-ui)
 
 For Back-End:
 

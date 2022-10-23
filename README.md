@@ -67,7 +67,7 @@ For Testing:
 
 For Linting:
 
-- Eslit as airbnb
+- Eslint as airbnb
 
 # Getting Started
 

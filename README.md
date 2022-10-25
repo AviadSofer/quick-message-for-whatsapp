@@ -25,6 +25,7 @@ Quick-Message provides the following features:
 - show-all-messsages-that-sended Button
 - Re-Send (message that already sended) Button
 - Fully responsive design
+- Multiple Languages Support.
 
 # Technologies
 
